@@ -1,6 +1,6 @@
 # TEAM MEMBERS
-Add your names here and commit
-Eeyern Ng
+
+- Eeyern Ng -
 
 **Useful Links**
 

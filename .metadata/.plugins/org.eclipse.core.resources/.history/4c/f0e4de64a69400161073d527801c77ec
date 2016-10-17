@@ -1,0 +1,33 @@
+package entity;
+import java.util.ArrayList;
+
+public class Menu {
+	private ArrayList<MenuItem> mains;
+	private ArrayList<MenuItem> drinks;
+	private ArrayList<MenuItem> desserts; 
+	private ArrayList<MenuItem> promotions;
+	
+	//requirement to separate menus into different categories 
+	
+	//Constructor:
+	public Menu(){
+		mains = new ArrayList<MenuItem>();
+		drinks = new ArrayList<MenuItem>();
+		desserts = new ArrayList<MenuItem>();
+		promotions = new ArrayList<MenuItem>();
+		
+	}
+	
+	public ArrayList<MenuItem> getMainsM(){
+		return this.mains;
+	}
+	public ArrayList<MenuItem> getDrinksM(){
+		return this.drinks;
+	}
+	public ArrayList<MenuItem> getDessertsM(){
+		return this.desserts;
+	}
+	public ArrayList<MenuItem> getPromosM(){
+		return this.promotions;
+	}
+}

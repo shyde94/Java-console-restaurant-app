@@ -1,0 +1,26 @@
+!SESSION 2016-10-17 22:24:59.397 -----------------------------------------------
+eclipse.buildId=4.6.1.M20160907-1200
+java.version=1.8.0_91
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_SG
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/Shide/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.java.product -keyring /Users/Shide/.eclipse_keyring
+
+!ENTRY org.eclipse.core.net 1 0 2016-10-17 22:39:04.720
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.jobs 2 2 2016-10-17 22:49:57.864
+!MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: org.eclipse.recommenders.internal.models.rcp.DownloadModelArchiveJob
+
+!ENTRY org.eclipse.core.jobs 2 2 2016-10-17 22:49:57.866
+!MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: org.eclipse.recommenders.internal.models.rcp.DownloadModelArchiveJob
+!SESSION 2016-10-17 22:50:05.979 -----------------------------------------------
+eclipse.buildId=4.6.1.M20160907-1200
+java.version=1.8.0_91
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_SG
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/Shide/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.java.product -keyring /Users/Shide/.eclipse_keyring
+
+!ENTRY org.eclipse.core.net 1 0 2016-10-17 22:50:23.266
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences

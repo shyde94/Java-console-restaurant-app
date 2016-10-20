@@ -1,7 +1,8 @@
 # TEAM MEMBERS
 
 - Eeyern Ng -
-- Shide -   
+- Shide - 
+- Grace -     
 
 **Useful Links**
 

@@ -8,6 +8,8 @@ public class MenuTestingApp {
 		temp.printItem();
 		menu.addItem("chicken rice", 4.00, "Hainanese chicken rice there you go", "mains");
 		menu.getMainsM().get(0).printItem();
+		menu.addItem("Fish and chips", 5.0, "chips with fish", "mains");
+		menu.getMainsM().get(1).printItem();
 		
 	}
 }

@@ -53,7 +53,7 @@ public class MenuItem {
 	}
 	
 	public void printItem(){
-		System.out.println(this.type + ", " + this.name + ", "+ this.description + ", " + this.price);
+		System.out.println("("+this.type+") " + ", " + this.name + ", "+ this.description + ", " + this.price);
 	}
 	
 }

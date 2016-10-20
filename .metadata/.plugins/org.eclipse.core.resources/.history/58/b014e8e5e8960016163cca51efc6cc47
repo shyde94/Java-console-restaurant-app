@@ -1,0 +1,12 @@
+package Shapes3D;
+import Shapes.Circle;
+public class Sphere extends Circle {
+
+	public Sphere(double r) {
+		super(r);
+		// TODO Auto-generated constructor stub
+	}
+	public double findSurfaceArea(){
+		return 4 * super.findArea();
+	}
+}

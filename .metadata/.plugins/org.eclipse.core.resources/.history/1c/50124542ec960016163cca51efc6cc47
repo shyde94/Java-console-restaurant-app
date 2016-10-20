@@ -1,0 +1,15 @@
+package Shapes3D;
+import Shapes.Circle;
+public class Cylinder extends Circle implements IShape3D {
+	private double height;
+	public Cylinder(double r, double h){
+		super(r);
+		this.height = h;
+	}
+	public double findSurfaceArea(){
+		return (super.findArea() * height);
+	}
+	public double getHeight(){
+		return this.height;
+	}
+}

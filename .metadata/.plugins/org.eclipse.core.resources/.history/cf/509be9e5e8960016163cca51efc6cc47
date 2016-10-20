@@ -1,0 +1,5 @@
+package Shapes3D;
+
+public interface IShape3D {
+
+}

@@ -63,10 +63,16 @@ public class Menu {
 			temp = desserts.get(n);break;
 		default: System.out.println("Invalid option, no items updated");
 		}
-		
-		temp.setName(name);
-		temp.setPrice(price);
-		temp.setDesc(desc);
+		if(!name.equals("")){
+			temp.setName(name);
+		}
+		if(price!= -1){
+			temp.setPrice(price);
+		}
+		if(!desc.equals("")){
+			temp.setDesc(desc);
+		}
+		System.out.println("Item has been updated");
 		//take note, cannot change type. 
 		
 	}

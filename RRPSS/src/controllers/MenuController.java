@@ -34,11 +34,22 @@ public class MenuController {
 							y = false;
 						}
 						catch(InputMismatchException e){
-							System.out.println("Invalid Input. 1");
+							System.out.println("Invalid option");
 						}
 					}while(y);
 					break;
-				case(2): break;
+				case(2): 
+					do{
+						try{
+							this.updateMenuItem();
+							y = false;
+						}
+						catch(InputMismatchException e){
+							System.out.println("Invalid option");
+						}
+					}while(y);
+					break;
+					
 				case(3): 
 					do{
 						try{
@@ -74,7 +85,7 @@ public class MenuController {
 		//these variables are need for addItem() method
 		while(x){	//while loop to remain this method if wrong type selected
 			int choice;
-			System.out.println("Create new menu item");
+			System.out.println("######## Create new menu item ########");
 			System.out.println("What type of item do you wish to add?");
 			this.showMenuTypes();
 			choice = input.nextInt();
@@ -121,24 +132,107 @@ public class MenuController {
 	
 	public void updateMenuItem(){
 		Scanner input = new Scanner(System.in);
+		
 		boolean x = true;
 		String type = "";
-		String name = ""; 
-		double price = 0; 
-		String desc = "";
+		
+		
+		
 		while(x){	//while loop to remain this method if wrong type selected
-			int choice;
-			System.out.println("Update menu item");
-			System.out.println("What type of item do you wish to add?");
+			int choice=0;
+			System.out.println("######## Update menu item ########");
+			menu.printMenuL();
 			this.showMenuTypes();
 			choice = input.nextInt();
-			if(choice == -1) return;
+			if(choice==-1) return;
 			switch(choice){
-				case(1): type = "mains";break;
-				case(2): type = "drinks";break;
-				case(3): type = "desserts";break;
-				default: System.out.println("Invalid Option. No items added");		
+				case(1): type = "mains"; menu.printMains();break;
+				case(2): type = "drinks"; menu.printDrinks();break;
+				case(3): type = "desserts"; menu.printDesserts();break;
+				default: System.out.println("Invalid Option. No items updated");		
 			}
+			boolean y = true; int index=0;
+			do{
+				
+				String name = ""; 
+				double price = -1; 
+				String desc = "";
+				try{
+					System.out.println("Choose item to update: (Enter -1 to go back)");
+					index = input.nextInt();
+					if(index == -1) {
+						y=false;continue;
+					}
+					index--;
+					
+					String yesno;
+					
+					System.out.println("Item to update:");
+					menu.getTypeM(type).get(index).printItem();
+					
+					System.out.println("Update name? Enter y for yes, n for no, -1 to go back");
+					input.nextLine();
+					yesno = input.nextLine();
+					if(yesno.equals("-1")){
+						continue;
+					}
+					switch(yesno){
+						case("y"):
+							System.out.println("Enter new name:");
+							name = input.nextLine();
+							System.out.println("New name: " + name);
+							break;
+						case("n"):break;
+						default: System.out.println("Invalid option. Enter y or n");
+					}
+					
+					System.out.println("Update price? Enter y for yes, n for no, -1 to go back");
+					yesno = input.nextLine();
+					if(yesno.equals("-1")){
+						continue;
+					}
+					switch(yesno){
+						case("y"):
+							System.out.println("Enter price:");
+							price = input.nextDouble();
+							break;
+						case("n"):break;
+						default: System.out.println("Invalid option. Enter y or n");
+					}
+					
+					System.out.println("Update description? Enter y for yes, n for no, -1 to go back");
+					input.nextLine();
+					yesno = input.nextLine();
+					if(yesno.equals("-1")){
+						continue;
+					}
+					switch(yesno){
+						case("y"):
+							System.out.println("Enter description:");
+							desc = input.nextLine();
+							System.out.println("New description: " + desc);
+							break;
+						case("n"):break;
+						default: System.out.println("Invalid option. Enter y or n");
+					}
+					menu.updateItem(name,price,desc,type,index);y = false;return;
+					
+						
+				}
+				catch(InputMismatchException e){
+					System.out.println("Please enter index in digits");
+					input.nextLine();
+				}
+				catch(IllegalStateException e){
+					System.out.println("Please enter index in digits");
+				}
+				catch(IndexOutOfBoundsException e){
+					System.out.println("Item does not exist. Please try again");
+				}
+			}while(y);	
+				
+			
+			
 		}
 	}
 			
@@ -146,11 +240,11 @@ public class MenuController {
 			
 	public void deleteMenuItem(){
 		Scanner input = new Scanner(System.in);
-		menu.printMenuL();
 		boolean x = true;
 		int index=0;
 		while(x){
-			System.out.println("Remove Item:");
+			System.out.println("######## Remove Item: ########");
+			menu.printMenuL();
 			this.showMenuTypes();
 			int choice = input.nextInt(); String type = "";
 			switch(choice){
@@ -167,10 +261,7 @@ public class MenuController {
 			case(-1): return;
 			default: System.out.println("Invalid Option. No items removed");
 			}
-			ArrayList<MenuItem> temp = menu.getTypeM(type); //temp is a reference to the selected type of menu		
-			
-			
-			//this can be substituted using try catch block. kiv. 
+ 
 			boolean y = true;
 			do{
 				try{
@@ -194,15 +285,7 @@ public class MenuController {
 				catch(IndexOutOfBoundsException e){
 					System.out.println("Item does not exist. Please try again");
 				}
-			}while(y);
-			
-			
-			
-			
-			 //id of item shown is 1 more than index in ArrayList
-			//temp.get(index).printItem();
-			
-			
+			}while(y);			
 		}
 		
 		

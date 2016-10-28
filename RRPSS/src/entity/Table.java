@@ -20,7 +20,7 @@ public Table (int tableNumber, int seats, boolean isReserved, boolean isOccupied
 	this.seats = seats;
 	this.isReserved = isReserved;
 	this.isOccupied = isOccupied;
-	this.customerID = customerID;
+	
 }
 	
 /**

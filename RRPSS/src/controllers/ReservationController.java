@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import entity.Table;
-import entity.Reservation;
+import entity.Reservation_old;
 import entity.Customer;
 
 public class ReservationController {
@@ -38,7 +38,7 @@ public class ReservationController {
 
 	private static List<Table> tables;
 
-	private static List<Reservation> reservations;
+	private static List<Reservation_old> reservations;
 
 	private static Scanner sc;
 
@@ -50,7 +50,7 @@ public class ReservationController {
 		sc = new Scanner(System.in);
 
 		tables = new ArrayList<Table>();
-		reservations = new ArrayList<Reservation>();
+		reservations = new ArrayList<Reservation_old>();
 
 		dateFormatter = new SimpleDateFormat("E, dd/MM/yyyy, HH:mm");
 
@@ -68,7 +68,7 @@ public class ReservationController {
 		if ( reservations.isEmpty())
 			return 0;
 
-		for (Reservation reservation :  reservations) {
+		for (Reservation_old reservation :  reservations) {
 			if (reservation.getCustomerID() == customerID) {
 				return reservation.getNumOfPeople();
 			}
@@ -105,7 +105,7 @@ public class ReservationController {
 		
 		int currReservationNo = 1;
 		
-		for(Reservation reservation : reservations)
+		for(Reservation_old reservation : reservations)
 		{
 			System.out.println(currReservationNo++);
 			reservation.displayReservation();
@@ -325,7 +325,7 @@ public class ReservationController {
     			{
     				boolean isReserved = false;
     				
-    				for(Reservation reservation : reservations)
+    				for(Reservation_old reservation : reservations)
     	    		{
     					Calendar resStartDateTime =
     							reservation.getStartDateTime();
@@ -375,8 +375,8 @@ public class ReservationController {
     		}
     		else
     		{	
-    			Reservation newReservation;
-    			newReservation = new Reservation(availableTableNumber,
+    			Reservation_old newReservation;
+    			newReservation = new Reservation_old(availableTableNumber,
     					customer.getCustomerID(), customer.getName(),
     					customer.getContactNumber(), numOfPeople,
     					startDateTime, RESERVATION_DURATION);
@@ -447,7 +447,7 @@ public class ReservationController {
 			System.out.printf("Reservation Duration");
 
 			// Display reservations
-			for(Reservation reservation : reservations)
+			for(Reservation_old reservation : reservations)
 			{
 				System.out.printf("%-5s", "(" + (++numOfReservations) + ")");
 				reservation.displayReservationSummary();
@@ -475,7 +475,7 @@ public class ReservationController {
 				return;
 			}
 
-			Reservation removedReservation = 
+			Reservation_old removedReservation = 
 					reservations.get(reservationIndex - 1);
 
 			if(removedReservation != null)
@@ -524,8 +524,8 @@ public class ReservationController {
 		Date currentDateTime = currentInstant.getTime();
 		currentInstant.setTime(currentDateTime);
 
-		Iterator<Reservation> resIter = reservations.iterator();
-		Reservation reservation = null;
+		Iterator<Reservation_old> resIter = reservations.iterator();
+		Reservation_old reservation = null;
 		
 		while(resIter.hasNext()) {
 			

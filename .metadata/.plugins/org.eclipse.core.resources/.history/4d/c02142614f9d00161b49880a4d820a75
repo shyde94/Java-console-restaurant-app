@@ -1,6 +1,5 @@
 package controllers;
 import entity.ReservationAll;
-import entity.Table;
 import entity.TableAll;
 
 import java.text.DateFormat;
@@ -22,7 +21,7 @@ public class ReservationController{
 	
 	public ReservationController(){
 		allTheReservations = new ReservationAll();
-		allTheTables = new TableAll(5,8,10,10);
+		allTheTables = new TableAll();
 	}
 	
 	public void run() throws InputMismatchException{ 
@@ -124,21 +123,7 @@ public class ReservationController{
 				}
 			}while(x);
 			if(cont==1){
-				//indexOfReserved contains all the tableNumbers that are reserved on the inputDate. 
-				//Compare that with all the tables, seive out those not in indexOfReserved == unreserved tables!
 				ArrayList<Integer> indexOfReserved = allTheReservations.reservedTablesOnDate(inputDate);
-				ArrayList<Table> unReservedTables = new ArrayList<Table>();
-				ArrayList<Table> tempTableAll = allTheTables.getAllTheTables();
-				if(indexOfReserved.isEmpty()){
-					System.out.println("Goodnight time to sleep");
-				}
-				for(int i = 0; i<allTheTables.getTotalNumOfTables();i++){
-					if(!(indexOfReserved.contains(tempTableAll.get(i).getTableNumber()))){
-						Table temp = tempTableAll.get(i);
-						unReservedTables.add(temp);
-					}
-				}
-				
 				
 			}
 		}		

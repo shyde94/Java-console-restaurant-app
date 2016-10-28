@@ -1,6 +1,5 @@
 package controllers;
 import entity.ReservationAll;
-import entity.Table;
 import entity.TableAll;
 
 import java.text.DateFormat;
@@ -22,7 +21,7 @@ public class ReservationController{
 	
 	public ReservationController(){
 		allTheReservations = new ReservationAll();
-		allTheTables = new TableAll(5,8,10,10);
+		allTheTables = new TableAll();
 	}
 	
 	public void run() throws InputMismatchException{ 
@@ -91,26 +90,25 @@ public class ReservationController{
 		Calendar date;
 		boolean x = true;
 		while(x){
-			
+			System.out.println("###### Create Reservation ######");
+			System.out.println("Input date to reserve on: (Enter -1 to go back)");
+			inputDate = input.next();
+			if (inputDate.equals("-1"))return;
+			System.out.println("Input time of arrival: (Enter -1 to go back)");
+			inputTime = input.next();
+			if (inputTime.equals("-1"))return;
+			String atThisMoment = returnNowInString("dd-MM-yyyy");
 			int cont = 0;
-			
+			SimpleDateFormat sdf = new SimpleDateFormat();
+			sdf.applyPattern("dd-MM-yyyy HHMM");
 			do{
-				System.out.println("###### Create Reservation ######");
-				System.out.println("Input date to reserve on: (Enter -1 to go back)");
-				inputDate = input.next();
-				if (inputDate.equals("-1"))return;
-				System.out.println("Input time of arrival: (Enter -1 to go back)");
-				inputTime = input.next();
-				if (inputTime.equals("-1"))return;
-				String atThisMoment = returnNowInString("dd-MM-yyyy");
 				try {
 					Calendar dntFromUser = stringToCalender("dd-MM-yyyy HHMM", inputDate,inputTime);
-					//Calendar rightNow = Calendar.getInstance();
-					Calendar y = addDays(30);
-					Calendar z = addDays(0);
+					Calendar rightNow = Calendar.getInstance();
+					Calendar y = addMonth();
 					//System.out.println("AtThisMoment:" + atThisMoment);
 					//System.out.println("One month from now: " + oneMonthFromNow);
-					if(inputDate.equals(atThisMoment) || y.before(dntFromUser)){
+					if(inputDate.equals(atThisMoment) || y.before(dntFromUser)|| dntFromUser.before(rightNow) ){
 						System.out.println("You cannot reserve on this day");
 					}
 					else{
@@ -119,28 +117,10 @@ public class ReservationController{
 						x = false;
 					}
 				} catch (ParseException e) {
-					System.out.println("Please enter date in the format dd-mm-yyyy, and time in HHMM.");
-					input.nextLine();
+					System.out.println("Please enter date in the format dd-mm-yyyy");
+					continue;
 				}
 			}while(x);
-			if(cont==1){
-				//indexOfReserved contains all the tableNumbers that are reserved on the inputDate. 
-				//Compare that with all the tables, seive out those not in indexOfReserved == unreserved tables!
-				ArrayList<Integer> indexOfReserved = allTheReservations.reservedTablesOnDate(inputDate);
-				ArrayList<Table> unReservedTables = new ArrayList<Table>();
-				ArrayList<Table> tempTableAll = allTheTables.getAllTheTables();
-				if(indexOfReserved.isEmpty()){
-					System.out.println("Goodnight time to sleep");
-				}
-				for(int i = 0; i<allTheTables.getTotalNumOfTables();i++){
-					if(!(indexOfReserved.contains(tempTableAll.get(i).getTableNumber()))){
-						Table temp = tempTableAll.get(i);
-						unReservedTables.add(temp);
-					}
-				}
-				
-				
-			}
 		}		
 		
 	}
@@ -236,9 +216,9 @@ public class ReservationController{
 		return currentData;
 	}
 	
-	public Calendar addDays(int days){
+	public Calendar addMonth(){
 		Calendar d = Calendar.getInstance();
-		d.add(Calendar.DAY_OF_MONTH, days);
+		d.add(Calendar.DAY_OF_MONTH, 30);
 		return d;
 	}
 	

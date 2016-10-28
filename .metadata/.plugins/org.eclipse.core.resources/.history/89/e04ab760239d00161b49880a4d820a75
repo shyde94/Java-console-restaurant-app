@@ -1,0 +1,45 @@
+package controllers;
+import entity.ReservationAll;
+import entity.TableAll;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.Date;
+
+import entity.Reservation;
+
+public class ReservationController{
+	/*when reservation controller instantiated, compare reservationAll with day, and with tableMaster? set those tables
+	 * which are reserved on that day to reserve. 
+	 * 
+	 * 
+	 * */
+	/*
+	 Code for UI to delete reservation.
+	  ArrayList<Reservation> tempList = new ArrayList<Reservation>();
+	for(int i=0;i<reservationList.size();i++){
+		Reservation temp = reservationList.get(i);
+		if(temp.getHpNumber() == hpNumber && temp.getCustomerName() == customerName){
+			tempList.add(temp); //In case customer makes multiple reservations.
+		}
+	}
+	if(tempList.isEmpty()){
+		System.out.println("There is no reservation under " + customerName + ". ");
+	}
+	else{
+		System.out.println("Multiple reservations under given name: ");
+		for(int i=0;i<tempList.size();i++){
+			System.out.print(i);
+			tempList.get(i).printReservation();
+		}
+		System.out.println*/
+	private ReservationAll allTheReservations;
+	private TableAll allTheTables;
+	
+	
+	public ReservationController(){
+		allTheReservations = new ReservationAll();
+		allTheTables = new TableAll();
+	}
+	
+	
+}

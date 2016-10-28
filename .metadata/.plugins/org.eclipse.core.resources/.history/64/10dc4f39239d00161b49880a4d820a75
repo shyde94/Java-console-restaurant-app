@@ -21,12 +21,6 @@ public class MenuTestingApp {
 				System.out.println("Error caught by MenuTestingApp");
 				x = false;
 			}
-			try{
-				reserveC.run();
-			}
-			catch(InputMismatchException e){
-				System.out.println("Error caught by MenuTestingApp2");
-			}
 		}
 			
 		}

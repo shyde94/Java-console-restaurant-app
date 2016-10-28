@@ -96,29 +96,21 @@ public class ReservationController{
 		
 			SimpleDateFormat sdf = new SimpleDateFormat();
 			sdf.applyPattern("dd-MM-yyyy HH:MM");
-			Date reservationDate;
-			try {
-				reservationDate = sdf.parse(inputDate + " " + inputTime);
-				Calendar calendar = Calendar.getInstance();
-				calendar.setTime(reservationDate);
-				//Calendar x = stringToCalender("dd-MM-yyyy HH:MM", inputDate);
-				Calendar y = addMonth();
-				System.out.println("AtThisMoment:" + atThisMoment);
-				System.out.println("One month from now: " + oneMonthFromNow);
-				if(inputDate.equals(atThisMoment) || !(calendar.after(y))){
-					System.out.println("You cannot reserve on this day");
-				}
-				else{
-					System.out.println("Alright");
-				}
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			Date reservationDate = sdf.parse(inputDate + " " + inputTime);
 
-			
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(reservationDate);
 		
-		
+		//Calendar x = stringToCalender("dd-MM-yyyy HH:MM", inputDate);
+		Calendar y = addMonth();
+		System.out.println("AtThisMoment:" + atThisMoment);
+		System.out.println("One month from now: " + oneMonthFromNow);
+		if(inputDate.equals(atThisMoment) || !(y.after(x))){
+			System.out.println("You cannot reserve on this day");
+		}
+		else{
+			System.out.println("Alright");
+		}
 		
 		
 		

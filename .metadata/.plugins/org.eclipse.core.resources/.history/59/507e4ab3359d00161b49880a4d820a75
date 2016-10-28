@@ -3,7 +3,6 @@ import entity.ReservationAll;
 import entity.TableAll;
 
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -93,32 +92,16 @@ public class ReservationController{
 		String atThisMoment = returnNowInString("dd-MM-yyyy");
 		String oneMonthFromNow = returnOneMonthFromNow("dd-MM-yyyy");
 		
-		
-			SimpleDateFormat sdf = new SimpleDateFormat();
-			sdf.applyPattern("dd-MM-yyyy HH:MM");
-			Date reservationDate;
-			try {
-				reservationDate = sdf.parse(inputDate + " " + inputTime);
-				Calendar calendar = Calendar.getInstance();
-				calendar.setTime(reservationDate);
-				//Calendar x = stringToCalender("dd-MM-yyyy HH:MM", inputDate);
-				Calendar y = addMonth();
-				System.out.println("AtThisMoment:" + atThisMoment);
-				System.out.println("One month from now: " + oneMonthFromNow);
-				if(inputDate.equals(atThisMoment) || !(calendar.after(y))){
-					System.out.println("You cannot reserve on this day");
-				}
-				else{
-					System.out.println("Alright");
-				}
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-			
-		
-		
+		Calendar x = stringToCalender("dd-MM-yyyy", inputDate);
+		Calendar y = addMonth();
+		System.out.println("AtThisMoment:" + atThisMoment);
+		System.out.println("One month from now: " + oneMonthFromNow);
+		if(inputDate.equals(atThisMoment) || !(y.after(x))){
+			System.out.println("You cannot reserve on this day");
+		}
+		else{
+			System.out.println("Alright");
+		}
 		
 		
 		
@@ -223,13 +206,13 @@ public class ReservationController{
 		return d;
 	}
 	
-	public Calendar stringToCalender(String format, String inputDate, String inputTime){
-		SimpleDateFormat sdf = new SimpleDateFormat();
-		sdf.applyPattern(format);
-		Date reservationDate = sdf.parse(inputDate + " " + inputTime);
-
+	public Calendar stringToCalender(String format, String inputDate){
+		DateFormat formatter = new SimpleDateFormat(format);
+		Date date = formatter.parse(inputDate);
+		//DateFormat formatter = new SimpleDateFormat(format);
+		//Date date = formatter.parse(inputDate);
 		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(reservationDate);
+		calendar.setTime(date);
 		return calendar;
 	}
 }

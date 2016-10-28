@@ -2,10 +2,10 @@ package entity;
 
 public class Table {
 	private int tableNumber;
-	private int seats;
-	private boolean isReserved;
+	private int tableSeats;
+	private boolean isReservedAM;
+	private boolean isReservedPM;
 	private boolean isOccupied;
-	private int customerID;
 	
 /**
  * Constructor for Table
@@ -15,10 +15,11 @@ public class Table {
  * @param isOccupied Whether the table is currently being occupied
  * @param customerID The customer assigned to this table as it is being occupied
  */
-public Table (int tableNumber, int seats, boolean isReserved, boolean isOccupied, int customerID){
+public Table (int tableNumber, int tableSeats, boolean isReservedAM, boolean isReservedPM, boolean isOccupied){
 	this.tableNumber = tableNumber;
-	this.seats = seats;
-	this.isReserved = isReserved;
+	this.tableSeats = tableSeats;
+	this.isReservedAM = isReservedAM;
+	this.isReservedPM = isReservedPM;
 	this.isOccupied = isOccupied;
 	
 }
@@ -36,53 +37,33 @@ public void setTableNumber(int number){
 }
 
 public int getSeats(){
-	return seats;
+	return tableSeats;
 }
 
 public void setSeats (int number){
-	this.seats = number;
+	this.tableSeats = number;
 }
 
-public boolean isReserved(){
-	return isReserved;
+public boolean isReservedAM(){
+	return isReservedAM;
 }
+
+
+public boolean isReservedPM(){
+	return isReservedPM;
+}
+
 
 public boolean isOccupied(){
 	return isOccupied;
 }
 
-public int getCustomerID(){
-	return customerID;
-}
-
-public void reserveTable(int customerID){
-	//Check if reservation is empty at a particular time
-	isReserved = true;
-	this.customerID = customerID;
-}
-
-public void cancelTable(){
-	customerID = 0;
-	isReserved = false;
-}
-
-public void occupyTable(int customerID){
-	isOccupied = true;
-	isReserved = false;
-	this.customerID = customerID;
-}
-
-public void flushTable(){
-	isOccupied = false;
-	isReserved = false;
-	customerID = 0;
-}
 
 public void displayTable(){
 	System.out.println("Table Number: "+getTableNumber());
 	System.out.println("Number of Seats: "+getSeats());
 	System.out.println(isOccupied() ? "Occupied" : 
-		(isReserved() ? "Reserved" : "Available"));
+		(isReservedAM() ? "Reserved" : "Available"));
 }
 
 

@@ -95,10 +95,10 @@ public class ReservationController{
 		
 		
 			SimpleDateFormat sdf = new SimpleDateFormat();
-			sdf.applyPattern("dd-MM-yyyy HH:MM");
+			sdf.applyPattern("dd-MM-yyyy");
 			Date reservationDate;
 			try {
-				reservationDate = sdf.parse(inputDate + " " + inputTime);
+				reservationDate = sdf.parse(inputDate);
 				Calendar calendar = Calendar.getInstance();
 				calendar.setTime(reservationDate);
 				//Calendar x = stringToCalender("dd-MM-yyyy HH:MM", inputDate);

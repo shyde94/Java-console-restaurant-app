@@ -21,10 +21,6 @@ public class ReservationAll {
 	 * @param customerName name of customer
 	 * @param start date and time the table is being reserved for
 	 */
-	
-	public ArrayList<Reservation> getReservationList(){
-		return reservationList;
-	}
 	public void createReservation(int tableNumber, int numberOfPeople, String hpNumber, String customerName, String dateReserved, String timeOfArrival){
 		Reservation newRes = new Reservation(tableNumber, numberOfPeople, hpNumber, customerName, dateReserved,timeOfArrival );
 		reservationList.add(newRes);

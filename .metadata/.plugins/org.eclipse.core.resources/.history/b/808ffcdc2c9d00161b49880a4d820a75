@@ -1,14 +1,9 @@
 package controllers;
 import entity.ReservationAll;
 import entity.TableAll;
-
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Date;
-import java.util.Calendar;
 import java.util.InputMismatchException;
 
 import entity.Reservation;
@@ -83,46 +78,6 @@ public class ReservationController{
 		//4. Search for tables that have at most pax + 3 seats. 
 		//5. If have, input name, hp number. 
 		//6. Create reservation 
-		Scanner input = new Scanner(System.in);
-		String inputDate; String inputTime;
-		Calendar date;
-		System.out.println("Input date to reserve on: ");
-		inputDate = input.next();
-		System.out.println("Input time of arrival: ");
-		inputTime = input.next();
-		String atThisMoment = returnNowInString("dd-MM-yyyy");
-		String oneMonthFromNow = returnOneMonthFromNow("dd-MM-yyyy");
-		
-		
-			SimpleDateFormat sdf = new SimpleDateFormat();
-			sdf.applyPattern("dd-MM-yyyy HH:MM");
-			Date reservationDate;
-			try {
-				reservationDate = sdf.parse(inputDate + " " + inputTime);
-				Calendar calendar = Calendar.getInstance();
-				calendar.setTime(reservationDate);
-				//Calendar x = stringToCalender("dd-MM-yyyy HH:MM", inputDate);
-				Calendar y = addMonth();
-				System.out.println("AtThisMoment:" + atThisMoment);
-				System.out.println("One month from now: " + oneMonthFromNow);
-				if(inputDate.equals(atThisMoment) || !(calendar.after(y))){
-					System.out.println("You cannot reserve on this day");
-				}
-				else{
-					System.out.println("Alright");
-				}
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-			
-		
-		
-		
-		
-		
-		
 		
 	}
 
@@ -190,7 +145,9 @@ public class ReservationController{
 					
 				}while(z);								
 			}
-		}		
+		}
+		
+		
 	}
 	
 
@@ -202,34 +159,4 @@ public class ReservationController{
 		
 	}
 	
-	public String returnNowInString(String format){
-		Date d = Calendar.getInstance().getTime(); // Current time
-		SimpleDateFormat sdf = new SimpleDateFormat(format); // Set your date format
-		String currentData = sdf.format(d); // Get Date String according to date format
-		return currentData;
-	}
-	public String returnOneMonthFromNow(String format){
-		Calendar d = Calendar.getInstance();
-		d.add(Calendar.DAY_OF_MONTH, 30);
-		Date date = d.getTime();
-		SimpleDateFormat sdf = new SimpleDateFormat(format); // Set your date format
-		String currentData = sdf.format(date); // Get Date String according to date format
-		return currentData;
-	}
-	
-	public Calendar addMonth(){
-		Calendar d = Calendar.getInstance();
-		d.add(Calendar.DAY_OF_MONTH, 30);
-		return d;
-	}
-	
-	public Calendar stringToCalender(String format, String inputDate, String inputTime){
-		SimpleDateFormat sdf = new SimpleDateFormat();
-		sdf.applyPattern(format);
-		Date reservationDate = sdf.parse(inputDate + " " + inputTime);
-
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(reservationDate);
-		return calendar;
-	}
 }

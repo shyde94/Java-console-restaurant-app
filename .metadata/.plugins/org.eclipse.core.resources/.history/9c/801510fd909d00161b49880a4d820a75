@@ -152,10 +152,7 @@ public class ReservationController{
 	}
 
 	public void checkReservation() {
-		Scanner input = new Scanner(System.in);
-		System.out.println("Enter date to check: ");
-		String dateInput = input.next();
-		allTheReservations.checkReservationsOnDate(dateInput);
+		// TODO Auto-generated method stub
 		
 	}
 
@@ -181,7 +178,7 @@ public class ReservationController{
 			ArrayList<Reservation> tempList = new ArrayList<Reservation>();
 			for(int i=0;i<rAll.size();i++){
 				Reservation temp = rAll.get(i);
-				if(temp.getCustomerName().equals(name) && temp.getHpNumber().equals(number)){
+				if(temp.getCustomerName() == name && temp.getHpNumber() == number){
 					tempList.add(temp);
 				}
 			}
@@ -205,13 +202,12 @@ public class ReservationController{
 							System.out.println("Invalid option");
 						}
 					}while(y);
-					if(choice == -1) return;
+					if(choice == -1) break;
 					try{
 						Reservation todelete = tempList.get(choice);
 						allTheReservations.deleteReservation(todelete); 
 						z = false;
 						System.out.println("This reservation has been removed");
-						return;
 					}
 					catch(ArrayIndexOutOfBoundsException e){
 						System.out.println("Invalid choice entered.");

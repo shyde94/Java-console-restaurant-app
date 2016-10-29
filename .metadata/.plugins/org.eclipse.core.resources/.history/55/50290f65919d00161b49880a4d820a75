@@ -55,7 +55,8 @@ public class ReservationAll {
 		ArrayList<Reservation> tempList = new ArrayList<Reservation>();
 		for(int i=0;i<reservationList.size();i++){
 			Reservation temp = reservationList.get(i);
-			if(temp.getDateReserved().equals(input)){
+			if(temp.getDateReserved()==input){
+				System.out.println("here");
 				tempList.add(temp); //In case customer makes multiple reservations.
 			}
 		}
@@ -65,7 +66,7 @@ public class ReservationAll {
 		else{
 			System.out.println("Reservations made on: " + input);
 			for(int i=0;i<tempList.size();i++){
-				System.out.print(i+1 + ". ");
+				System.out.print(i);
 				tempList.get(i).printReservation();
 			}
 		}

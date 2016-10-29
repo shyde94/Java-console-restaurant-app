@@ -205,13 +205,12 @@ public class ReservationController{
 							System.out.println("Invalid option");
 						}
 					}while(y);
-					if(choice == -1) return;
+					if(choice == -1) break;
 					try{
 						Reservation todelete = tempList.get(choice);
 						allTheReservations.deleteReservation(todelete); 
 						z = false;
 						System.out.println("This reservation has been removed");
-						return;
 					}
 					catch(ArrayIndexOutOfBoundsException e){
 						System.out.println("Invalid choice entered.");

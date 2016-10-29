@@ -134,16 +134,13 @@ public class ReservationController{
 					System.out.println("Enter number of people");
 					allTheReservations.createReservation(0, 2, "97811150", "Foo Shi De", "01-10-2016", "1600");
 				}
-				else{
-					for(int i = 0; i<allTheTables.getTotalNumOfTables();i++){
-						if(!(indexOfReserved.contains(tempTableAll.get(i).getTableNumber()))){
-							Table temp = tempTableAll.get(i);
-							unReservedTables.add(temp);
-							temp.displayTable();
-						}
+				for(int i = 0; i<allTheTables.getTotalNumOfTables();i++){
+					if(!(indexOfReserved.contains(tempTableAll.get(i).getTableNumber()))){
+						Table temp = tempTableAll.get(i);
+						unReservedTables.add(temp);
+						temp.displayTable();
 					}
 				}
-				
 				
 				
 			}
@@ -152,10 +149,7 @@ public class ReservationController{
 	}
 
 	public void checkReservation() {
-		Scanner input = new Scanner(System.in);
-		System.out.println("Enter date to check: ");
-		String dateInput = input.next();
-		allTheReservations.checkReservationsOnDate(dateInput);
+		// TODO Auto-generated method stub
 		
 	}
 
@@ -171,17 +165,17 @@ public class ReservationController{
 		while(x){
 			System.out.println("##### Remove reservation ######");
 			System.out.println("Enter name: (Enter -1 to go back) ");
-			name = input.nextLine();
+			name = input.next();
 			if(name.equals("-1")) return;
 			System.out.println("Enter handphone number: (Enter -1 to go back)");
-			number = input.nextLine();
+			number = input.next();
 			if(name.equals("-1")) return;
-			System.out.println("name:" + name + " number: "+ number);
+			System.out.println("name:" + name + "number: "+ number);
 			
 			ArrayList<Reservation> tempList = new ArrayList<Reservation>();
 			for(int i=0;i<rAll.size();i++){
 				Reservation temp = rAll.get(i);
-				if(temp.getCustomerName().equals(name) && temp.getHpNumber().equals(number)){
+				if(temp.getCustomerName() == name && temp.getHpNumber() == number){
 					tempList.add(temp);
 				}
 			}
@@ -205,13 +199,12 @@ public class ReservationController{
 							System.out.println("Invalid option");
 						}
 					}while(y);
-					if(choice == -1) return;
+					if(choice == -1) break;
 					try{
 						Reservation todelete = tempList.get(choice);
 						allTheReservations.deleteReservation(todelete); 
 						z = false;
 						System.out.println("This reservation has been removed");
-						return;
 					}
 					catch(ArrayIndexOutOfBoundsException e){
 						System.out.println("Invalid choice entered.");

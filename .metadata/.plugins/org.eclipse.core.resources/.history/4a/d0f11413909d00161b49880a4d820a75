@@ -60,7 +60,6 @@ public boolean isOccupied(){
 
 
 public void displayTable(){
-	System.out.println("");
 	System.out.println("Table Number: "+getTableNumber());
 	System.out.println("Number of Seats: "+getSeats());
 	System.out.println(isOccupied() ? "Occupied" : 

@@ -8,7 +8,7 @@ public class TableAll {
 	private static int numEightSeats;
 	private static int numFourSeats;
 	private static int numTwoSeats;
-	private int totalNumOfTables;
+	private static int totalNumOfTables;
 	private enum SeatsPerTable {
 	    A(10), B(8), C(4), D(10);
 		private int value;
@@ -61,7 +61,7 @@ public class TableAll {
 		TableAll.numTwoSeats = numTwoSeats;
 	}
 	
-	public int getTotalNumOfTables(){
+	public static int getTotalNumOfTables(){
 		return totalNumOfTables;
 	}
 	

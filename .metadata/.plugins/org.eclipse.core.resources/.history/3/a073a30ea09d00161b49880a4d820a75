@@ -211,7 +211,6 @@ public class ReservationController{
 						allTheReservations.deleteReservation(todelete); 
 						z = false;
 						System.out.println("This reservation has been removed");
-						return;
 					}
 					catch(ArrayIndexOutOfBoundsException e){
 						System.out.println("Invalid choice entered.");

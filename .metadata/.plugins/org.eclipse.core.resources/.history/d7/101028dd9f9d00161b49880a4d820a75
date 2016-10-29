@@ -171,10 +171,10 @@ public class ReservationController{
 		while(x){
 			System.out.println("##### Remove reservation ######");
 			System.out.println("Enter name: (Enter -1 to go back) ");
-			name = input.nextLine();
+			name = input.next();
 			if(name.equals("-1")) return;
 			System.out.println("Enter handphone number: (Enter -1 to go back)");
-			number = input.nextLine();
+			number = input.next();
 			if(name.equals("-1")) return;
 			System.out.println("name:" + name + " number: "+ number);
 			
@@ -211,7 +211,6 @@ public class ReservationController{
 						allTheReservations.deleteReservation(todelete); 
 						z = false;
 						System.out.println("This reservation has been removed");
-						return;
 					}
 					catch(ArrayIndexOutOfBoundsException e){
 						System.out.println("Invalid choice entered.");

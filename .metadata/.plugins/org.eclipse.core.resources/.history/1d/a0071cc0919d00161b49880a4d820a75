@@ -65,7 +65,7 @@ public class ReservationAll {
 		else{
 			System.out.println("Reservations made on: " + input);
 			for(int i=0;i<tempList.size();i++){
-				System.out.print(i+1 + ". ");
+				System.out.print(i);
 				tempList.get(i).printReservation();
 			}
 		}

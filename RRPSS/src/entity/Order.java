@@ -26,9 +26,33 @@ public class Order {
 		this.tableID = tableID;
 		time = Calendar.getInstance().getTime();
 		this.totalPrice = 0;
-	
 	}
 	
+	
+	private int findMenuItem (String name){
+		for (int i = 0; i < mItems.size(); i++){
+			if (mItems.get(i).getName().compareTo(name) == 0){
+				return i;
+			}
+		}
+		return -1;
+	}
+	
+	public void addMenutItem (MenuItem item, int quantity){
+		int pos = -1;
+		for (int i = 0; i < mItems.size(); i++){
+			if (mItems.get(i).getName().compareTo(item.getName()) == 0){
+				pos = i;
+			}
+		}
+		if (pos == -1){
+			mItems.add(item);
+			quantityMenuItems.add(quantity);
+		} else {
+			quantityMenuItems.set(pos, quantityMenuItems.get(pos));
+		}
+			
+	}
 	
 	public int getOrderID() {
 		return orderID;

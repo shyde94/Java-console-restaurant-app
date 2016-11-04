@@ -7,7 +7,7 @@ import java.util.Date;
 public class Order {
 	private int orderID;
 	private int staffID;
-	private ArrayList<MenuItem> mItems;
+	private ArrayList<MenuItem> menuItems;
 	private ArrayList<Integer> quantityMenuItems;
 	private ArrayList<Double> subTotalCost;
 	//private ArrayList<SpecialPackage> mPackage;
@@ -16,11 +16,11 @@ public class Order {
 	private Date time;
 	private double totalPrice;
 	
-	public Order(int orderID, int staffID, ArrayList<MenuItem> mItems, ArrayList<Integer> quantityMenuItems,
+	public Order(int orderID, int staffID, ArrayList<MenuItem> menuItems, ArrayList<Integer> quantityMenuItems,
 			int tableID, Date time, double totalPrice) {
 		this.orderID = orderID;
 		this.staffID = staffID;
-		mItems = new ArrayList<MenuItem>();
+		menuItems = new ArrayList<MenuItem>();
 		quantityMenuItems = new ArrayList <Integer>();
 		subTotalCost= new ArrayList <Double>();
 		this.tableID = tableID;
@@ -30,28 +30,61 @@ public class Order {
 	
 	
 	private int findMenuItem (String name){
-		for (int i = 0; i < mItems.size(); i++){
-			if (mItems.get(i).getName().compareTo(name) == 0){
+		for (int i = 0; i < menuItems.size(); i++){
+			if (menuItems.get(i).getName().compareTo(name) == 0){
 				return i;
 			}
 		}
 		return -1;
 	}
 	
-	public void addMenutItem (MenuItem item, int quantity){
+	public void addMenuItem (MenuItem item, int quantity){
 		int pos = -1;
-		for (int i = 0; i < mItems.size(); i++){
-			if (mItems.get(i).getName().compareTo(item.getName()) == 0){
+		for (int i = 0; i < menuItems.size(); i++){
+			if (menuItems.get(i).getName().compareTo(item.getName()) == 0){
 				pos = i;
 			}
 		}
 		if (pos == -1){
-			mItems.add(item);
+			menuItems.add(item);
 			quantityMenuItems.add(quantity);
 		} else {
 			quantityMenuItems.set(pos, quantityMenuItems.get(pos));
 		}
 			
+	}
+	
+	public boolean removeMenuItem (String itemName, int quantity){
+		int position = -1;
+		for (int i = 0; i < menuItems.size(); i++){
+			if (menuItems.get(i).getName().compareTo(itemName) == 0){
+				position = i;
+				break;
+			}
+		}
+		if (quantity > quantityMenuItems.get(position) || quantity < 1){
+			return false;
+		}
+		if (quantityMenuItems.get(position) <=1){
+			menuItems.remove(position);
+			quantityMenuItems.remove(position);
+			}
+		else{
+			quantityMenuItems.set(position, quantityMenuItems.get(position)-1);
+		}
+		return true;
+	}
+	
+	//public void addPackage
+	//public boolean removePackage
+	
+	public void CalculatePrice(){
+		totalPrice = 0;
+		for (int i=0;i < menuItems.size(); i++){
+			totalPrice = totalPrice + menuItems.get(i).getPrice()*quantityMenuItems.get(i);
+		}
+		
+		//Recalculate Packages
 	}
 	
 	public int getOrderID() {
@@ -70,12 +103,12 @@ public class Order {
 		this.staffID = staffID;
 	}
 
-	public ArrayList<MenuItem> getmItems() {
-		return mItems;
+	public ArrayList<MenuItem> getmenuItems() {
+		return menuItems;
 	}
 
-	public void setmItems(ArrayList<MenuItem> mItems) {
-		this.mItems = mItems;
+	public void setmenuItems(ArrayList<MenuItem> menuItems) {
+		this.menuItems = menuItems;
 	}
 
 	public ArrayList<Integer> getQuantityMenuItems() {

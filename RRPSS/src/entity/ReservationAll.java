@@ -25,8 +25,8 @@ public class ReservationAll {
 	public ArrayList<Reservation> getReservationList(){
 		return reservationList;
 	}
-	public void createReservation(int tableNumber, int numberOfPeople, String hpNumber, String customerName, String dateReserved, String timeOfArrival){
-		Reservation newRes = new Reservation(tableNumber, numberOfPeople, hpNumber, customerName, dateReserved,timeOfArrival );
+	public void createReservation(int tableNumber, int numberOfPeople, String hpNumber, String customerName, String dateReserved, String timeOfArrival, String slot){
+		Reservation newRes = new Reservation(tableNumber, numberOfPeople, hpNumber, customerName, dateReserved,timeOfArrival, slot);
 		reservationList.add(newRes);
 		System.out.println("Reservation made");
 		newRes.printReservation();
@@ -37,13 +37,21 @@ public class ReservationAll {
 	 * @param todelete Reservation object to remove from reservationList
 	 */
 	public void deleteReservation(Reservation todelete){
+		int msg = 0;
 		for(int i=0; i<reservationList.size();i++){
 			if(reservationList.get(i) == todelete){
 				reservationList.remove(i);
-				System.out.println("This reservation has been removed.");
+				msg =1;
 			}
 		}
-		System.out.println("Error. No changes have been made");
+		if(msg==1){
+			System.out.println("This reservation has been removed.");
+		}
+		else{
+			System.out.println("Error. No changes have been made");
+		}
+		
+		
 	}
 	
 	/**
@@ -72,12 +80,13 @@ public class ReservationAll {
 		
 	}
 	
-	public ArrayList<Integer> reservedTablesOnDate(String input){
+	public ArrayList<Integer> reservedTablesOnDate(String input, String slot){
+		System.out.println("Input date:" + input);
 		ArrayList<Integer> reservedTables = new ArrayList<Integer>();
 		ArrayList<Reservation> tempList = new ArrayList<Reservation>();
 		for(int i=0;i<reservationList.size();i++){
 			Reservation temp = reservationList.get(i);
-			if(temp.getDateReserved()==input){
+			if(temp.getDateReserved().equals(input) && (temp.getSlot().equals(slot))){
 				tempList.add(temp); //In case customer makes multiple reservations.
 			}
 		}

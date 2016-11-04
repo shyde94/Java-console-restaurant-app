@@ -10,21 +10,39 @@ public class Reservation {
 	//private Date start;
 	private String dateReserved;
 	private String timeOfArrival;
+	private String slot;
 	
 	
 	//Constructors 
 	
-	public Reservation(int tableNumber, int numberOfPeople, String hpNumber, String customerName, String dateReserved, String timeOfArrival){
+	
+
+
+
+
+	public Reservation(int tableNumber, int numberOfPeople, String hpNumber, String customerName, String dateReserved, String timeOfArrival, String slot){
 		this.setTableNumber(tableNumber);
 		this.setNumberOfPeople(numberOfPeople);
 		this.setHpNumber(hpNumber);
 		this.setCustomerName(customerName);
 		this.setDateReserved(dateReserved);
 		this.setTimeOfArrival(timeOfArrival);
+		this.setSlot(slot);
 	}
 
 
-	
+	public String getSlot() {
+		return slot;
+	}
+
+
+
+
+
+	public void setSlot(String slot) {
+		this.slot = slot;
+	}
+
 
 
 	public int getTableNumber() {
@@ -85,7 +103,7 @@ public class Reservation {
 	}
 	
 	public void printReservation(){
-		System.out.println("Table: " + tableNumber + ", Number of people: " + numberOfPeople + ", date reserved: " + dateReserved + ", Time of arrival: " + timeOfArrival+ ", Customer name: " + customerName );
+		System.out.println("Table: " + tableNumber + ", Number of people: " + numberOfPeople + ", date reserved: " + dateReserved + " time slot: "+ slot +", Time of arrival: " + timeOfArrival+ ", Customer name: " + customerName );
 	}
 	
 	

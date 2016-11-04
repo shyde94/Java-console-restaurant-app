@@ -15,14 +15,15 @@ public class MenuTestingApp {
 		boolean x = true;
 		while(x){
 			try{
-				mC.run();
+				reserveC.run();
 			}
 			catch(InputMismatchException e){
 				System.out.println("Error caught by MenuTestingApp");
 				x = false;
 			}
 			try{
-				reserveC.run();
+				
+				mC.run();
 			}
 			catch(InputMismatchException e){
 				System.out.println("Error caught by MenuTestingApp2");

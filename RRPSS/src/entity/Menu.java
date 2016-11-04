@@ -12,6 +12,9 @@ public class Menu {
 	public Menu() {
 		menuItem = new ArrayList<MenuItem>();
 		types = new ArrayList <String>();
+                types.add("Mains"); //Testing Menu Types
+                 types.add("Desserts");
+                  types.add("Drinks");
 	}
 
 	public ArrayList<String> getTypes() {
@@ -20,7 +23,6 @@ public class Menu {
 	
 	public void addTypes (String name){
 		types.add(name);
-		
 	}
 	
 	public void printTypes(){
@@ -29,30 +31,53 @@ public class Menu {
 			System.out.println((i+1)+"."+ types.get(i));
 		}
 	}
-	
+        
+        
+        
 	
 	
 	
 	public void addItem(String name, double price, String desc, String type) {
 		MenuItem item = new MenuItem(name, price, desc, type);
+                menuItem.add(item);
 		System.out.println("Item has been added");
+                
 		
 	}
 
 	public void updateItem(String name, double price, String desc, String type, int n) {
 		MenuItem temp = null;
 		temp = menuItem.get(n);
+                ArrayList<MenuItem> updateItem = reOrderItems(type);
+                temp = updateItem.get(n);
+                temp.setName(name);
+                temp.setPrice(price);
+                temp.setDesc(desc);
 		System.out.println("Item has been updated");
 	}
+        
+        public ArrayList<MenuItem> reOrderItems(String itemType){
+            ArrayList<MenuItem> updateItem = new ArrayList<MenuItem>();
+            int size = menuItem.size();
+            System.out.println("Size: " + size);
+            for (int i = 0; i < menuItem.size(); i++){
+                if (menuItem.get(i).getType().equals(itemType) ){
+                    System.out.println(menuItem.get(i));
+                    updateItem.add(menuItem.get(i));
+                }
+            }
+            return updateItem;
+            
+        }
 
 	public void removeItem(int n, String type) {
 		menuItem.remove(n);
 		System.out.println("Item has been removed");
 	}
 
-	public void printmenuItem() {
+	public void printMenuItem() {
 		int x;
-		System.out.println("Main Courses:");
+		System.out.println("Menu:");
 		for (MenuItem s : menuItem) {
 			x = menuItem.indexOf(s);
 			x++;

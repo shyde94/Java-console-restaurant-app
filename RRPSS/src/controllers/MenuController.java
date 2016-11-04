@@ -64,7 +64,7 @@ public class MenuController {
 						}
 					}while(y);
 					break;
-				case(4): this.menu.printMenuL();break;
+				//case(4): this.menu.printMenuL();break;
 				case(-1):return;
 				default: System.out.println("Please select a valid option");
 			}
@@ -90,12 +90,8 @@ public class MenuController {
 			this.showMenuTypes();
 			choice = input.nextInt();
 			if(choice == -1) return;
-			switch(choice){
-				case(1): type = "mains";break;
-				case(2): type = "drinks";break;
-				case(3): type = "desserts";break;
-				default: System.out.println("Invalid Option. No items added");		
-			}
+				String temp_type = menu.getTypes().get(choice-1);
+				//System.out.println("Invalid Option. No items added");		
 			if(!type.equals("")){
 				//Input name
 				boolean y = true;
@@ -125,7 +121,7 @@ public class MenuController {
 				if(desc.equals("-1")) continue;
 				
 				//Call method to add item into menu by type
-				menu.addItem(name, price, desc, type);return; //exit createMenuItem() once new item is added
+				menu.addItem(name, price, desc, temp_type); return; //exit createMenuItem() once new item is added
 			} 				
 		}		
 	}
@@ -141,15 +137,15 @@ public class MenuController {
 		while(x){	//while loop to remain this method if wrong type selected
 			int choice=0;
 			System.out.println("######## Update menu item ########");
-			menu.printMenuL();
+			//menu.printMenuL();
 			this.showMenuTypes();
 			choice = input.nextInt();
 			if(choice==-1) return;
 			switch(choice){
-				case(1): type = "mains"; menu.printMains();break;
-				case(2): type = "drinks"; menu.printDrinks();break;
-				case(3): type = "desserts"; menu.printDesserts();break;
-				default: System.out.println("Invalid Option. No items updated");		
+			//	case(1): type = "mains"; menu.printMains();break;
+			//	case(2): type = "drinks"; menu.printDrinks();break;
+			//	case(3): type = "desserts"; menu.printDesserts();break;
+			//	default: System.out.println("Invalid Option. No items updated");		
 			}
 			boolean y = true; int index=0;
 			do{
@@ -168,7 +164,7 @@ public class MenuController {
 					String yesno;
 					
 					System.out.println("Item to update:");
-					menu.getTypeM(type).get(index).printItem();
+				//	menu.getTypeM(type).get(index).printItem();
 					
 					System.out.println("Update name? Enter y for yes, n for no, -1 to go back");
 					input.nextLine();
@@ -244,20 +240,20 @@ public class MenuController {
 		int index=0;
 		while(x){
 			System.out.println("######## Remove Item: ########");
-			menu.printMenuL();
+		//	menu.printMenuL();
 			this.showMenuTypes();
 			int choice = input.nextInt(); String type = "";
 			switch(choice){
 			case(1): 
 				type = "mains";
-				menu.printMains();
+			//	menu.printMains();
 				break;
 			case(2): 
 				type = "drinks";
-				menu.printDrinks();break;
+			//	menu.printDrinks();break;
 			case(3): 
 				type = "desserts";
-				menu.printDesserts();break;
+			//	menu.printDesserts();break;
 			case(-1): return;
 			default: System.out.println("Invalid Option. No items removed");
 			}
@@ -301,16 +297,7 @@ public class MenuController {
 	
 	public void showMenuTypes(){
 		System.out.println("Please select item type: (Enter -1 to go back)");
-		System.out.println("1. Main course");
-		System.out.println("2. Drinks");
-		System.out.println("3. Desserts");
-		
-	}
-	
-	
-	
-	
-	
-		
+		menu.printTypes();
+	}	
 	
 }

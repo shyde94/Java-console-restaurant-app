@@ -1,127 +1,64 @@
 package entity;
+
 import java.util.ArrayList;
 
 public class Menu {
-	private ArrayList<MenuItem> mains;
-	private ArrayList<MenuItem> drinks;
-	private ArrayList<MenuItem> desserts; 
+	private ArrayList<MenuItem> menuItem;
+	private ArrayList<String> types;
+
+	// requirement to separate menus into different categories
+
+	// Constructor:
+	public Menu() {
+		menuItem = new ArrayList<MenuItem>();
+		types = new ArrayList <String>();
+	}
+
+	public ArrayList<String> getTypes() {
+		return this.types;
+	}
 	
-	//requirement to separate menus into different categories 
-	
-	//Constructor:
-	public Menu(){
-		mains = new ArrayList<MenuItem>();
-		drinks = new ArrayList<MenuItem>();
-		desserts = new ArrayList<MenuItem>();
+	public void addTypes (String name){
+		types.add(name);
 		
 	}
 	
-	public ArrayList<MenuItem> getMainsM(){
-		return this.mains;
-	}
-	public ArrayList<MenuItem> getDrinksM(){
-		return this.drinks;
-	}
-	public ArrayList<MenuItem> getDessertsM(){
-		return this.desserts;
-	}
-	
-	public ArrayList<MenuItem> getTypeM(String type){
-		if(type == "mains"){
-			return getMainsM();
-		}
-		else if(type == "drinks"){
-			return getDrinksM();
-		}
-		else if(type == "desserts"){
-			return getDessertsM();
-		}
-		else{
-			return getMainsM();//default is return mains.
+	public void printTypes(){
+		System.out.println("Types are: ");
+		for (int i=0; i<types.size(); i++){
+			System.out.println((i+1)+"."+ types.get(i));
 		}
 	}
 	
 	
-	public void addItem(String name, double price, String desc, String type){
-		MenuItem item = new MenuItem(name,price,desc,type);
-		switch(type){
-		case "mains": mains.add(item); System.out.println("Item successfully added");break;
-		case "drinks": drinks.add(item);System.out.println("Item successfully added"); break;
-		case "desserts": desserts.add(item);System.out.println("Item successfully added"); break;
-		default: System.out.println("Nothing added");
-		}
-	}
 	
-	public void updateItem(String name, double price, String desc, String type, int n){
+	
+	public void addItem(String name, double price, String desc, String type) {
+		MenuItem item = new MenuItem(name, price, desc, type);
+		System.out.println("Item has been added");
+		
+	}
+
+	public void updateItem(String name, double price, String desc, String type, int n) {
 		MenuItem temp = null;
-		switch(type){
-		case "mains": 
-			temp = mains.get(n);break;
-		case "drinks":
-			temp = drinks.get(n);break;
-		case "desserts":
-			temp = desserts.get(n);break;
-		default: System.out.println("Invalid option, no items updated");
-		}
-		if(!name.equals("")){
-			temp.setName(name);
-		}
-		if(price!= -1){
-			temp.setPrice(price);
-		}
-		if(!desc.equals("")){
-			temp.setDesc(desc);
-		}
+		temp = menuItem.get(n);
 		System.out.println("Item has been updated");
-		//take note, cannot change type. 
-		
 	}
-	
-	public void removeItem(int n, String type){
-		//MenuItem temp = null;
-		switch(type){
-		case "mains": 
-			mains.remove(n);System.out.println("Item has been removed");break;
-		case "drinks":
-			drinks.remove(n);System.out.println("Item has been removed");break;
-		case "desserts":
-			desserts.remove(n);System.out.println("Item has been removed");break;
-		default: System.out.println("Invalid option, no items removed");
-		}
+
+	public void removeItem(int n, String type) {
+		menuItem.remove(n);
+		System.out.println("Item has been removed");
 	}
-	
-	public void printMenuL(){
-		this.printMains();
-		this.printDrinks();
-		this.printDesserts();
-	}
-	
-	public void printMains(){
+
+	public void printmenuItem() {
 		int x;
 		System.out.println("Main Courses:");
-		for(MenuItem s: mains){
-			x = mains.indexOf(s);x++;
+		for (MenuItem s : menuItem) {
+			x = menuItem.indexOf(s);
+			x++;
 			System.out.print(x + ". ");
 			s.printItem();
 		}
 	}
-	
-	public void printDrinks(){
-		int x;
-		System.out.println("Drinks:");
-		for(MenuItem s: drinks){
-			x = drinks.indexOf(s);x++;
-			System.out.print(x + ". ");
-			s.printItem();
-		}
-	}
-	public void printDesserts(){
-		int x;
-		System.out.println("Desserts:");
-		for(MenuItem s: desserts){
-			x = desserts.indexOf(s); x++;
-			System.out.print(x + ". ");
-			s.printItem();
-		}
-	}
+
 }

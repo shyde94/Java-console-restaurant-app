@@ -10,7 +10,7 @@ public class TableAll {
 	private static int numTwoSeats;
 	private int totalNumOfTables;
 	private enum SeatsPerTable {
-	    A(10), B(8), C(4), D(2);
+	    A(10), B(8), C(4), D(10);
 		private int value;
 		private SeatsPerTable(int value) {
 				this.value = value;
@@ -70,7 +70,7 @@ public class TableAll {
 	}
 	
 	public void setUpTables(){	//This function inserts tables into ArrayList allTheTables
-		int count = 1;
+		int count = 0;
 		for(int i=0;i<numTwoSeats;i++){
 			Table table = new Table(count, SeatsPerTable.D.getValue(), false, false, false);
 			AddTable(table);

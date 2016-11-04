@@ -4,7 +4,7 @@ import entity.ReservationAll;
 import entity.Table;
 import entity.TableAll;
 
-
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ import entity.Reservation;
 
 public class ReservationController{
 	
-	public static ReservationAll allTheReservations;
+	private ReservationAll allTheReservations;
 	private TableAll allTheTables;
 	
 	
@@ -62,21 +62,7 @@ public class ReservationController{
 				case(3): 
 					do{
 						try{
-							this.removeReservation(1);
-							y = false;
-						}
-						catch(InputMismatchException e){
-							System.out.println("Invalid Input. 3");
-						}
-						catch(ArrayIndexOutOfBoundsException e){
-							System.out.println("There is no such option!");
-						}
-					}while(y);
-					break;
-				case(4): 
-					do{
-						try{
-							this.removeReservation(0);
+							this.removeReservation();
 							y = false;
 						}
 						catch(InputMismatchException e){
@@ -101,20 +87,15 @@ public class ReservationController{
 		//4. Search for tables that have at most pax + 3 seats. 
 		//5. If have, input name, hp number. 
 		//6. Create reservation 
-		allTheReservations.createReservation(1, 2, "97811150", "Foo Shi De", "05-11-2016", "1100","AM");
-		allTheReservations.createReservation(2, 2, "97811150", "Apple", "05-11-2016", "1900","PM");
-		allTheReservations.createReservation(3, 2, "97811150", "Banana", "05-11-2016", "2000","PM");
-		allTheReservations.createReservation(4, 2, "97811150", "Pineapple", "05-11-2016", "2000","PM");
-		allTheReservations.createReservation(5, 2, "97811150", "habaaba", "05-11-2016", "1230","AM");
-		allTheReservations.createReservation(2, 2, "123123123", "John", "05-11-2016", "1200","AM");
-		allTheReservations.createReservation(3, 2, "123123123", "John", "05-11-2016", "1200","AM");
-		allTheReservations.createReservation(4, 2, "123123123", "John", "05-11-2016", "1200","AM");
-		allTheReservations.createReservation(9, 2, "123123123", "John", "05-11-2016", "1200","AM");
-		allTheReservations.createReservation(10, 2, "123123123", "John", "05-11-2016", "1200","AM");
-		
+		allTheReservations.createReservation(0, 2, "97811150", "Foo Shi De", "01-12-2016", "2000","PM");
+		allTheReservations.createReservation(1, 2, "97811150", "Foo Shi De", "02-12-2016", "2000","PM");
+		allTheReservations.createReservation(2, 2, "97811150", "Foo Shi De", "03-12-2016", "2000","PM");
+		allTheReservations.createReservation(3, 2, "97811150", "Foo Shi De", "04-12-2016", "2000","PM");
+		allTheReservations.createReservation(4, 2, "97811150", "Foo Shi De", "05-12-2016", "2000","PM");
 		
 		Scanner input = new Scanner(System.in);
 		String inputDate; String inputTime;
+		Calendar date;
 		boolean x = true;
 		while(x){
 			
@@ -192,7 +173,7 @@ public class ReservationController{
 				
 				for(int i=0;i<unReservedTables.size();i++){
 					
-					if((unReservedTables.get(i).getSeats()>=numpax) && (unReservedTables.get(i).getSeats()<=numpax + 3)){
+					if((unReservedTables.get(i).getSeats()>numpax) && (unReservedTables.get(i).getSeats()<numpax + 3)){
 						Table temp = unReservedTables.get(i);
 						System.out.println("Table: "+ temp.getTableNumber() +", Number of seats: "+ temp.getSeats());
 						allTheReservations.createReservation(temp.getTableNumber(), numpax, hpNumber, name, inputDate, inputTime, slot);
@@ -223,7 +204,7 @@ public class ReservationController{
 		
 	}
 
-	public void removeReservation(int hpOrdate) {
+	public void removeReservation() {
 		//1. input name and handphone number
 		//2. check reservationList for match
 		//3. if no match, nothing changed
@@ -233,38 +214,21 @@ public class ReservationController{
 		ArrayList<Reservation> rAll = allTheReservations.getReservationList();	
 		boolean x = true;
 		while(x){
-			ArrayList<Reservation> tempList = new ArrayList<Reservation>();
-			if(hpOrdate==1){
-				System.out.println("##### Remove reservation ######");
-				System.out.println("Enter handphone number: (Enter -1 to go back)");
-				number = input.nextLine();
-				if(number.equals("-1")) return;
-				System.out.println(" number: "+ number);
-				
-				
-				for(int i=0;i<rAll.size();i++){
-					Reservation temp = rAll.get(i);
-					if(temp.getHpNumber().equals(number)){
-						tempList.add(temp);
-					}
-				}
-			}
-			else if(hpOrdate == 0){
-				System.out.println("Input date to delete from on: (Enter -1 to go back)");
-				String inputDate = input.next();		//Get input date from user
-				if (inputDate.equals("-1"))return;
-				System.out.println("Date: "+inputDate);
-				
-				for(int i=0;i<rAll.size();i++){
-					Reservation temp = rAll.get(i);
-					if(temp.getDateReserved().equals(inputDate)){
-						tempList.add(temp);
-					}
-				}
-			}
+			System.out.println("##### Remove reservation ######");
+			System.out.println("Enter handphone number: (Enter -1 to go back)");
+			number = input.nextLine();
+			if(number.equals("-1")) return;
+			System.out.println(" number: "+ number);
 			
+			ArrayList<Reservation> tempList = new ArrayList<Reservation>();
+			for(int i=0;i<rAll.size();i++){
+				Reservation temp = rAll.get(i);
+				if(temp.getHpNumber().equals(number)){
+					tempList.add(temp);
+				}
+			}
 			if(tempList.isEmpty()){
-				System.out.println("There are no reservations under this name/date"); return;
+				System.out.println("There are no reservations under this name"); return;
 			}else{
 				System.out.println("Reservations made under this name: ");
 				for(int i=0;i<tempList.size();i++){
@@ -300,6 +264,14 @@ public class ReservationController{
 		}		
 	}
 	
+
+	public void displayMenuOptions(){		//Display main menu options
+		System.out.println("Menu Options (Enter -1 to go back)");
+		System.out.println("1. Create new reservation");
+		System.out.println("2. Check reservation");
+		System.out.println("3. Remove reservation");
+	}
+	
 	public Calendar stringToCalender(String format, String inputDate, String inputTime) throws ParseException{
 		SimpleDateFormat sdf = new SimpleDateFormat();
 		sdf.applyPattern(format);
@@ -316,8 +288,8 @@ public class ReservationController{
 	public String checkSlot(String slot) throws ParseException{
 		String timeSlot = "";
 		Date slotD = new SimpleDateFormat("HHmm").parse(slot);
-		String amStart = "1059"; String amEnd = "1500"; 
-		String pmStart = "1759"; String pmEnd = "2200";
+		String amStart = "1100"; String amEnd = "1500"; 
+		String pmStart = "1800"; String pmEnd = "2200";
 		Date amStartD = new SimpleDateFormat("HHmm").parse(amStart);
 		Date amEndD = new SimpleDateFormat("HHmm").parse(amEnd);
 		Date pmStartD = new SimpleDateFormat("HHmm").parse(pmStart);
@@ -329,13 +301,5 @@ public class ReservationController{
 			timeSlot = "PM";
 		}
 		return timeSlot;
-	}
-	
-	public void displayMenuOptions(){		//Display main menu options
-		System.out.println("Menu Options (Enter -1 to go back)");
-		System.out.println("1. Create new reservation");
-		System.out.println("2. Check reservation");
-		System.out.println("3. Remove reservation (by Handphone number)");
-		System.out.println("4. Remove reservation (by Date)");
 	}
 }

@@ -1,0 +1,46 @@
+package controllers;
+
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+
+import entity.ReservationAll;
+import entity.Table;
+import entity.TableAll;
+
+public class TableController {
+	public static TableAll TableRecords;
+	
+	public TableController(){
+		TableRecords = new TableAll(5,5,10,10);
+	}
+	
+	public void run(){
+		syncTablesWithReservations();
+		TableRecords.getAllTheTables().toString();
+		
+	}
+	
+	public void syncTablesWithReservations(){
+		Date today = new GregorianCalendar().getTime();
+		DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+		String todayString = df.format(today);
+		ReservationAll rL = ReservationController.allTheReservations;
+		ArrayList<Integer> reservedTablesAM = rL.reservedTablesOnDate(todayString, "AM");
+		ArrayList<Integer> reservedTablesPM = rL.reservedTablesOnDate(todayString, "PM");
+		for(int i=0;i<TableRecords.getTotalNumOfTables();i++){
+			if(reservedTablesAM.contains(TableRecords.getAllTheTables().get(i))){
+				Table temp = TableRecords.getAllTheTables().get(i);
+				temp.setIsReservedAM(true);
+			}
+			if(reservedTablesPM.contains(TableRecords.getAllTheTables().get(i))){
+				Table temp = TableRecords.getAllTheTables().get(i);
+				temp.setIsReservedPM(true);
+			}
+		}
+	}
+}

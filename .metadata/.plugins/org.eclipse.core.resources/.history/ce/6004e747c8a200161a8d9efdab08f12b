@@ -106,9 +106,9 @@ public class ReservationController{
 		allTheReservations.createReservation(3, 2, "97811150", "Banana", "05-11-2016", "2000","PM");
 		allTheReservations.createReservation(4, 2, "97811150", "Pineapple", "05-11-2016", "2000","PM");
 		allTheReservations.createReservation(5, 2, "97811150", "habaaba", "05-11-2016", "1230","AM");
-		allTheReservations.createReservation(2, 2, "123123123", "John", "05-11-2016", "1200","AM");
-		allTheReservations.createReservation(3, 2, "123123123", "John", "05-11-2016", "1200","AM");
-		allTheReservations.createReservation(4, 2, "123123123", "John", "05-11-2016", "1200","AM");
+		allTheReservations.createReservation(6, 2, "123123123", "John", "05-11-2016", "1200","AM");
+		allTheReservations.createReservation(7, 2, "123123123", "John", "05-11-2016", "1200","AM");
+		allTheReservations.createReservation(8, 2, "123123123", "John", "05-11-2016", "1200","AM");
 		allTheReservations.createReservation(9, 2, "123123123", "John", "05-11-2016", "1200","AM");
 		allTheReservations.createReservation(10, 2, "123123123", "John", "05-11-2016", "1200","AM");
 		

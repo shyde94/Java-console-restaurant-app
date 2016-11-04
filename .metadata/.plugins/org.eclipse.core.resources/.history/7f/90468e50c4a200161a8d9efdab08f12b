@@ -101,14 +101,14 @@ public class ReservationController{
 		//4. Search for tables that have at most pax + 3 seats. 
 		//5. If have, input name, hp number. 
 		//6. Create reservation 
-		allTheReservations.createReservation(1, 2, "97811150", "Foo Shi De", "05-11-2016", "1100","AM");
-		allTheReservations.createReservation(2, 2, "97811150", "Apple", "05-11-2016", "1900","PM");
+		allTheReservations.createReservation(1, 2, "97811150", "Foo Shi De", "05-11-2016", "2000","PM");
+		allTheReservations.createReservation(2, 2, "97811150", "Apple", "05-11-2016", "2000","PM");
 		allTheReservations.createReservation(3, 2, "97811150", "Banana", "05-11-2016", "2000","PM");
 		allTheReservations.createReservation(4, 2, "97811150", "Pineapple", "05-11-2016", "2000","PM");
-		allTheReservations.createReservation(5, 2, "97811150", "habaaba", "05-11-2016", "1230","AM");
-		allTheReservations.createReservation(2, 2, "123123123", "John", "05-11-2016", "1200","AM");
-		allTheReservations.createReservation(3, 2, "123123123", "John", "05-11-2016", "1200","AM");
-		allTheReservations.createReservation(4, 2, "123123123", "John", "05-11-2016", "1200","AM");
+		allTheReservations.createReservation(5, 2, "97811150", "habaaba", "05-11-2016", "2000","PM");
+		allTheReservations.createReservation(6, 2, "123123123", "John", "05-11-2016", "1200","AM");
+		allTheReservations.createReservation(7, 2, "123123123", "John", "05-11-2016", "1200","AM");
+		allTheReservations.createReservation(8, 2, "123123123", "John", "05-11-2016", "1200","AM");
 		allTheReservations.createReservation(9, 2, "123123123", "John", "05-11-2016", "1200","AM");
 		allTheReservations.createReservation(10, 2, "123123123", "John", "05-11-2016", "1200","AM");
 		
@@ -257,7 +257,7 @@ public class ReservationController{
 				
 				for(int i=0;i<rAll.size();i++){
 					Reservation temp = rAll.get(i);
-					if(temp.getDateReserved().equals(inputDate)){
+					if(temp.getHpNumber().equals(inputDate)){
 						tempList.add(temp);
 					}
 				}

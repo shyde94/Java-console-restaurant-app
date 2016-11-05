@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.InputMismatchException;
-
+import java.util.NoSuchElementException;
 
 import entity.Reservation;
 
@@ -28,13 +28,14 @@ public class ReservationController{
 		allTheTables = new TableAll(5,5,10,10);
 	}
 	
-	public void run() throws InputMismatchException{ 
+	public void run() throws InputMismatchException,NoSuchElementException{ 
 		boolean x = true; 
 		Scanner input = new Scanner(System.in);
+		int choice;
 		while(x){
 			boolean y = true;
 			this.displayMenuOptions();
-			int choice = input.nextInt();
+			choice = input.nextInt();
 			switch(choice){
 				case(1):
 					do{
@@ -50,6 +51,7 @@ public class ReservationController{
 				case(2): 
 					do{
 						try{
+							System.out.println("Test");
 							this.checkReservation();
 							y = false;
 						}
@@ -77,6 +79,20 @@ public class ReservationController{
 					do{
 						try{
 							this.removeReservation(0);
+							y = false;
+						}
+						catch(InputMismatchException e){
+							System.out.println("Invalid Input. 3");
+						}
+						catch(ArrayIndexOutOfBoundsException e){
+							System.out.println("There is no such option!");
+						}
+					}while(y);
+					break;
+				case(5): 
+					do{
+						try{
+							allTheReservations.showAllReservations();;
 							y = false;
 						}
 						catch(InputMismatchException e){
@@ -130,7 +146,7 @@ public class ReservationController{
 				
 				try {
 					slot = checkSlot(inputTime);
-					if(slot.equals("Closed")){
+					if(slot.equals("")){
 						System.out.println("Restaurant is closed");
 						break;
 					}
@@ -209,7 +225,7 @@ public class ReservationController{
 		System.out.println("Enter date to check: ");
 		String dateInput = input.next();
 		allTheReservations.checkReservationsOnDate(dateInput);
-		input.close();
+		
 	}
 
 	public void removeReservation(int hpOrdate) {
@@ -229,8 +245,6 @@ public class ReservationController{
 				number = input.nextLine();
 				if(number.equals("-1")) return;
 				System.out.println(" number: "+ number);
-				
-				
 				for(int i=0;i<rAll.size();i++){
 					Reservation temp = rAll.get(i);
 					if(temp.getHpNumber().equals(number)){
@@ -251,7 +265,6 @@ public class ReservationController{
 					}
 				}
 			}
-			
 			if(tempList.isEmpty()){
 				System.out.println("There are no reservations under this name/date"); return;
 			}else{
@@ -307,7 +320,7 @@ public class ReservationController{
 		String timeSlot = "";
 		Date slotD = new SimpleDateFormat("HHmm").parse(slot);
 		String amStart = "1059"; String amEnd = "1500"; 
-		String pmStart = "1759"; String pmEnd = "2200";
+		String pmStart = "1759"; String pmEnd = "2300";
 		Date amStartD = new SimpleDateFormat("HHmm").parse(amStart);
 		Date amEndD = new SimpleDateFormat("HHmm").parse(amEnd);
 		Date pmStartD = new SimpleDateFormat("HHmm").parse(pmStart);
@@ -327,10 +340,9 @@ public class ReservationController{
 		SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy");
 		String dateToday = sdf1.format(x.getTime());
 		SimpleDateFormat sdf2 = new SimpleDateFormat("dd-MM-yyyy HHmm");
-		System.out.println("Now: " + now.getTime());
 		
 		String amStart = "1059"; String amEnd = "1500"; 
-		String pmStart = "1759"; String pmEnd = "2200";
+		String pmStart = "1759"; String pmEnd = "2300";
 		Date amStartD = sdf2.parse(dateToday + " " + amStart);
 		Date amEndD = sdf2.parse(dateToday + " " + amEnd);
 		Date pmStartD = sdf2.parse(dateToday + " " + pmStart);
@@ -353,5 +365,6 @@ public class ReservationController{
 		System.out.println("2. Check reservation");
 		System.out.println("3. Remove reservation (by Handphone number)");
 		System.out.println("4. Remove reservation (by Date)");
+		System.out.println("5. Show all reservations");
 	}
 }

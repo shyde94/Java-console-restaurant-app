@@ -103,7 +103,7 @@ public class Reservation {
 	}
 	
 	public void printReservation(){
-		System.out.println("Table: " + tableNumber + ", Number of people: " + numberOfPeople + ", date reserved: " + dateReserved + " time slot: "+ slot +", Time of arrival: " + timeOfArrival+ ", Customer name: " + customerName );
+		System.out.println( "date reserved: " + dateReserved + ", time slot: "+ slot +", Time of arrival: " + timeOfArrival+", Table: " + tableNumber + ", Number of people: " + numberOfPeople + ", Customer name: " + customerName );
 	}
 	
 	

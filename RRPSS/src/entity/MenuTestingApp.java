@@ -1,8 +1,10 @@
 package entity;
 import controllers.MenuController;
+import controllers.OrderController;
 import controllers.ReservationController;
 
 import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import controllers.TableController;
 
@@ -12,20 +14,13 @@ public class MenuTestingApp {
 		Scanner input = new Scanner(System.in);
 		MenuController mC = new MenuController();
 		ReservationController reserveC = new ReservationController();
-		TableController tC = new TableController();
+		TableController tableC = new TableController();
+		OrderController orderC = new OrderController();
 		boolean x = true;
 		while(x){
-			try{
-				reserveC.run();
-			}
-			catch(InputMismatchException e){
-				System.out.println("Error caught by MenuTestingApp");
-				x = false;
-			}
-			try{
-				
-				tC.run();
-			}
+			//displayMenu();
+			
+			try{tableC.run();}
 			catch(InputMismatchException e){
 				System.out.println("Error caught by MenuTestingApp2");
 			}
@@ -36,7 +31,37 @@ public class MenuTestingApp {
 			catch(InputMismatchException e){
 				System.out.println("Error caught by MenuTestingApp2");
 			}
+			try{
+				orderC.run();
+				
+			}
+			catch(InputMismatchException e){
+				System.out.println("Error caught by MenuTestingApp");
+				input.next();
+			}
+			try{
+				reserveC.run();
+				
+			}
+			catch(InputMismatchException e){
+				System.out.println("Error caught by MenuTestingApp");
+				input.next();
+				
+			}
 		}
-			
-		}
+	}		
+		
+	
+	
+	public static void displayMenu(){
+		System.out.println("Bae restaurant Menu. Please select your action");
+		System.out.println("1. Order");
+		System.out.println("2. Menu");
+		System.out.println("3. Promotional Packages");
+		System.out.println("4. Reservations");
+		System.out.println("5. Check table ability");
+		System.out.println("6. Print sale revenue report by period.");
+		
+		
+	}
 }

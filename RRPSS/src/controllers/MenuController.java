@@ -11,7 +11,7 @@ import entity.MenuItem;
 
 public class MenuController {
 
-    private Menu menu;
+    public static Menu menu;
 
     public MenuController() {
         menu = new Menu();
@@ -75,6 +75,9 @@ public class MenuController {
 
     //createMenuItem() - 1st option, to add item into menu. Introduce file writing operator
     public void createMenuItem() {
+        menu.addItem("pizza1", 8, "temp1", "Mains");
+        menu.addItem("pizza2", 9, "temp2", "Mains");
+        menu.addItem("pizza3", 18, "temp3", "Mains");
         menu.addItem("pizza1", 8, "temp1", "Mains");
         menu.addItem("pizza2", 9, "temp2", "Mains");
         menu.addItem("pizza3", 18, "temp3", "Mains");
@@ -250,6 +253,7 @@ public class MenuController {
             //	menu.printMenuL();
             this.showMenuTypes();
             int choice = input.nextInt();
+            if(choice == -1)return;
             String type = "";
             String temp_type = menu.getTypes().get(choice - 1);
             ArrayList<MenuItem> deleteItem = menu.reOrderItems(temp_type);
@@ -257,29 +261,79 @@ public class MenuController {
             boolean y = true;
             do {
                 try {
-                    System.out.println("Choose item to remove: (Enter -1 to go back)");
-                    printTempArrayList(deleteItem);
-                    index = input.nextInt();
-                    if (index == -1) {
-                        y = false;
-                        continue;
-                    }
-                    index--;
-                    menu.removeItem(index, type);
-                    y = false;
-                    return;
+                	if(deleteItem.isEmpty()){
+                		System.out.println("There are no items to delete.");
+                		break;
+                	}else{
+                		System.out.println("Choose item to remove: (Enter -1 to go back)");
+                		printTempArrayList(deleteItem);
+                		index = input.nextInt();
+                		
+                		
+                	} 
+                	if(index==-1)continue;
+                	menu.removeItem(index, type);
+            		y = false;
 
                 } catch (InputMismatchException e) {
                     System.out.println("Please enter index in digits");
                     input.nextLine();
                 } catch (IllegalStateException e) {
                     System.out.println("Please enter index in digits");
+                    input.nextLine();
                 } catch (IndexOutOfBoundsException e) {
                     System.out.println("Item does not exist. Please try again");
+                    input.nextLine();
                 }
             } while (y);
         }
     }
+    
+   public static MenuItem selectMenuItem(){
+	   MenuItem tempMenuItem = null;
+	   Scanner input = new Scanner(System.in);
+       boolean x = true;
+       int index = 0;
+       while (x) {
+           showMenuTypes();
+           int choice = input.nextInt();
+           if(choice == -1) return tempMenuItem;
+           String type = "";
+           String temp_type = menu.getTypes().get(choice - 1);
+           ArrayList<MenuItem> toSelect = menu.reOrderItems(temp_type);
+           
+           boolean y = true;
+           do {
+               try {
+               	if(toSelect.isEmpty()){
+               		System.out.println("There are no items to in menu.");
+               		index = -1;
+               	}else{
+               		System.out.println("Choose item to select: (Enter -1 to go back)");
+               		printTempArrayList(toSelect);
+               		index = input.nextInt();
+               		
+               		
+               	} 
+               	if(index==-1)break;
+               tempMenuItem = toSelect.get(index);
+               System.out.println("here");
+           		y = false;x = false;
+
+               } catch (InputMismatchException e) {
+                   System.out.println("Please enter index in digits");
+                   input.nextLine();
+               } catch (IllegalStateException e) {
+                   System.out.println("Please enter index in digits");
+                   input.nextLine();
+               } catch (IndexOutOfBoundsException e) {
+                   System.out.println("Item does not exist. Please try again");
+                   input.nextLine();
+               }
+           } while (y);
+       }
+	   return tempMenuItem;
+   }
 
     public void displayMenuOptions() {		//Display main menu options
         System.out.println("Menu Options (Enter -1 to go back)");
@@ -289,12 +343,12 @@ public class MenuController {
         System.out.println("4. Display menu");
     }
 
-    public void showMenuTypes() {
+    public static void showMenuTypes() {
         System.out.println("Please select item type: (Enter -1 to go back)");
         menu.printTypes();
     }
 
-    public void printTempArrayList(ArrayList<MenuItem> a) {
+    public static void printTempArrayList(ArrayList<MenuItem> a) {
         //System.out.println("banana");
         for (int i = 0; i < a.size(); i++) {
             System.out.print((i + 1) + ". ");

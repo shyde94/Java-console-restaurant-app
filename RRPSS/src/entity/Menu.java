@@ -59,10 +59,10 @@ public class Menu {
         public ArrayList<MenuItem> reOrderItems(String itemType){
             ArrayList<MenuItem> updateItem = new ArrayList<MenuItem>();
             int size = menuItem.size();
-            System.out.println("Size: " + size);
+           // System.out.println("Size: " + size);
             for (int i = 0; i < menuItem.size(); i++){
                 if (menuItem.get(i).getType().equals(itemType) ){
-                    System.out.println(menuItem.get(i));
+                    //System.out.println(menuItem.get(i));
                     updateItem.add(menuItem.get(i));
                 }
             }

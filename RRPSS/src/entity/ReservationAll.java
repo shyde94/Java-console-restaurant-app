@@ -104,10 +104,16 @@ public class ReservationAll {
 			}
 		}
 		if(tempList.isEmpty()){
-			System.out.println("There are no reservations on " + input + ". ");
+			//System.out.println("There are no reservations on " + input + ". ");
 		}
 		
 		return tempList;
+	}
+	
+	public void showAllReservations(){
+		for(int i=0;i<reservationList.size();i++){
+			reservationList.get(i).printReservation();
+		}
 	}
 	
 	

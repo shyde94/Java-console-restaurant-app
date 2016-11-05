@@ -102,22 +102,20 @@ public class ReservationController{
 		//5. If have, input name, hp number. 
 		//6. Create reservation 
 		allTheReservations.createReservation(1, 2, "97811150", "Foo Shi De", "05-11-2016", "1100","AM");
-		allTheReservations.createReservation(2, 2, "97811150", "Apple", "05-11-2016", "1900","PM");
-		allTheReservations.createReservation(3, 2, "97811150", "Banana", "05-11-2016", "2000","PM");
-		allTheReservations.createReservation(4, 2, "97811150", "Pineapple", "05-11-2016", "2000","PM");
-		allTheReservations.createReservation(5, 2, "97811150", "habaaba", "05-11-2016", "1230","AM");
-		allTheReservations.createReservation(2, 2, "123123123", "John", "05-11-2016", "1200","AM");
-		allTheReservations.createReservation(3, 2, "123123123", "John", "05-11-2016", "1200","AM");
-		allTheReservations.createReservation(4, 2, "123123123", "John", "05-11-2016", "1200","AM");
-		allTheReservations.createReservation(9, 2, "123123123", "John", "05-11-2016", "1200","AM");
-		allTheReservations.createReservation(10, 2, "123123123", "John", "05-11-2016", "1200","AM");
-		
+		allTheReservations.createReservation(1, 2, "97811150", "Apple", "05-11-2016", "1730","PM");
+		allTheReservations.createReservation(3, 2, "97811150", "Banana", "05-11-2016", "1200","AM");
+		allTheReservations.createReservation(3, 2, "97811150", "Pineapple", "05-11-2016", "1730","PM");
+		allTheReservations.createReservation(4, 2, "97811150", "habaaba", "05-11-2016", "1230","AM");
+		allTheReservations.createReservation(4, 2, "123123123", "John", "05-11-2016", "1800","PM");
+		//allTheReservations.createReservation(3, 2, "123123123", "John", "05-11-2016", "1200","AM");
+		//allTheReservations.createReservation(4, 2, "123123123", "John", "05-11-2016", "1200","AM");
+		//allTheReservations.createReservation(9, 2, "123123123", "John", "05-11-2016", "1200","AM");
+		//allTheReservations.createReservation(10, 2, "123123123", "John", "05-11-2016", "1200","AM");
 		
 		Scanner input = new Scanner(System.in);
 		String inputDate; String inputTime;
 		boolean x = true;
-		while(x){
-			
+		while(x){		
 			int cont = 0;
 			String slot = "";
 			do{
@@ -132,7 +130,7 @@ public class ReservationController{
 				
 				try {
 					slot = checkSlot(inputTime);
-					if(slot.equals("")){
+					if(slot.equals("Closed")){
 						System.out.println("Restaurant is closed");
 						break;
 					}
@@ -140,7 +138,7 @@ public class ReservationController{
 					Calendar dntFromUser = stringToCalender("dd-MM-yyyy HHmm", inputDate,inputTime);	//Convert input date & time to calendar object           
 					Calendar oneMonthFromNow = new GregorianCalendar(); 
 					oneMonthFromNow.add(Calendar.DAY_OF_MONTH,30);//Get date one month from now
-					if(dntFromUser.compareTo(today)<=0 || dntFromUser.compareTo(oneMonthFromNow)==1 || today.compareTo(oneMonthFromNow) ==1){
+					if(dntFromUser.compareTo(today)<=0 || dntFromUser.compareTo(oneMonthFromNow)==1){
 						System.out.println("You cannot reserve on this date");
 					}
 					else{
@@ -199,20 +197,11 @@ public class ReservationController{
 						x = false;
 						return;
 					}
-				}
-				
-				System.out.println("There were no tables with sufficient seats for "+ numpax+ " people");
-				
-				
-				
-					
-				
-				
-				
-				
+				}				
+				System.out.println("There were no tables with sufficient seats for "+ numpax+ " people");									
 			}
 		}		
-		
+		input.close();
 	}
 
 	public void checkReservation() {
@@ -220,7 +209,7 @@ public class ReservationController{
 		System.out.println("Enter date to check: ");
 		String dateInput = input.next();
 		allTheReservations.checkReservationsOnDate(dateInput);
-		
+		input.close();
 	}
 
 	public void removeReservation(int hpOrdate) {
@@ -229,7 +218,7 @@ public class ReservationController{
 		//3. if no match, nothing changed
 		//4. if more than 1 match, select which to remove
 		Scanner input = new Scanner(System.in);
-		String name, number; 
+		String number; 
 		ArrayList<Reservation> rAll = allTheReservations.getReservationList();	
 		boolean x = true;
 		while(x){
@@ -300,7 +289,8 @@ public class ReservationController{
 		}		
 	}
 	
-	public Calendar stringToCalender(String format, String inputDate, String inputTime) throws ParseException{
+	//Converts string given into format to create date object
+	public static Calendar stringToCalender(String format, String inputDate, String inputTime) throws ParseException{
 		SimpleDateFormat sdf = new SimpleDateFormat();
 		sdf.applyPattern(format);
 		Date reservationDate = sdf.parse(inputDate + " " + inputTime);
@@ -309,11 +299,11 @@ public class ReservationController{
 		
 		calendar.setTime(reservationDate);
 		
-		System.out.println("Date and time: "+ calendar.getTime());
+		//System.out.println("Date and time: "+ calendar.getTime());
 		return calendar;
 	}
 	
-	public String checkSlot(String slot) throws ParseException{
+	public static String checkSlot(String slot) throws ParseException{	//method to check if reservation slot is in AM / PM period
 		String timeSlot = "";
 		Date slotD = new SimpleDateFormat("HHmm").parse(slot);
 		String amStart = "1059"; String amEnd = "1500"; 
@@ -327,6 +317,32 @@ public class ReservationController{
 		}
 		else if(pmStartD.before(slotD) && pmEndD.after(slotD)){
 			timeSlot = "PM";
+		}
+		return timeSlot;
+	}
+	
+	public static String checkSlot(Date now) throws ParseException{	//method to check if reservation slot is in AM / PM period
+		String timeSlot = "";
+		Calendar x = new GregorianCalendar();
+		SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy");
+		String dateToday = sdf1.format(x.getTime());
+		SimpleDateFormat sdf2 = new SimpleDateFormat("dd-MM-yyyy HHmm");
+		System.out.println("Now: " + now.getTime());
+		
+		String amStart = "1059"; String amEnd = "1500"; 
+		String pmStart = "1759"; String pmEnd = "2200";
+		Date amStartD = sdf2.parse(dateToday + " " + amStart);
+		Date amEndD = sdf2.parse(dateToday + " " + amEnd);
+		Date pmStartD = sdf2.parse(dateToday + " " + pmStart);
+		Date pmEndD = sdf2.parse(dateToday + " " + pmEnd);
+		if(amStartD.before(now) && amEndD.after(now)){
+			timeSlot = "AM";
+		}
+		else if(pmStartD.before(now) && pmEndD.after(now)){
+			timeSlot = "PM";
+		}
+		else{
+			timeSlot = "Closed";
 		}
 		return timeSlot;
 	}

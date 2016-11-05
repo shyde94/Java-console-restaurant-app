@@ -45,7 +45,7 @@ public class ReservationAll {
 			}
 		}
 		if(msg==1){
-			System.out.println("This reservation has been removed.");
+			System.out.println("Reservation has been removed.");
 		}
 		else{
 			System.out.println("Error. No changes have been made");
@@ -81,8 +81,21 @@ public class ReservationAll {
 	}
 	
 	public ArrayList<Integer> reservedTablesOnDate(String input, String slot){
-		System.out.println("Input date:" + input);
+		//System.out.println("Input date:" + input);
 		ArrayList<Integer> reservedTables = new ArrayList<Integer>();
+		ArrayList<Reservation> tempList =  reservationsMadeOnDate(input, slot);
+			//System.out.println("Reservations made on: " + input);
+		if(!(tempList.isEmpty())){
+			for(int i=0;i<tempList.size();i++){
+				int x = tempList.get(i).getTableNumber();
+				reservedTables.add(x);
+			}
+		}
+		return reservedTables;
+	}
+	
+	public ArrayList<Reservation> reservationsMadeOnDate(String input, String slot){
+		//System.out.println("Input date:" + input);
 		ArrayList<Reservation> tempList = new ArrayList<Reservation>();
 		for(int i=0;i<reservationList.size();i++){
 			Reservation temp = reservationList.get(i);
@@ -93,14 +106,8 @@ public class ReservationAll {
 		if(tempList.isEmpty()){
 			System.out.println("There are no reservations on " + input + ". ");
 		}
-		else{
-			//System.out.println("Reservations made on: " + input);
-			for(int i=0;i<tempList.size();i++){
-				int x = tempList.get(i).getTableNumber();
-				reservedTables.add(x);
-			}
-		}
-		return reservedTables;
+		
+		return tempList;
 	}
 	
 	

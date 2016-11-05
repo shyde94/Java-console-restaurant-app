@@ -38,9 +38,6 @@ public class MenuTestingApp {
 			catch(InputMismatchException e){
 				System.out.println("Error caught by MenuTestingApp");
 				input.next();
-			}catch(IndexOutOfBoundsException e){
-				System.out.println("Invalid input. Try again");
-				input.nextLine();
 			}
 			try{
 				reserveC.run();

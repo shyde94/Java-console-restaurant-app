@@ -231,7 +231,6 @@ public class OrderController {
 						y = false;
 					}catch(InputMismatchException e){
 						System.out.println("Please enter a number: ");
-						input.nextLine();
 					}catch(ArrayIndexOutOfBoundsException e){
 						System.out.println("Order does not exist.Please try again.");
 						input.nextLine();
@@ -243,8 +242,6 @@ public class OrderController {
 				if(quantity < 0)continue;
 				if(tempMenuItem != null){
 					orderSheetTemp.changeQuantity(tempMenuItem, quantity, staffId);
-					System.out.println("Order has been updated");
-					x = false;
 				}
 				else{
 					System.out.println("An error occured. No orders were updated.");

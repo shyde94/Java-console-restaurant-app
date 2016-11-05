@@ -293,29 +293,26 @@ public class MenuController {
 	   MenuItem tempMenuItem = null;
 	   Scanner input = new Scanner(System.in);
        boolean x = true;
-       int index = 0; String temp_type; ArrayList<MenuItem> toSelect = null;
+       int index = 0;
        while (x) {
            showMenuTypes();
            boolean y = true;int choice=0;
            do{
         	   try{
         		   choice = input.nextInt();
-        		   temp_type = menu.getTypes().get(choice - 1);
-                   toSelect = menu.reOrderItems(temp_type);
         		   y = false;
         	   }catch(InputMismatchException e){
         		   System.out.println("Please enter a number.");
-        		   input.nextLine();
         	   }catch(IndexOutOfBoundsException e){
         		   System.out.println("Invalid option. Please try again.");
-        		   input.nextLine();
         	   }
            }while(y);
            if(choice == -1) return tempMenuItem;
            String type = "";
-          
+           String temp_type = menu.getTypes().get(choice - 1);
+           ArrayList<MenuItem> toSelect = menu.reOrderItems(temp_type);
            
-           y = true;
+           boolean y = true;
            do {
                try {
                	if(toSelect.isEmpty()){

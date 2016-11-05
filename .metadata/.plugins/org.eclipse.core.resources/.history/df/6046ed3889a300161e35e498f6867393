@@ -259,7 +259,7 @@ public class TableAll {
 		for(int i=0;i<allTheTables.size();i++){
 			Table tempTable = allTheTables.get(i);
 			if(tempTable.getOrderSheet()!=null){
-				allTheOrderSheets.add(tempTable.getOrderSheet());
+				allTheOrderSheets.add(tempTable);
 			}
 		}
 		

@@ -243,8 +243,6 @@ public class OrderController {
 				if(quantity < 0)continue;
 				if(tempMenuItem != null){
 					orderSheetTemp.changeQuantity(tempMenuItem, quantity, staffId);
-					System.out.println("Order has been updated");
-					x = false;
 				}
 				else{
 					System.out.println("An error occured. No orders were updated.");

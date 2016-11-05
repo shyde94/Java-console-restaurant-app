@@ -305,10 +305,8 @@ public class MenuController {
         		   y = false;
         	   }catch(InputMismatchException e){
         		   System.out.println("Please enter a number.");
-        		   input.nextLine();
         	   }catch(IndexOutOfBoundsException e){
         		   System.out.println("Invalid option. Please try again.");
-        		   input.nextLine();
         	   }
            }while(y);
            if(choice == -1) return tempMenuItem;

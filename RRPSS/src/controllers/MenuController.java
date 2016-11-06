@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 import entity.Menu;
 import entity.MenuItem;
+import entity.PromotionalPackage;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
@@ -48,16 +49,17 @@ public class MenuController {
                         } catch (InputMismatchException e) {
                             System.out.println("Invalid option");
                         } catch (IOException ex) {
-                    Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                            Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (ClassNotFoundException ex) {
+                            Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                     } while (y);
                     break;
                 case (2):
                     do {
                         try {
                             this.updateMenuItem();
+                            System.out.println("Item Updated Successfully");
                             y = false;
                         } catch (InputMismatchException e) {
                             System.out.println("Invalid option");
@@ -69,6 +71,7 @@ public class MenuController {
                     do {
                         try {
                             this.deleteMenuItem();
+                            System.out.println("Item Deleted Successfully");
                             y = false;
                         } catch (InputMismatchException e) {
                             System.out.println("Invalid Input. 3");
@@ -78,10 +81,19 @@ public class MenuController {
                     } while (y);
                     break;
                 case (4):
-                    ArrayList<MenuItem> menuItems = menu.getMenuItem();
-                    menu.displayMenuAndItems(menuItems);
+                    addPPackage();
+                    System.out.println("Promotional Package Created Successfully");
                     break;
-                case (5): {
+                case (5):
+                    //deletePPackage();
+                    System.out.println("Promotional Package Deleted Successfully");
+                case (6):
+                    ArrayList<MenuItem> menuItems = menu.getMenuItem();
+                   // menu.displayMenuAndItems(menuItems);
+                    menu.printMenuItemsMenu();
+                    menu.printPromotionalPackages();
+                    break;
+                case (7): {
                     try {
                         saveMenu();
                         System.out.println("Items Successfully Saved into menu");
@@ -89,8 +101,8 @@ public class MenuController {
                         Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (ClassNotFoundException ex) {
                         Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
-                }
                     }
+                }
                 break;
                 case (-1):
                     return;
@@ -100,14 +112,15 @@ public class MenuController {
         }
     }
 
+    //Menu Item Functionality
     //createMenuItem() - 1st option, to add item into menu. Introduce file writing operator
     public void createMenuItem() {
-       /* menu.addItem("Roast Chicken Rice", 4.50, "Fragrant Chicken Rice with Roast Chicken", "Mains");
+        menu.addItem("Roast Chicken Rice", 4.50, "Fragrant Chicken Rice with Roast Chicken", "Mains");
         menu.addItem("Ice Cream", 2, "Black Sesame Ice Cream", "Desserts");
         menu.addItem("Teh Bing", 0.50, "Ice Milk Tea", "Drinks");
         menu.addItem("Bandung", 2.00, "Rose Syrup Drink", "Drinks");
         menu.addItem("Waffle", 3.00, "Served with Ice Cream", "Desserts");
-        menu.addItem("Bee Hoon", 5.00, "Comes with Chicken Wing", "Mains");*/
+        menu.addItem("Bee Hoon", 5.00, "Comes with Chicken Wing", "Mains");
         Scanner input = new Scanner(System.in);
         boolean x = true;
         String type = "";
@@ -420,13 +433,120 @@ public class MenuController {
         return tempMenuItem;
     }
 
+    //Promotional Package Functionality
+    public void addPPackage() {
+        Scanner input = new Scanner(System.in);
+        boolean x = true;
+        String name = "";
+        double price = 0;
+        String desc = "";
+        int choice = 0;
+        String type = "Promotional Package";
+        //these variables are need for addItem() method
+        while (x) {	//while loop to remain this method if wrong type selected
+            System.out.println("######## Create new Promotional Package ########");
+            //Input name
+            boolean y = true;
+            System.out.println("Enter name of Promotional Package: (Enter -1 to go back)");
+            //input.nextLine();
+            name = input.nextLine();
+            if (name.equals("-1")) {
+                continue; //continue used to go back to choose mains, drinks or desserts
+            }
+            //Input Price
+            do {
+                try {
+                    System.out.println("Enter price: (Enter -1 to go back)");
+                    price = input.nextDouble();
+                    y = false;
+                } catch (InputMismatchException e) {
+                    System.out.println("Please enter the price in digits");
+                    input.nextLine();
+                }
+            } while (y);
+            if (price == -1) {
+                continue;
+            }
+
+            //Input Description
+            System.out.println("Enter description of new Promotional Package: (Enter -1 to go back)");
+            input.nextLine();
+            desc = input.nextLine();
+            if (desc.equals("-1")) {
+                continue;
+            }
+
+            //Input menuItemArray
+            ArrayList<MenuItem> menuItemArray = new ArrayList<MenuItem>();
+            System.out.println("Add items to : " + name);
+            y = true;
+            do {
+                boolean z = true;
+                MenuItem selectedMenuItem = selectMenuItem();
+                menuItemArray.add(selectedMenuItem);
+               
+
+                do {
+                    System.out.println("Select next option: (Enter -1 to go back)");
+                    System.out.println("1. Add more items");
+                    System.out.println("2. Save promotional package");
+                    try {
+                        choice = input.nextInt();
+                        if (choice < -1) {
+                            System.out.println("Invalid Option.");
+                            continue;
+                        }
+                        z = false;
+                    } catch (InputMismatchException e) {
+                        System.out.println("Invalid option");
+                    }
+                } while (z);
+                if (choice == -1) {
+                    continue;
+                }
+                if(choice == 2)break;
+            } while (y);
+            //Call method to add Promotional Package into menu 
+           
+                //tempPackage.printPromotionalPackage();
+                menu.addPPackage(name, price, desc,type, menuItemArray); x = false;
+                if(menu.getPPackage().isEmpty()){
+                    System.out.println("Debug 1");
+                }
+                else{
+                    System.out.println("Package added into pPackage");
+                }
+                
+                try {
+                    saveMenu();
+                } catch (IOException ex) {
+                    //Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println("An error occured. Changes made could not be saved");
+                } catch (ClassNotFoundException ex) {
+                   // Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
+                   System.out.println("An error occured. Changes made could not be saved");
+                   
+                }
+
+            return; //exit createMenuItem() once new item is added
+        }
+    }
+
+    //Menu Functionality
     public void saveMenu() throws FileNotFoundException, IOException, ClassNotFoundException {
         //Testing File IO
         File file = new File("Menu.txt");
 
         //replace with existing menu array
         ArrayList<MenuItem> menuItems = menu.getMenuItem();
-
+        ArrayList<PromotionalPackage> pPackageTemp = menu.getPPackage();
+        /*if(pPackageTemp.isEmpty()){
+            System.out.println("THIS IS EMPTY!!!");
+        }
+        for(int i=0;i<pPackageTemp.size();i++){
+            System.out.println("Start of for loop: " + i);
+            pPackageTemp.get(i).printPromotionalPackage();
+        }*/
         //Serialize collection of menu items
         //Takes File
         FileOutputStream fo = new FileOutputStream(file);
@@ -434,9 +554,14 @@ public class MenuController {
         ObjectOutputStream output = new ObjectOutputStream(fo);
         //Write object into file
         for (int i = 0; i < menuItems.size(); i++) {
+            //menuItems.get(i).printItem();
             output.writeObject(menuItems.get(i));
-
         }
+        for(int i = 0; i<pPackageTemp.size();i++){
+            //pPackageTemp.get(i).printPromotionalPackage();
+              output.writeObject(pPackageTemp.get(i));
+        }
+   
         System.out.println("Menu saved successfully");
         output.close();
         fo.close();
@@ -448,21 +573,27 @@ public class MenuController {
         FileInputStream fi = new FileInputStream(file);
         ObjectInputStream input1 = new ObjectInputStream(fi);
         ArrayList<MenuItem> menuItemsArray = new ArrayList<MenuItem>();
-
+        ArrayList<PromotionalPackage> promoPack = new ArrayList<PromotionalPackage>();
         try {
             while (true) {
                 MenuItem m = (MenuItem) input1.readObject();
-                menuItemsArray.add(m);
+                if(m.getClass() == PromotionalPackage.class){
+                    //System.out.println("Yoohoo!");
+                    promoPack.add((PromotionalPackage)m);
+                }
+                else{
+                    menuItemsArray.add(m);
+                }   
             }
         } catch (EOFException ex) {
             //Printing the menu items using displayMenuAndItems()()
             //Print the menu and items as well as passing the updated menu to menu object
             menu.setMenuItem(menuItemsArray);
+            menu.setPPackage(promoPack);
             System.out.println("Menu loaded successfully");
             //menu.displayMenuAndItems(menuItemsArray);
-            }
-            
-        
+        }
+
     }
 
     public void displayMenuOptions() {		//Display main menu options
@@ -470,8 +601,10 @@ public class MenuController {
         System.out.println("1. Create new menu item");
         System.out.println("2. Update menu item");
         System.out.println("3. Remove menu item");
-        System.out.println("4. Display menu");
-        System.out.println("5. Save menu");
+        System.out.println("4. Create Promotional Package~~");
+        System.out.println("5. Delete Promotional Package~~");
+        System.out.println("6. Display menu");
+        System.out.println("7. Save menu");
     }
 
     public static void showMenuTypes() {

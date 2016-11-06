@@ -1,29 +1,26 @@
 package entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class PromotionalPackage extends Menu {
-
-    private String pName;
-    private double pPrice;
-    private String pDesc;
+public class PromotionalPackage extends MenuItem implements Serializable {
     private ArrayList<MenuItem> pItemList;
-    private static Menu pMenu;
+ 
 
-    public PromotionalPackage(String pName, Double pPrice, String pDesc, ArrayList<MenuItem> pItemList) {;
-        this.pName = pName;
-        this.pPrice = pPrice;
-        this.pDesc = pDesc;
-        this.pItemList = pItemList;
+    public PromotionalPackage(String pName, Double pPrice, String pDesc, String ptype, ArrayList<MenuItem> a){
+       
+        super(pName, pPrice, pDesc,ptype);
+        pItemList = a;
+        
+        
     }
 
     //Print Method for all the Promotional Packages
+
     
     
-    
-    
-    //update
-    public void update(MenuItem menuItem){
+    //Removes an item from the promotional package and updates the price
+    /*public void update(MenuItem menuItem){
         pItemList.remove(menuItem);
         double totalPrice = 0;
         for (int i = 0; i < pItemList.size(); i++ ){
@@ -32,9 +29,11 @@ public class PromotionalPackage extends Menu {
         if (totalPrice < pPrice){
             totalPrice = pPrice;
         }
-    }
+    }*/
     
-    public void update (MenuItem oldItem, MenuItem newItem){
+    //Replaces one item with another in the promotional package
+    //and updates the price
+    /*public void update (MenuItem oldItem, MenuItem newItem){
         pItemList.remove(oldItem);
         pItemList.add(newItem);
         double totalPrice = 0;
@@ -45,7 +44,7 @@ public class PromotionalPackage extends Menu {
             totalPrice = pPrice;
         }
     }   
-    
+    */
     /*
     public void printPPackage(){
         System.out.println(getName()+ "   "+ getPrice()+"   "+getDesc());
@@ -54,7 +53,7 @@ public class PromotionalPackage extends Menu {
     }
     */
     
-    
+    /*
     public String getName() {
         return pName;
     }
@@ -67,17 +66,21 @@ public class PromotionalPackage extends Menu {
         return pDesc;
     }
     
-    
+    */
     
     
     public ArrayList<MenuItem> getItemList() {
         return pItemList;
     }
 
-    
-    //Set the menu containing the promotional package
-    public static void setMenu(Menu menu) {
-        pMenu = menu;
+    public void printPromotionalPackage(){
+        System.out.println("Name: " + super.getName());
+        System.out.println("Price: " + super.getPrice());
+        for(int i=0;i<pItemList.size();i++){
+            pItemList.get(i).printItem();
+        }
     }
+    //Set the menu containing the promotional package
+   
 
 }

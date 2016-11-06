@@ -27,49 +27,7 @@ public class MenuTestingApp {
 		ReservationController reserveC = new ReservationController();
 		TableController tableC = new TableController();
 		OrderController orderC = new OrderController();
-                
-                  //Testing File IO
-        File file = new File("Menu.txt");
-        ArrayList<MenuItem> menuItems = new ArrayList<>();
-        menuItems.add(new MenuItem("Banana", 1.00, "Yellow", "Breakfast"));
-        menuItems.add(new MenuItem("Apple", 0.40, "Red", "Breakfast"));
-        menuItems.add(new MenuItem("Meat Pie", 0.40, "Served warm with a cup of coffee", "Lunch"));
 
-        //Serialize collection of menu items
-        //Takes File
-        FileOutputStream fo = new FileOutputStream(file);
-        //Make Object and takes FileOutputStream
-        ObjectOutputStream output = new ObjectOutputStream(fo);
-        //Write object into file
-        for (int i = 0; i < menuItems.size(); i++) {
-            output.writeObject(menuItems.get(i));
-            
-        }
-
-        output.close();
-        fo.close();
-
-        //Import back into collection
-        FileInputStream fi = new FileInputStream(file);
-        ObjectInputStream input1 = new ObjectInputStream(fi);
-        ArrayList<MenuItem> menuItems2 = new ArrayList<MenuItem>();
-
-        try {
-            while (true) {
-                MenuItem m = (MenuItem) input1.readObject();
-                menuItems2.add(m);
-            }
-        } catch (EOFException ex) {
-            //Printing the menu items using printItem()
-            for (int i = 0; i < menuItems2.size(); i++) {
-                menuItems2.get(i).printItem();
-            }
-            //Printing the menu and seeing the serializable objects
-            System.out.println("Serializable Objects");
-            for (int i = 0; i < menuItems2.size(); i++) {
-                System.out.println(menuItems2);
-            }
-        }
 		boolean x = true;
 		while(x){
 			//displayMenu();
@@ -106,7 +64,6 @@ public class MenuTestingApp {
 				
 			}
 		}
-		input1.close();
 	}		
 		
 	

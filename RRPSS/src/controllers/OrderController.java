@@ -9,6 +9,7 @@ import java.util.Scanner;
 import entity.Menu;
 import entity.MenuItem;
 import entity.OrderSheetPerTable;
+import entity.SalesRecords;
 import entity.Table;
 import entity.TableAll;
 
@@ -52,10 +53,10 @@ public class OrderController {
                     } while (y);
                     break;
 
-               /* case (3):
+                case (3):
                     do {
                         try {
-                            this.deleteMenuItem();
+                            this.removeOrderFromOrderSheet();
                             y = false;
                         } catch (InputMismatchException e) {
                             System.out.println("Invalid Input. 3");
@@ -65,10 +66,13 @@ public class OrderController {
                     } while (y);
                     break;
                 case (4):
-                    menu.printMenuItem();
-                    break;*/
-                case (-1):
-                    return;
+                    this.PrintInvoiceAndCheckOut();
+                    break;
+                case (5):
+                    this.showAllOrders();
+                	break;
+                case(-1):
+                	return;
                 default:
                     System.out.println("Please select a valid option");
             }
@@ -80,7 +84,7 @@ public class OrderController {
 		System.out.println("1. Add Order"); //Each table must initialise order sheet first before orders can be added in.  
 		System.out.println("2. Update pre-exisiting order");
 		System.out.println("3. Remove pre-exisiting order");
-		System.out.println("4. View orders from specific table");
+		System.out.println("4. Customer Checkout");
 		System.out.println("5. View All orders");
 	}
 	
@@ -167,7 +171,6 @@ public class OrderController {
 	
 	//Method to update orderSheet
 	public void updateOrderSheetPerTable(){
-		Date today = new GregorianCalendar().getTime();
 		Scanner input = new Scanner(System.in);
 		boolean x = true;
 		boolean y = true;
@@ -262,8 +265,157 @@ public class OrderController {
 	}
 	
 	public void removeOrderFromOrderSheet(){
-		
+		Scanner input = new Scanner(System.in);
+		boolean x = true;
+		boolean y = true;
+		System.out.println("Remove order:");
+		while(x){
+			int tableNumber=0;
+			int staffId=0;
+			do{
+				y = true;
+				System.out.println("Enter staff ID (Enter -1 to go back)");
+				try{
+					staffId = input.nextInt();
+					y = false;
+				}catch(InputMismatchException e){
+					System.out.println("Invalid staff ID");
+					input.nextLine();
+				}
+			}while(y);
+			
+			if(staffId<0)return;
+			do{
+				y = true;
+				System.out.println("Please enter table number first: (Enter -1 to go back)");
+				try{
+					tableNumber = input.nextInt();
+					y = false;
+				}catch(InputMismatchException e){
+					System.out.println("Please input a number");
+					input.nextLine();
+				}
+			}while(y);
+			if(tableNumber ==-1)continue;
+			//Get table object with corresponding table number
+			//Check if orderSheet for table has been initialised;
+			
+			Table tempTable = tIR.getTable(tableNumber);
+			if(tIR.checkOrderSheetInit(tableNumber)){
+				OrderSheetPerTable orderSheetTemp = tempTable.getOrderSheet();
+				
+				int choice = 0; int quantity =0;
+				MenuItem tempMenuItem=null;
+				do{
+					y = true;
+					orderSheetTemp.printOrder();
+					System.out.println("Select order to remove: (Enter -1 to go back)");
+					try{
+						choice = input.nextInt();
+						y = false;
+					}catch(InputMismatchException e){
+						System.out.println("Please enter a number");
+						input.nextLine();
+					}
+				}while(y);	
+				if(choice<0)continue;
+				
+				do{	
+					y = true;
+					try{
+						tempMenuItem = orderSheetTemp.getOrders().get(choice-1);
+						y = false;
+					}catch(InputMismatchException e){
+						System.out.println("Please enter a number: ");
+						input.nextLine();
+					}catch(ArrayIndexOutOfBoundsException e){
+						System.out.println("Order does not exist.Please try again.");
+						input.nextLine();
+					}catch(IndexOutOfBoundsException e){
+						System.out.println("Order does not exist.Please try again.");
+						input.nextLine();
+					}
+				}while(y);
+				if(quantity < 0)continue;
+				if(tempMenuItem != null){
+					orderSheetTemp.removeOrder(tempMenuItem);
+					System.out.println("Order has been removed.");
+					x = false;
+				}
+				else{
+					System.out.println("An error occured. No orders were removed.");
+				}
+				
+				
+			}
+			else{
+				System.out.println("This table has no orders in it");
+			}
+		}
+	}
+	
+	public void PrintInvoiceAndCheckOut(){
+		Scanner input = new Scanner(System.in);
+		boolean x = true;
+		boolean y = true;
+		System.out.println("Print invoice and checkout.");
+		while(x){
+			int tableNumber=0;
+			int staffId=0;
+			do{
+				y = true;
+				System.out.println("Enter staff ID (Enter -1 to go back)");
+				try{
+					staffId = input.nextInt();
+					y = false;
+				}catch(InputMismatchException e){
+					System.out.println("Invalid staff ID");
+					input.nextLine();
+				}
+			}while(y);
+			
+			if(staffId<0)return;
+			do{
+				y = true;
+				System.out.println("Please enter table number first: (Enter -1 to go back)");
+				try{
+					tableNumber = input.nextInt();
+					y = false;
+				}catch(InputMismatchException e){
+					System.out.println("Please input a number");
+					input.nextLine();
+				}
+			}while(y);
+			if(tableNumber ==-1)continue;
+			//Get table object with corresponding table number
+			//Check if orderSheet for table has been initialised;
+			
+			Table tempTable = tIR.getTable(tableNumber);
+			Date today = new GregorianCalendar().getTime();
+			if(tIR.checkOrderSheetInit(tableNumber)){
+				OrderSheetPerTable orderSheetTemp = tempTable.getOrderSheet();
+				tempTable.customerCheckout(today);
+				x = false;
+			}
+			else{
+				System.out.println("This table has no orders in it");
+			}
+		}
 	}
 	
 	
-}
+	
+	public void showAllOrders(){
+		ArrayList<OrderSheetPerTable> allOrdersAtTheMoment = tIR.consolidateOrderSheets();
+		for(int i=0;i<allOrdersAtTheMoment.size();i++){
+			OrderSheetPerTable tempOrderSheet = allOrdersAtTheMoment.get(i);
+			int tableNumberTemp = tempOrderSheet.getTableNum();
+			System.out.println("Table number: "+ tableNumberTemp);
+			tempOrderSheet.printOrder();
+		}
+	}
+	
+	
+}//End of class
+	
+

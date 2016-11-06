@@ -275,7 +275,7 @@ public class ReservationController {
                     }
                 }
             } else if (hpOrdate == 0) {
-                System.out.println("Input date to delete from on: (Enter -1 to go back)");
+                System.out.println("Input date in dd-mm-yyyy format to delete from on: (Enter -1 to go back)");
                 String inputDate = input.next();		//Get input date from user
                 if (inputDate.equals("-1")) {
                     return;
@@ -290,7 +290,7 @@ public class ReservationController {
                 }
             }
             if (tempList.isEmpty()) {
-                System.out.println("There are no reservations under this name/date");
+                System.out.println("There are no reservations under this name/date, or that the format entered is incorrect.");
                 return;
             } else {
                 System.out.println("Reservations made under this name: ");

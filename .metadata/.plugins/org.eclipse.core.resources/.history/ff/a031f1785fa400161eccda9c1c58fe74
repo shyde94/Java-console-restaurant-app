@@ -1,0 +1,21 @@
+package controllers;
+
+import entity.SalesRecords;
+
+public class SalesRecordsController {
+	private SalesRecords recordsOfSales;
+	
+	public SalesRecordsController(){
+		recordsOfSales = new SalesRecords();
+	}
+	
+	public SalesRecords getRecordsOfSales(){
+		return recordsOfSales;
+	}
+	public void setRecordsOfSales(SalesRecords s){
+	recordsOfSales = s;
+	}
+	
+	
+	
+}

@@ -1,0 +1,12 @@
+package entity;
+
+import java.util.ArrayList;
+
+public class SalesRecords {
+	public static ArrayList<OrderSheetPerTable> allTheSalesRecords;
+	
+	public SalesRecords(){
+		allTheSalesRecords = new ArrayList<OrderSheetPerTable>();	
+	}
+}
+

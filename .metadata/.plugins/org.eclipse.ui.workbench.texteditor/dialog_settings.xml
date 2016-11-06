@@ -2,12 +2,15 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="05-11-2016" key="selection"/>
+		<item value="Order does not" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="Order does not"/>
+			<item value="Order does not exist"/>
+			<item value="order does not exist"/>
 			<item value="01-12-2016"/>
 			<item value="cont"/>
 			<item value="Error"/>

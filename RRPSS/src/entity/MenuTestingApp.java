@@ -1,7 +1,9 @@
 package entity;
+
 import controllers.MenuController;
 import controllers.OrderController;
 import controllers.ReservationController;
+import controllers.SalesRecordsController;
 
 import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
@@ -27,50 +29,53 @@ public class MenuTestingApp {
 		ReservationController reserveC = new ReservationController();
 		TableController tableC = new TableController();
 		OrderController orderC = new OrderController();
-                
-                mC.loadMenu();
-                reserveC.loadReservations();
+		SalesRecordsController sRecordsC = new SalesRecordsController();
+
+		mC.loadMenu();
+		reserveC.loadReservations();
 		boolean x = true;
-		while(x){
-			//displayMenu();
-			
-			try{tableC.run();}
-			catch(InputMismatchException e){
+		while (x) {
+			// displayMenu();
+
+			try {
+				tableC.run();
+			} catch (InputMismatchException e) {
 				System.out.println("Error caught by MenuTestingApp2");
 			}
-			try{
-				
+			try {
+
+				sRecordsC.run();
+			} catch (InputMismatchException e) {
+				System.out.println("Error caught by MenuTestingApp2");
+			}
+			try {
+
 				mC.run();
-			}
-			catch(InputMismatchException e){
+			} catch (InputMismatchException e) {
 				System.out.println("Error caught by MenuTestingApp2");
 			}
-			try{
+			try {
 				orderC.run();
-				
-			}
-			catch(InputMismatchException e){
+
+			} catch (InputMismatchException e) {
 				System.out.println("Error caught by MenuTestingApp");
 				input.next();
-			}catch(IndexOutOfBoundsException e){
+			} catch (IndexOutOfBoundsException e) {
 				System.out.println("Invalid input. Try again");
 				input.nextLine();
 			}
-			try{
+			try {
 				reserveC.run();
-				
-			}
-			catch(InputMismatchException e){
+
+			} catch (InputMismatchException e) {
 				System.out.println("Error caught by MenuTestingApp");
 				input.next();
-				
+
 			}
 		}
-	}		
-		
-	
-	
-	public static void displayMenu(){
+	}
+
+	public static void displayMenu() {
 		System.out.println("Bae restaurant Menu. Please select your action");
 		System.out.println("1. Order");
 		System.out.println("2. Menu");
@@ -78,7 +83,6 @@ public class MenuTestingApp {
 		System.out.println("4. Reservations");
 		System.out.println("5. Check table ability");
 		System.out.println("6. Print sale revenue report by period.");
-		
-		
+
 	}
 }

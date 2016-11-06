@@ -96,5 +96,13 @@ public class Table {
 	public void initOrderSheet(int tableNum, int staffId, Date today){
 		orderSheet = new OrderSheetPerTable(tableNum, staffId, today);
 	}
-		
+	
+	
+	public void customerCheckout(Date timeOfInvoice){
+		orderSheet.calTotalBill(timeOfInvoice); //calculates total bill including gst, timeOfInvoice is time/date this function was called
+		orderSheet.printBill();//Print invoice
+		SalesRecords.allTheSalesRecords.add(orderSheet);//Adds this transaction to sale records
+		setIsOccupied(false);//Change status of table back to unoccupied
+		orderSheet=null; //set orderSheet back to null for turnover. 
 	}
+}

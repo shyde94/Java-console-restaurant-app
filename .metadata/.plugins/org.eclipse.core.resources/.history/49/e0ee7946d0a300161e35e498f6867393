@@ -138,7 +138,7 @@ public class OrderController {
 			OrderSheetPerTable orderSheetTemp = tempTable.getOrderSheet();
 			MenuItem tempMenuItem = MenuController.selectMenuItem();
 			if(tempMenuItem != null){
-				System.out.println("Please input quantity: (Enter -1 to go back)");
+				System.out.println("Please input quantity: ");
 				int quantity=0;
 				y = true;
 				do{

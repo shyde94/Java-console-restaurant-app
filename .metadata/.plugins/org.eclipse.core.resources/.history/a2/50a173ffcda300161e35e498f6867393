@@ -43,7 +43,6 @@ public class MenuTestingApp {
         //Write object into file
         for (int i = 0; i < menuItems.size(); i++) {
             output.writeObject(menuItems.get(i));
-            
         }
 
         output.close();
@@ -106,7 +105,6 @@ public class MenuTestingApp {
 				
 			}
 		}
-		input1.close();
 	}		
 		
 	

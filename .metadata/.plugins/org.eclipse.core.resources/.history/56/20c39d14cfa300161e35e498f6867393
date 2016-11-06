@@ -142,32 +142,19 @@ public class MenuController {
         Scanner input = new Scanner(System.in);
         boolean x = true;
         String type = "";
-        boolean y = true;
         while (x) {	//while loop to remain this method if wrong type selected
             int choice = 0;
             System.out.println("######## Update menu item ########");
             //menu.printMenuL();
-            String temp_type="";
-            ArrayList<MenuItem> updateItem = new ArrayList<MenuItem>();
-            //This part needs to be changed to handle exceptions!
-            do{
-				 y = true;
-				 MenuController.showMenuTypes();
-				try{
-					choice = input.nextInt();
-					if(choice==-1)break;
-					temp_type = menu.getTypes().get(choice - 1);
-		            updateItem = menu.reOrderItems(temp_type);
-					y = false;
-				}catch(InputMismatchException e){
-					System.out.println("Invalid choice.");
-					input.nextLine();
-				}catch(IndexOutOfBoundsException e){
-					System.out.println("Invalid choice.");
-					input.nextLine();
-				}
-			}while(y); 
-            if (choice == -1) return;
+            this.showMenuTypes();
+            choice = input.nextInt();
+            if (choice == -1) {
+                return;
+            }
+            String temp_type = menu.getTypes().get(choice - 1);
+            ArrayList<MenuItem> updateItem = menu.reOrderItems(temp_type);
+
+            boolean y = true;
             int index = 0;
             do {
 
@@ -234,15 +221,14 @@ public class MenuController {
                             System.out.println("Enter description:");
                             desc = input.nextLine();
                             System.out.println("New description: " + desc);
-                            menu.updateItem(name, price, desc, temp_type, index);
                             break;
                         case ("n"):
                             break;
                         default:
                             System.out.println("Invalid option. Enter y or n");
                     }
-                    
-                    y = false;x = false;
+                    menu.updateItem(name, price, desc, temp_type, index);
+                    y = false;
                     return;
 
                 } catch (InputMismatchException e) {
@@ -262,33 +248,17 @@ public class MenuController {
         Scanner input = new Scanner(System.in);
         boolean x = true;
         int index = 0;
-        boolean y = true;
         while (x) {
             System.out.println("######## Remove Item: ########");
-            String temp_type="";
-            ArrayList<MenuItem> deleteItem = new ArrayList<MenuItem>();
-            int choice;
             //	menu.printMenuL();
-            do{
-				 y = true;
-				 MenuController.showMenuTypes();
-				try{
-					choice = input.nextInt();
-					if(choice==-1)break;
-					temp_type = menu.getTypes().get(choice - 1);
-		            deleteItem = menu.reOrderItems(temp_type);
-					y = false;
-				}catch(InputMismatchException e){
-					System.out.println("Invalid choice.");
-					input.nextLine();
-				}catch(IndexOutOfBoundsException e){
-					System.out.println("Invalid choice.");
-					input.nextLine();
-				}
-			}while(y); 
+            this.showMenuTypes();
+            int choice = input.nextInt();
+            if(choice == -1)return;
+            String type = "";
+            String temp_type = menu.getTypes().get(choice - 1);
+            ArrayList<MenuItem> deleteItem = menu.reOrderItems(temp_type);
             
-            
-           
+            boolean y = true;
             do {
                 try {
                 	if(deleteItem.isEmpty()){
@@ -298,10 +268,12 @@ public class MenuController {
                 		System.out.println("Choose item to remove: (Enter -1 to go back)");
                 		printTempArrayList(deleteItem);
                 		index = input.nextInt();
+                		
+                		
                 	} 
                 	if(index==-1)continue;
-                	menu.removeItem(index-1, temp_type);
-            		y = false;x=false;
+                	menu.removeItem(index, type);
+            		y = false;
 
                 } catch (InputMismatchException e) {
                     System.out.println("Please enter index in digits");
@@ -323,13 +295,11 @@ public class MenuController {
        boolean x = true;
        int index = 0; String temp_type; ArrayList<MenuItem> toSelect = null;
        while (x) {
-           
+           showMenuTypes();
            boolean y = true;int choice=0;
            do{
-        	   showMenuTypes();
-        	   try{       		   
+        	   try{
         		   choice = input.nextInt();
-        		   if(choice == -1) break;
         		   temp_type = menu.getTypes().get(choice - 1);
                    toSelect = menu.reOrderItems(temp_type);
         		   y = false;
@@ -359,7 +329,8 @@ public class MenuController {
                		
                	} 
                	if(index==-1)break;
-               tempMenuItem = toSelect.get(index-1);
+               tempMenuItem = toSelect.get(index);
+               System.out.println("here");
            		y = false;x = false;
 
                } catch (InputMismatchException e) {

@@ -117,7 +117,6 @@ public class OrderController {
 				System.out.println("Please enter table number first: (Enter -1 to go back)");
 				try{
 					tableNumber = input.nextInt();
-					if(tableNumber==-1)break;
 					tempTable = tIR.getTable(tableNumber);
 					tIR.initialiseOrderSheetForTable(tableNumber, staffId, today);
 					y = false;
@@ -138,7 +137,7 @@ public class OrderController {
 			OrderSheetPerTable orderSheetTemp = tempTable.getOrderSheet();
 			MenuItem tempMenuItem = MenuController.selectMenuItem();
 			if(tempMenuItem != null){
-				System.out.println("Please input quantity: (Enter -1 to go back)");
+				System.out.println("Please input quantity: ");
 				int quantity=0;
 				y = true;
 				do{

@@ -234,7 +234,7 @@ public class MenuController {
                             System.out.println("Enter description:");
                             desc = input.nextLine();
                             System.out.println("New description: " + desc);
-                            menu.updateItem(name, price, desc, temp_type, index);
+                            menu.updateItem(name, price, desc, temp_type, index-1);
                             break;
                         case ("n"):
                             break;

@@ -234,14 +234,13 @@ public class MenuController {
                             System.out.println("Enter description:");
                             desc = input.nextLine();
                             System.out.println("New description: " + desc);
-                            menu.updateItem(name, price, desc, temp_type, index);
                             break;
                         case ("n"):
                             break;
                         default:
                             System.out.println("Invalid option. Enter y or n");
                     }
-                    
+                    menu.updateItem(name, price, desc, temp_type, index-1);
                     y = false;x = false;
                     return;
 

@@ -16,6 +16,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MenuController {
 
@@ -73,6 +75,26 @@ public class MenuController {
                 case (4):
                     menu.printMenuItem();
                     break;
+                case (5): {
+                    try {
+                        saveMenu();
+                    } catch (IOException ex) {
+                        Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                break;
+                case (6): {
+                try {
+                    loadMenu();
+                } catch (IOException ex) {
+                    Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                }
+                break;
                 case (-1):
                     return;
                 default:
@@ -155,27 +177,31 @@ public class MenuController {
             int choice = 0;
             System.out.println("######## Update menu item ########");
             //menu.printMenuL();
-            String temp_type="";
+            String temp_type = "";
             ArrayList<MenuItem> updateItem = new ArrayList<MenuItem>();
             //This part needs to be changed to handle exceptions!
-            do{
-				 y = true;
-				 MenuController.showMenuTypes();
-				try{
-					choice = input.nextInt();
-					if(choice==-1)break;
-					temp_type = menu.getTypes().get(choice - 1);
-		            updateItem = menu.reOrderItems(temp_type);
-					y = false;
-				}catch(InputMismatchException e){
-					System.out.println("Invalid choice.");
-					input.nextLine();
-				}catch(IndexOutOfBoundsException e){
-					System.out.println("Invalid choice.");
-					input.nextLine();
-				}
-			}while(y); 
-            if (choice == -1) return;
+            do {
+                y = true;
+                MenuController.showMenuTypes();
+                try {
+                    choice = input.nextInt();
+                    if (choice == -1) {
+                        break;
+                    }
+                    temp_type = menu.getTypes().get(choice - 1);
+                    updateItem = menu.reOrderItems(temp_type);
+                    y = false;
+                } catch (InputMismatchException e) {
+                    System.out.println("Invalid choice.");
+                    input.nextLine();
+                } catch (IndexOutOfBoundsException e) {
+                    System.out.println("Invalid choice.");
+                    input.nextLine();
+                }
+            } while (y);
+            if (choice == -1) {
+                return;
+            }
             int index = 0;
             do {
 
@@ -249,8 +275,9 @@ public class MenuController {
                         default:
                             System.out.println("Invalid option. Enter y or n");
                     }
-                    
-                    y = false;x = false;
+
+                    y = false;
+                    x = false;
                     return;
 
                 } catch (InputMismatchException e) {
@@ -273,43 +300,46 @@ public class MenuController {
         boolean y = true;
         while (x) {
             System.out.println("######## Remove Item: ########");
-            String temp_type="";
+            String temp_type = "";
             ArrayList<MenuItem> deleteItem = new ArrayList<MenuItem>();
             int choice;
             //	menu.printMenuL();
-            do{
-				 y = true;
-				 MenuController.showMenuTypes();
-				try{
-					choice = input.nextInt();
-					if(choice==-1)break;
-					temp_type = menu.getTypes().get(choice - 1);
-		            deleteItem = menu.reOrderItems(temp_type);
-					y = false;
-				}catch(InputMismatchException e){
-					System.out.println("Invalid choice.");
-					input.nextLine();
-				}catch(IndexOutOfBoundsException e){
-					System.out.println("Invalid choice.");
-					input.nextLine();
-				}
-			}while(y); 
-            
-            
-           
+            do {
+                y = true;
+                MenuController.showMenuTypes();
+                try {
+                    choice = input.nextInt();
+                    if (choice == -1) {
+                        break;
+                    }
+                    temp_type = menu.getTypes().get(choice - 1);
+                    deleteItem = menu.reOrderItems(temp_type);
+                    y = false;
+                } catch (InputMismatchException e) {
+                    System.out.println("Invalid choice.");
+                    input.nextLine();
+                } catch (IndexOutOfBoundsException e) {
+                    System.out.println("Invalid choice.");
+                    input.nextLine();
+                }
+            } while (y);
+
             do {
                 try {
-                	if(deleteItem.isEmpty()){
-                		System.out.println("There are no items to delete.");
-                		break;
-                	}else{
-                		System.out.println("Choose item to remove: (Enter -1 to go back)");
-                		printTempArrayList(deleteItem);
-                		index = input.nextInt();
-                	} 
-                	if(index==-1)continue;
-                	menu.removeItem(index-1, temp_type);
-            		y = false;x=false;
+                    if (deleteItem.isEmpty()) {
+                        System.out.println("There are no items to delete.");
+                        break;
+                    } else {
+                        System.out.println("Choose item to remove: (Enter -1 to go back)");
+                        printTempArrayList(deleteItem);
+                        index = input.nextInt();
+                    }
+                    if (index == -1) {
+                        continue;
+                    }
+                    menu.removeItem(index - 1, temp_type);
+                    y = false;
+                    x = false;
 
                 } catch (InputMismatchException e) {
                     System.out.println("Please enter index in digits");
@@ -324,74 +354,81 @@ public class MenuController {
             } while (y);
         }
     }
-    
-   public static MenuItem selectMenuItem(){
-	   MenuItem tempMenuItem = null;
-	   Scanner input = new Scanner(System.in);
-       boolean x = true;
-       int index = 0; String temp_type; ArrayList<MenuItem> toSelect = null;
-       while (x) {
-           
-           boolean y = true;int choice=0;
-           do{
-        	   showMenuTypes();
-        	   try{       		   
-        		   choice = input.nextInt();
-        		   if(choice == -1) break;
-        		   temp_type = menu.getTypes().get(choice - 1);
-                   toSelect = menu.reOrderItems(temp_type);
-        		   y = false;
-        	   }catch(InputMismatchException e){
-        		   System.out.println("Please enter a number.");
-        		   input.nextLine();
-        	   }catch(IndexOutOfBoundsException e){
-        		   System.out.println("Invalid option. Please try again.");
-        		   input.nextLine();
-        	   }
-           }while(y);
-           if(choice == -1) return tempMenuItem;
-           String type = "";
-          
-           
-           y = true;
-           do {
-               try {
-               	if(toSelect.isEmpty()){
-               		System.out.println("There are no items to in menu.");
-               		index = -1;
-               	}else{
-               		System.out.println("Choose item to select: (Enter -1 to go back)");
-               		printTempArrayList(toSelect);
-               		index = input.nextInt();
-               		
-               		
-               	} 
-               	if(index==-1)break;
-               tempMenuItem = toSelect.get(index-1);
-           		y = false;x = false;
 
-               } catch (InputMismatchException e) {
-                   System.out.println("Please enter index in digits");
-                   input.nextLine();
-               } catch (IllegalStateException e) {
-                   System.out.println("Please enter index in digits");
-                   input.nextLine();
-               } catch (IndexOutOfBoundsException e) {
-                   System.out.println("Item does not exist. Please try again");
-                   input.nextLine();
-               }
-           } while (y);
-       }
-	   return tempMenuItem;
-   }
+    public static MenuItem selectMenuItem() {
+        MenuItem tempMenuItem = null;
+        Scanner input = new Scanner(System.in);
+        boolean x = true;
+        int index = 0;
+        String temp_type;
+        ArrayList<MenuItem> toSelect = null;
+        while (x) {
 
-   public void saveMenu()  throws FileNotFoundException, IOException, ClassNotFoundException{
-                    //Testing File IO
+            boolean y = true;
+            int choice = 0;
+            do {
+                showMenuTypes();
+                try {
+                    choice = input.nextInt();
+                    if (choice == -1) {
+                        break;
+                    }
+                    temp_type = menu.getTypes().get(choice - 1);
+                    toSelect = menu.reOrderItems(temp_type);
+                    y = false;
+                } catch (InputMismatchException e) {
+                    System.out.println("Please enter a number.");
+                    input.nextLine();
+                } catch (IndexOutOfBoundsException e) {
+                    System.out.println("Invalid option. Please try again.");
+                    input.nextLine();
+                }
+            } while (y);
+            if (choice == -1) {
+                return tempMenuItem;
+            }
+            String type = "";
+
+            y = true;
+            do {
+                try {
+                    if (toSelect.isEmpty()) {
+                        System.out.println("There are no items to in menu.");
+                        index = -1;
+                    } else {
+                        System.out.println("Choose item to select: (Enter -1 to go back)");
+                        printTempArrayList(toSelect);
+                        index = input.nextInt();
+
+                    }
+                    if (index == -1) {
+                        break;
+                    }
+                    tempMenuItem = toSelect.get(index - 1);
+                    y = false;
+                    x = false;
+
+                } catch (InputMismatchException e) {
+                    System.out.println("Please enter index in digits");
+                    input.nextLine();
+                } catch (IllegalStateException e) {
+                    System.out.println("Please enter index in digits");
+                    input.nextLine();
+                } catch (IndexOutOfBoundsException e) {
+                    System.out.println("Item does not exist. Please try again");
+                    input.nextLine();
+                }
+            } while (y);
+        }
+        return tempMenuItem;
+    }
+
+    public void saveMenu() throws FileNotFoundException, IOException, ClassNotFoundException {
+        //Testing File IO
         File file = new File("Menu.txt");
-        ArrayList<MenuItem> menuItems = new ArrayList<>();
-        menuItems.add(new MenuItem("Banana", 1.00, "Yellow", "Breakfast"));
-        menuItems.add(new MenuItem("Apple", 0.40, "Red", "Breakfast"));
-        menuItems.add(new MenuItem("Meat Pie", 0.40, "Served warm with a cup of coffee", "Lunch"));
+
+        //replace with existing menu array
+        ArrayList<MenuItem> menuItems = menu.getMenu();
 
         //Serialize collection of menu items
         //Takes File
@@ -401,42 +438,45 @@ public class MenuController {
         //Write object into file
         for (int i = 0; i < menuItems.size(); i++) {
             output.writeObject(menuItems.get(i));
-            
+
         }
 
         output.close();
         fo.close();
+    }
 
+    public void loadMenu() throws IOException, ClassNotFoundException {
         //Import back into collection
+        File file = new File("Menu.txt");
         FileInputStream fi = new FileInputStream(file);
         ObjectInputStream input1 = new ObjectInputStream(fi);
-        ArrayList<MenuItem> menuItems2 = new ArrayList<MenuItem>();
+        ArrayList<MenuItem> menuItems = new ArrayList<MenuItem>();
 
         try {
             while (true) {
                 MenuItem m = (MenuItem) input1.readObject();
-                menuItems2.add(m);
+                menuItems.add(m);
             }
         } catch (EOFException ex) {
             //Printing the menu items using printItem()
-            for (int i = 0; i < menuItems2.size(); i++) {
-                menuItems2.get(i).printItem();
+            for (int i = 0; i < menuItems.size(); i++) {
+                menuItems.get(i).printItem();
             }
             //Printing the menu and seeing the serializable objects
             System.out.println("Serializable Objects");
-            for (int i = 0; i < menuItems2.size(); i++) {
-                System.out.println(menuItems2);
+            for (int i = 0; i < menuItems.size(); i++) {
+                System.out.println(menuItems);
             }
         }
-   }
-   
-   
+    }
+
     public void displayMenuOptions() {		//Display main menu options
         System.out.println("Menu Options (Enter -1 to go back)");
         System.out.println("1. Create new menu item");
         System.out.println("2. Update menu item");
         System.out.println("3. Remove menu item");
         System.out.println("4. Display menu");
+        System.out.println("5. Save menu");
     }
 
     public static void showMenuTypes() {

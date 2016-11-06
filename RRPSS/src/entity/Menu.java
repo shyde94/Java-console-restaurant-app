@@ -32,10 +32,9 @@ public class Menu {
 		}
 	}
         
-        
-        
-	
-	
+        public ArrayList<MenuItem> getMenu(){
+            return this.menuItem;
+        }
 	
 	public void addItem(String name, double price, String desc, String type) {
 		MenuItem item = new MenuItem(name, price, desc, type);

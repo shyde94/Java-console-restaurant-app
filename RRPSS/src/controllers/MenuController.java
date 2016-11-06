@@ -43,10 +43,15 @@ public class MenuController {
                     do {
                         try {
                             this.createMenuItem();
+                            this.saveMenu();
                             y = false;
                         } catch (InputMismatchException e) {
                             System.out.println("Invalid option");
-                        }
+                        } catch (IOException ex) {
+                    Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
+                }
                     } while (y);
                     break;
                 case (2):
@@ -73,27 +78,19 @@ public class MenuController {
                     } while (y);
                     break;
                 case (4):
-                    menu.printMenuItem();
+                    ArrayList<MenuItem> menuItems = menu.getMenuItem();
+                    menu.displayMenuAndItems(menuItems);
                     break;
                 case (5): {
                     try {
                         saveMenu();
+                        System.out.println("Items Successfully Saved into menu");
                     } catch (IOException ex) {
                         Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (ClassNotFoundException ex) {
                         Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
+                }
                     }
-                }
-                break;
-                case (6): {
-                try {
-                    loadMenu();
-                } catch (IOException ex) {
-                    Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                }
                 break;
                 case (-1):
                     return;
@@ -105,12 +102,12 @@ public class MenuController {
 
     //createMenuItem() - 1st option, to add item into menu. Introduce file writing operator
     public void createMenuItem() {
-        menu.addItem("pizza1", 8, "temp1", "Mains");
-        menu.addItem("pizza2", 9, "temp2", "Mains");
-        menu.addItem("pizza3", 18, "temp3", "Mains");
-        menu.addItem("pizza1", 8, "temp1", "Mains");
-        menu.addItem("pizza2", 9, "temp2", "Mains");
-        menu.addItem("pizza3", 18, "temp3", "Mains");
+       /* menu.addItem("Roast Chicken Rice", 4.50, "Fragrant Chicken Rice with Roast Chicken", "Mains");
+        menu.addItem("Ice Cream", 2, "Black Sesame Ice Cream", "Desserts");
+        menu.addItem("Teh Bing", 0.50, "Ice Milk Tea", "Drinks");
+        menu.addItem("Bandung", 2.00, "Rose Syrup Drink", "Drinks");
+        menu.addItem("Waffle", 3.00, "Served with Ice Cream", "Desserts");
+        menu.addItem("Bee Hoon", 5.00, "Comes with Chicken Wing", "Mains");*/
         Scanner input = new Scanner(System.in);
         boolean x = true;
         String type = "";
@@ -428,7 +425,7 @@ public class MenuController {
         File file = new File("Menu.txt");
 
         //replace with existing menu array
-        ArrayList<MenuItem> menuItems = menu.getMenu();
+        ArrayList<MenuItem> menuItems = menu.getMenuItem();
 
         //Serialize collection of menu items
         //Takes File
@@ -450,24 +447,21 @@ public class MenuController {
         File file = new File("Menu.txt");
         FileInputStream fi = new FileInputStream(file);
         ObjectInputStream input1 = new ObjectInputStream(fi);
-        ArrayList<MenuItem> menuItems = new ArrayList<MenuItem>();
+        ArrayList<MenuItem> menuItemsArray = new ArrayList<MenuItem>();
 
         try {
             while (true) {
                 MenuItem m = (MenuItem) input1.readObject();
-                menuItems.add(m);
+                menuItemsArray.add(m);
             }
         } catch (EOFException ex) {
-            //Printing the menu items using printItem()
-            for (int i = 0; i < menuItems.size(); i++) {
-                menuItems.get(i).printItem();
+            //Printing the menu items using displayMenuAndItems()()
+            //Print the menu and items as well as passing the updated menu to menu object
+            menu.setMenuItem(menuItemsArray);
+            menu.displayMenuAndItems(menuItemsArray);
             }
-            //Printing the menu and seeing the serializable objects
-            System.out.println("Serializable Objects");
-            for (int i = 0; i < menuItems.size(); i++) {
-                System.out.println(menuItems);
-            }
-        }
+            
+        
     }
 
     public void displayMenuOptions() {		//Display main menu options
@@ -477,6 +471,7 @@ public class MenuController {
         System.out.println("3. Remove menu item");
         System.out.println("4. Display menu");
         System.out.println("5. Save menu");
+        System.out.println("6. Load menu");
     }
 
     public static void showMenuTypes() {

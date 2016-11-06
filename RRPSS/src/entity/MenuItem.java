@@ -1,6 +1,7 @@
 package entity;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
 
 public class MenuItem implements Serializable{
 	private double price;
@@ -53,7 +54,7 @@ public class MenuItem implements Serializable{
 	public void setType(String type){
 		this.type = type;
 	}
-	
+        
 	public void printItem(){
 		System.out.println( this.name + " --- "+ this.description + ", $" + this.price + " ("+this.type+")");
 	}

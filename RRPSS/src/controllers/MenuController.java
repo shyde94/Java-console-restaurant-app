@@ -437,7 +437,7 @@ public class MenuController {
             output.writeObject(menuItems.get(i));
 
         }
-
+        System.out.println("Menu saved successfully");
         output.close();
         fo.close();
     }
@@ -458,7 +458,8 @@ public class MenuController {
             //Printing the menu items using displayMenuAndItems()()
             //Print the menu and items as well as passing the updated menu to menu object
             menu.setMenuItem(menuItemsArray);
-            menu.displayMenuAndItems(menuItemsArray);
+            System.out.println("Menu loaded successfully");
+            //menu.displayMenuAndItems(menuItemsArray);
             }
             
         
@@ -471,7 +472,6 @@ public class MenuController {
         System.out.println("3. Remove menu item");
         System.out.println("4. Display menu");
         System.out.println("5. Save menu");
-        System.out.println("6. Load menu");
     }
 
     public static void showMenuTypes() {

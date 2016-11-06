@@ -1,8 +1,9 @@
 package entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Reservation {
+public class Reservation  implements Serializable{
 	private int tableNumber;
 	private int numberOfPeople;
 	private String hpNumber;

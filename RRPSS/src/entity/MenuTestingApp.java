@@ -29,6 +29,7 @@ public class MenuTestingApp {
 		OrderController orderC = new OrderController();
                 
                 mC.loadMenu();
+                reserveC.loadReservations();
 		boolean x = true;
 		while(x){
 			//displayMenu();

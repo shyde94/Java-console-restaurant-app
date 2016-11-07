@@ -19,17 +19,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-/**
- * MenuController class controls restaurant menu. 
- * Includes methods to create, append and delete items and promotional packages. 
- * Also serves as a basic UI for user to use, with necessary control flows
- * 
- * @author Shide 
- * @author Eeyern 
- * @author Grace 
- * @author Xi Tong 
- *
- */
+
 public class MenuController {
 
     public static Menu menu;
@@ -41,11 +31,7 @@ public class MenuController {
     public Menu getMenu() {
         return this.menu;
     }
-    /**
-     * Allows user to choose desired option based on a drop down list.
-     * Methods will be called based on what user inputs. 
-     * @throws InputMismatchException
-     */
+
     public void run() throws InputMismatchException {
         boolean x = true;
         Scanner input = new Scanner(System.in);
@@ -128,9 +114,6 @@ public class MenuController {
 
     //Menu Item Functionality
     //createMenuItem() - 1st option, to add item into menu. Introduce file writing operator
-    /**
-     * Interacts with user for necessary inputs to create a new menu item. 
-     */
     public void createMenuItem() {
         menu.addItem("Roast Chicken Rice", 4.50, "Fragrant Chicken Rice with Roast Chicken", "Mains");
         menu.addItem("Ice Cream", 2, "Black Sesame Ice Cream", "Desserts");
@@ -194,9 +177,7 @@ public class MenuController {
             }
         }
     }
-    /**
-     * Interacts with user for necessary inputs to create update item in menu.
-     */
+
     public void updateMenuItem() {
         Scanner input = new Scanner(System.in);
         boolean x = true;
@@ -321,9 +302,7 @@ public class MenuController {
 
         }
     }
-    /**
-     * Interacts with user for necessary inputs to remove desired item.
-     */
+
     public void deleteMenuItem() {
         Scanner input = new Scanner(System.in);
         boolean x = true;
@@ -385,10 +364,7 @@ public class MenuController {
             } while (y);
         }
     }
-    /**
-     * Interacts with user to retrieve desired item.
-     * @return MenuItem Object to be used in other functions. 
-     */
+
     public static MenuItem selectMenuItem() {
         MenuItem tempMenuItem = null;
         Scanner input = new Scanner(System.in);
@@ -457,9 +433,7 @@ public class MenuController {
         return tempMenuItem;
     }
 
-    /**
-     * Interacts with user for necessary inputs to create a new promotional package.
-     */
+    //Promotional Package Functionality
     public void addPPackage() {
         Scanner input = new Scanner(System.in);
         boolean x = true;
@@ -558,12 +532,7 @@ public class MenuController {
         }
     }
 
-    /**
-     * Saves Menu into text file, all changes made are recorded using this method. 
-     * @throws FileNotFoundException
-     * @throws IOException
-     * @throws ClassNotFoundException
-     */
+    //Menu Functionality
     public void saveMenu() throws FileNotFoundException, IOException, ClassNotFoundException {
         //Testing File IO
         File file = new File("Menu.txt");
@@ -597,11 +566,7 @@ public class MenuController {
         output.close();
         fo.close();
     }
-    /**
-     * Loads menu from text file when program starts. 
-     * @throws IOException
-     * @throws ClassNotFoundException
-     */
+
     public void loadMenu() throws IOException, ClassNotFoundException {
         //Import back into collection
         File file = new File("Menu.txt");
@@ -630,9 +595,7 @@ public class MenuController {
         }
 
     }
-    /**
-     * Displays options related to menu control.
-     */
+
     public void displayMenuOptions() {		//Display main menu options
         System.out.println("Menu Options (Enter -1 to go back)");
         System.out.println("1. Create new menu item");

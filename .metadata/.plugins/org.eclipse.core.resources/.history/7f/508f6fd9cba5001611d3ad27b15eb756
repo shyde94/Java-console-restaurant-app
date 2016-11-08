@@ -22,19 +22,35 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class OrderController {
-
-
+<<<<<<< HEAD
+	private TableAll tIR;
+	private Menu menuToOrderFrom;
+	//private ArrayList<Staff> allTheStaff;
+	
+	
+	public OrderController(){
+		tIR = TableController.TableRecords;
+		menuToOrderFrom = MenuController.menu;
+		//allTheStaff = new ArrayList<Staff>();
+	}
+	
+	public void run() throws InputMismatchException {
+=======
 
     private final static String SPACING = "**********************************************";
     private final static String SPACING2 = "##############################################";
     private TableAll tIR;
     private Menu menuToOrderFrom;
-    //private ArrayList<Staff> allTheStaff;
+    private ArrayList<Staff> allTheStaff;
 
-    
+    public OrderController() {
+        tIR = TableController.TableRecords;
+        menuToOrderFrom = MenuController.menu;
+        allTheStaff = new ArrayList<Staff>();
+    }
 
     public void run() throws InputMismatchException {
-
+>>>>>>> fd6de89e13f16b38ad3b2d59826535bce99f1114
         boolean x = true;
         Scanner input = new Scanner(System.in);
         while (x) {

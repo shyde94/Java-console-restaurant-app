@@ -22,16 +22,31 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class OrderController {
-
+	private TableAll tIR;
+	private Menu menuToOrderFrom;
+	//private ArrayList<Staff> allTheStaff;
+	
+	
+	public OrderController(){
+		tIR = TableController.TableRecords;
+		menuToOrderFrom = MenuController.menu;
+		//allTheStaff = new ArrayList<Staff>();
+	}
+	
+	public void run() throws InputMismatchException {
 
 
     private final static String SPACING = "**********************************************";
     private final static String SPACING2 = "##############################################";
     private TableAll tIR;
     private Menu menuToOrderFrom;
-    //private ArrayList<Staff> allTheStaff;
+    private ArrayList<Staff> allTheStaff;
 
-    
+    public OrderController() {
+        tIR = TableController.TableRecords;
+        menuToOrderFrom = MenuController.menu;
+        allTheStaff = new ArrayList<Staff>();
+    }
 
     public void run() throws InputMismatchException {
 

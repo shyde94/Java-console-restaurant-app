@@ -65,11 +65,13 @@ public class SalesRecords {
 				tempRecords.get(i).printOrderSheetDetails();
 				revenue += tempRecords.get(i).getTotalBill();
 			}
-
+<<<<<<< HEAD
 			System.out.println("Time period: " + dateToCheck);
+			System.out.println("######################## Revenue: "+ revenue);
+=======
 			System.out.println("###### Revenue in "+ dateToCheck+" = "+ revenue+" #######");
                         System.out.println(SPACING2);
-
+>>>>>>> fd6de89e13f16b38ad3b2d59826535bce99f1114
 		}
 		return revenue;
 		

@@ -9,8 +9,7 @@ import java.util.Scanner;
 
 import entity.Menu;
 import entity.MenuItem;
-
-import entity.Restaurant;
+import entity.MenuTestingApp;
 import entity.OrderSheetPerTable;
 import entity.SalesRecords;
 import entity.Staff;
@@ -23,19 +22,35 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class OrderController {
-
-
+<<<<<<< HEAD
+	private TableAll tIR;
+	private Menu menuToOrderFrom;
+	//private ArrayList<Staff> allTheStaff;
+	
+	
+	public OrderController(){
+		tIR = TableController.TableRecords;
+		menuToOrderFrom = MenuController.menu;
+		//allTheStaff = new ArrayList<Staff>();
+	}
+	
+	public void run() throws InputMismatchException {
+=======
 
     private final static String SPACING = "**********************************************";
     private final static String SPACING2 = "##############################################";
     private TableAll tIR;
     private Menu menuToOrderFrom;
-    //private ArrayList<Staff> allTheStaff;
+    private ArrayList<Staff> allTheStaff;
 
-    
+    public OrderController() {
+        tIR = TableController.TableRecords;
+        menuToOrderFrom = MenuController.menu;
+        allTheStaff = new ArrayList<Staff>();
+    }
 
     public void run() throws InputMismatchException {
-
+>>>>>>> fd6de89e13f16b38ad3b2d59826535bce99f1114
         boolean x = true;
         Scanner input = new Scanner(System.in);
         while (x) {
@@ -128,7 +143,6 @@ public class OrderController {
                 System.out.println("Enter staff ID (Enter -1 to go back)");
                 try {
                     staffId = input.nextInt();
-                    System.out.println(SPACING2);
                     y = false;
                 } catch (InputMismatchException e) {
                     System.out.println("Invalid staff ID");
@@ -144,7 +158,6 @@ public class OrderController {
                 System.out.println("Please enter table number first: (Enter -1 to go back)");
                 try {
                     tableNumber = input.nextInt();
-                    System.out.println(SPACING2);
                     if (tableNumber == -1) {
                         break;
                     }
@@ -175,7 +188,6 @@ public class OrderController {
                 do {
                     try {
                         quantity = input.nextInt();
-                        System.out.println(SPACING2);
                         y = false;
                     } catch (InputMismatchException e) {
                         System.out.println("Please enter a number.");

@@ -58,14 +58,13 @@ public class SalesRecords {
 		double revenue=0;
 		SimpleDateFormat sdf = new SimpleDateFormat(format);
 		ArrayList<Double>breakDown = new ArrayList<Double>();
-		ArrayList<OrderSheetPerTable> tempRecords = QuerySalesRecordsOnDate(dateToCheck, format);
+		ArrayList<OrderSheetPerTable> tempRecords = QuerySalesRecordsOnDate(dateToCheck, "dd-MM-yyyy");
 		if(!(tempRecords.isEmpty())){
 			for(int i=0;i<tempRecords.size();i++){
 				tempRecords.get(i).printOrderSheetDetails();
 				revenue += tempRecords.get(i).getTotalBill();
 			}
-			System.out.println("Time period: " + dateToCheck);
-			System.out.println("######################## Revenue: "+ revenue);
+			System.out.println("######################## Revenue in "+ dateToCheck+" = "+ revenue);
 		}
 		return revenue;
 		

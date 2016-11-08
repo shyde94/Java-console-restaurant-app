@@ -23,13 +23,13 @@ import java.util.logging.Logger;
 public class OrderController {
 	private TableAll tIR;
 	private Menu menuToOrderFrom;
-	//private ArrayList<Staff> allTheStaff;
+	private ArrayList<Staff> allTheStaff;
 	
 	
 	public OrderController(){
 		tIR = TableController.TableRecords;
 		menuToOrderFrom = MenuController.menu;
-		//allTheStaff = new ArrayList<Staff>();
+		allTheStaff = new ArrayList<Staff>();
 	}
 	
 	public void run() throws InputMismatchException {

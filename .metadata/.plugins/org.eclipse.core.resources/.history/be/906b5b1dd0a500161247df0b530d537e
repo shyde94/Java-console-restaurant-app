@@ -31,12 +31,7 @@ public class OrderController {
     private Menu menuToOrderFrom;
     //private ArrayList<Staff> allTheStaff;
 
-    public OrderController(){
-    	tIR = TableController.TableRecords;
-    	menuToOrderFrom = MenuController.menu;
-    	
-    	
-    }
+    
 
     public void run() throws InputMismatchException {
 
@@ -148,11 +143,10 @@ public class OrderController {
                 try {
                 	
                     tableNumber = input.nextInt();
-                    
+                    System.out.println("tableNumber:" + tableNumber);
                     if (tableNumber == -1) {
                         break;
                     }
-        
                     tempTable = tIR.getTable(tableNumber);
                     tIR.initialiseOrderSheetForTable(tableNumber, staffId, today);
                     y = false;

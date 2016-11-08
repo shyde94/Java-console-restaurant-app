@@ -27,7 +27,7 @@ public class Menu {
     }
 
     /**
-     * getTypes method
+     * Get types
      * @return types of items restaurant serves, eg. Mains, Drinks, etc.
      */
     public ArrayList<String> getTypes() {
@@ -35,7 +35,7 @@ public class Menu {
     }
     
     /**
-     * Addnew type of menu item into the menuItem.
+     * Add new type of menu item into the menuItem.
      * @param name what to call the new type.
      */
     public void addTypes(String name) {

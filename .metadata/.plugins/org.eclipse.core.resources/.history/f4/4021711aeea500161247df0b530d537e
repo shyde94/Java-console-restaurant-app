@@ -257,7 +257,7 @@ public class ReservationController {
                 System.out.println("There were no tables with sufficient seats for " + numpax + " people");
             }
         }
-        
+        input.close();
     }
 
     public void checkReservation() {

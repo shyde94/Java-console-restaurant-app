@@ -45,6 +45,7 @@ public class Menu {
     }
 
     /**
+     * printTypes method
      * Prints out all types of items in menuItem
      */
     public void printTypes() {
@@ -55,7 +56,6 @@ public class Menu {
     }
 
     /**
-     *
      * @return Promotional Packages
      */
     public ArrayList<PromotionalPackage> getPPackage() {
@@ -68,12 +68,18 @@ public class Menu {
 
     /**
      *
+
+     * retrieves menuItem 
+
      * @return Main menu
      */
     public ArrayList<MenuItem> getMenuItem() {
         return this.menuItem;
     }
-
+    /**
+     * assign menuItem
+     * @param menu ArraList<MenuItem> object
+     */
     public void setMenuItem(ArrayList<MenuItem> menu) {
         this.menuItem = menu;
     }
@@ -186,7 +192,8 @@ public class Menu {
         }
     }
 
-    /* public void displayMenuAndItems(ArrayList<MenuItem> mItem) {
+
+     public void displayMenuAndItems(ArrayList<MenuItem> mItem) {
         for (int j = 0; j < types.size(); j++) {
             System.out.println("######" + types.get(j) + "######");
             for (int i = 0; i < mItem.size(); i++) {
@@ -205,13 +212,14 @@ public class Menu {
             System.out.printf("%-30s", "******" + pPackage.get(i).getName() + "******");
             System.out.printf("%20s%n",
                     new DecimalFormat("$###,##0.00").format(pPackage.get(i).getPrice()));
-            System.out.println("\"" + pPackage.get(i).getDesc() + "\"");
+            System.out.println("\"" + pPackage.get(i).getDescription()+ "\"");
             ArrayList<MenuItem> pItemList = pPackage.get(i).getItemList();
             for (int j = 0; j < pItemList.size(); j++) {
                 System.out.println("- " + pItemList.get(j).getName());
             }
         }
-    }*/
+    }
+
     /**
      * Prints all items in menuItem.
      */
@@ -232,16 +240,5 @@ public class Menu {
         }
     }
 
-    public void printMenuItem() {
-        int x;
-        System.out.println("Menu:");
-        for (MenuItem s : menuItem) {
-            x = menuItem.indexOf(s);
-            x++;
-            System.out.print(x + ". ");
-            s.printItem();
-        }
-    }
-
-    //Promotional Package Functions
+    
 }

@@ -64,19 +64,18 @@ public class Restaurant {
         mC.loadMenu();
         reserveC.loadReservations();
         sRecordsC.loadSalesRecord();
-        try {
-            tableC.run();
-
-            System.out.println(SPACING2);
-        } catch (InputMismatchException e) {
-            System.out.println("Error caught by MenuTestingApp2");
-        }
         boolean x = true;
         while (x) {
             // displayMenu();
             boolean y;
             int choice = 0;
-
+            try {
+                tableC.run();
+                
+            System.out.println(SPACING2);
+            } catch (InputMismatchException e) {
+                System.out.println("Error synching tables with reservations.");
+            }
             do {
                 y = true;
                 try {
@@ -93,7 +92,6 @@ public class Restaurant {
                 case (1):
                     try {
                         orderC.run();
-
                     } catch (InputMismatchException e) {
                         System.out.println("Error caught by MenuTestingApp");
                         input.next();
@@ -104,20 +102,17 @@ public class Restaurant {
                     break;
                 case (2):
                     try {
-
                         mC.run();
                     } catch (InputMismatchException e) {
-                        System.out.println("Error caught by MenuTestingApp2");
+                        System.out.println("Error caught by MenuTestingApp");
                     }
                     break;
                 case (3):
                     try {
                         reserveC.run();
-
                     } catch (InputMismatchException e) {
-                        System.out.println("Error caught by MenuTestingApp");
-                        input.next();
-
+                        System.out.println("Invalid option.");
+                        input.nextLine();
                     }
                     break;
                 case (4):
@@ -125,7 +120,6 @@ public class Restaurant {
                     break;
                 case (5):
                     try {
-
                         sRecordsC.run();
                     } catch (InputMismatchException e) {
                         System.out.println("Error caught by MenuTestingApp2");

@@ -41,6 +41,9 @@ public class MenuController {
     public Menu getMenu() {
         return this.menu;
     }
+    
+    private final static String SPACING = "**********************************************";
+    private final static String SPACING2 = "##############################################";
     /**
      * Allows user to choose desired option based on a drop down list.
      * Methods will be called based on what user inputs. 
@@ -53,6 +56,7 @@ public class MenuController {
             boolean y = true;
             this.displayMenuOptions();
             int choice = input.nextInt();
+            System.out.println(SPACING2);
             switch (choice) {
                 case (1):
                     do {
@@ -221,6 +225,7 @@ public class MenuController {
                 MenuController.showMenuTypes();
                 try {
                     choice = input.nextInt();
+                    System.out.println(SPACING2);
                     if (choice == -1) {
                         break;
                     }
@@ -248,6 +253,7 @@ public class MenuController {
                     System.out.println("Choose item to update: (Enter -1 to go back)");
                     printTempArrayList(updateItem);
                     index = input.nextInt();
+                    System.out.println(SPACING2);
                     if (index == -1) {
                         y = false;
                         continue;
@@ -348,6 +354,7 @@ public class MenuController {
                 MenuController.showMenuTypes();
                 try {
                     choice = input.nextInt();
+                    System.out.println(SPACING2);
                     if (choice == -1) {
                         break;
                     }
@@ -373,6 +380,7 @@ public class MenuController {
                         System.out.println("Choose item to remove: (Enter -1 to go back)");
                         printTempArrayList(deleteItem);
                         index = input.nextInt();
+                        System.out.println(SPACING2);
                     }
                     if (index == -1) {
                         continue;
@@ -413,6 +421,7 @@ public class MenuController {
                 showMenuTypes();
                 try {
                     choice = input.nextInt();
+                    System.out.println(SPACING2);
                     if (choice == -1) {
                         break;
                     }
@@ -442,6 +451,7 @@ public class MenuController {
                         System.out.println("Choose item to select: (Enter -1 to go back)");
                         printTempArrayList(toSelect);
                         index = input.nextInt();
+                        System.out.println(SPACING2);
 
                     }
                     if (index == -1) {
@@ -522,11 +532,14 @@ public class MenuController {
                
 
                 do {
+                    System.out.println(SPACING);
                     System.out.println("Select next option: (Enter -1 to go back)");
                     System.out.println("1. Add more items");
                     System.out.println("2. Save promotional package");
+                    System.out.println(SPACING);
                     try {
                         choice = input.nextInt();
+                        System.out.println(SPACING2);
                         if (choice < -1) {
                             System.out.println("Invalid Option.");
                             continue;
@@ -645,8 +658,10 @@ public class MenuController {
 
 
     public static void showMenuTypes() {
+        System.out.println(SPACING);
         System.out.println("Please select item type: (Enter -1 to go back)");
         menu.printTypes();
+        System.out.println(SPACING);
     }
 
     public static void printTempArrayList(ArrayList<MenuItem> a) {

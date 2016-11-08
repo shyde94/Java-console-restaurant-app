@@ -17,6 +17,7 @@ import controllers.ReservationController;
 
 public class SalesRecords {
 	public static ArrayList<OrderSheetPerTable> allTheSalesRecords;
+        private final static String SPACING2 = "##############################################";
 	
 	public SalesRecords(){
 		allTheSalesRecords = new ArrayList<OrderSheetPerTable>();
@@ -64,7 +65,8 @@ public class SalesRecords {
 				tempRecords.get(i).printOrderSheetDetails();
 				revenue += tempRecords.get(i).getTotalBill();
 			}
-			System.out.println("######################## Revenue in "+ dateToCheck+" = "+ revenue);
+			System.out.println("###### Revenue in "+ dateToCheck+" = "+ revenue+" #######");
+                        System.out.println(SPACING2);
 		}
 		return revenue;
 		

@@ -33,6 +33,9 @@ public class ReservationController {
 
     public static ReservationAll allTheReservations;
     private TableAll allTheTables;
+    
+    private final static String SPACING = "**********************************************";
+    private final static String SPACING2 = "##############################################";
 
     public ReservationController() {
         allTheReservations = new ReservationAll();

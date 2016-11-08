@@ -23,6 +23,9 @@ import java.io.ObjectOutputStream;
 public class SalesRecordsController {
 
     private SalesRecords recordsOfSales;
+    
+    private final static String SPACING = "**********************************************";
+    private final static String SPACING2 = "######################################";
 
     public SalesRecordsController() {
         recordsOfSales = new SalesRecords();
@@ -37,7 +40,7 @@ public class SalesRecordsController {
     }
 
     public void run() throws InputMismatchException {
-        System.out.println("########## Sales Records ##########");
+        System.out.println("###########      Sales Records      ##########");
         boolean x = true;
         Scanner input = new Scanner(System.in);
         while (x) {
@@ -185,11 +188,14 @@ public class SalesRecordsController {
     }
 
     public void displayMenuOptions() {
-        System.out.println("Select option: (Enter -1 to go back)");
-        System.out.println("1. Calculate Revenue today");
-        System.out.println("2. Calculate Revenue on specific date");
-        System.out.println("3. Calculate Revenue in specific month");
-        System.out.println("4. See all sales records");
+        System.out.println(SPACING);
+        
+        System.out.println("*    Select option: (Enter -1 to go back)    *");
+        System.out.println("*    1. Calculate Revenue today              *");
+        System.out.println("*    2. Calculate Revenue on specific date   *");
+        System.out.println("*    3. Calculate Revenue in specific month  *");
+        System.out.println("*    4. See all sales records                *");
+        System.out.println(SPACING);
         //System.out.println("5. Save Records");
         //System.out.println("6. Load Records");
     }

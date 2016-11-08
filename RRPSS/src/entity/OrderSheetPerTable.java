@@ -5,8 +5,9 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import com.sun.glass.ui.Pixels.Format;
+import java.io.Serializable;
 
-public class OrderSheetPerTable {
+public class OrderSheetPerTable implements Serializable{
 	private int tableNum;
 	private int staffId;
 	private Date dateNTime;

@@ -25,7 +25,8 @@ public class SalesRecordsController {
     private SalesRecords recordsOfSales;
     
     private final static String SPACING = "**********************************************";
-    private final static String SPACING2 = "######################################";
+    
+    private final static String SPACING2 = "##############################################";
 
     public SalesRecordsController() {
         recordsOfSales = new SalesRecords();
@@ -47,6 +48,7 @@ public class SalesRecordsController {
             boolean y = true;
             this.displayMenuOptions();
             int choice = input.nextInt();
+            System.out.println(SPACING2);
             switch (choice) {
                 case (1):
                     do {

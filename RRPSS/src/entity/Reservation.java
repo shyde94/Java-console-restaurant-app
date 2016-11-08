@@ -3,6 +3,15 @@ package entity;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * Reservation Class contains all the information related to a reservation
+ * 9/11/2016
+ * 
+ * @author Shide 
+ * @author Eeyern 
+ * @author Grace 
+ * @author Xi Tong 
+ */
 public class Reservation  implements Serializable{
 	private int tableNumber;
 	private int numberOfPeople;
@@ -15,12 +24,17 @@ public class Reservation  implements Serializable{
 	
 	
 	//Constructors 
-	
-	
-
-
-
-
+/**
+ * Reservation Constructor 
+ * 
+ * @param tableNumber
+ * @param numberOfPeople
+ * @param hpNumber
+ * @param customerName
+ * @param dateReserved
+ * @param timeOfArrival
+ * @param slot 
+ */
 	public Reservation(int tableNumber, int numberOfPeople, String hpNumber, String customerName, String dateReserved, String timeOfArrival, String slot){
 		this.setTableNumber(tableNumber);
 		this.setNumberOfPeople(numberOfPeople);

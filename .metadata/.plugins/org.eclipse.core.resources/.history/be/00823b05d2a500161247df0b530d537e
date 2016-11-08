@@ -4,7 +4,10 @@ import controllers.MenuController;
 import controllers.OrderController;
 import controllers.ReservationController;
 import controllers.SalesRecordsController;
-
+<<<<<<< HEAD
+import controllers.TableController;
+=======
+>>>>>>> e033c18e27a134b1832aaaca57abb82943347294
 
 import java.util.InputMismatchException;
 import java.util.NoSuchElementException;

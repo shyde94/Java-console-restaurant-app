@@ -50,6 +50,7 @@ public class ReservationController {
             boolean y = true;
             this.displayMenuOptions();
             choice = input.nextInt();
+            System.out.println(SPACING2);
             switch (choice) {
                 case (1):
                     do {
@@ -211,6 +212,7 @@ public class ReservationController {
                 do {
                     try {
                         numpax = input.nextInt();
+                        System.out.println(SPACING2);
                         cont = 1;
                     } catch (InputMismatchException e) {
                         System.out.println("Please enter a number");
@@ -309,6 +311,7 @@ public class ReservationController {
                         try {
                             System.out.println("Select reservation to remove: (Enter -1 to go back)");
                             choice = input.nextInt();
+                            System.out.println(SPACING2);
                             y = false;
                         } catch (InputMismatchException e) {
                             System.out.println("Invalid option");

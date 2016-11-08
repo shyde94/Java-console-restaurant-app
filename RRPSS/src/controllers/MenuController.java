@@ -162,6 +162,7 @@ public class MenuController {
             System.out.println("What type of item do you wish to add?");
             this.showMenuTypes();
             choice = input.nextInt();
+            System.out.println(SPACING2);
             if (choice == -1) {
                 return;
             }

@@ -9,7 +9,10 @@ import java.util.Scanner;
 
 import entity.Menu;
 import entity.MenuItem;
+<<<<<<< HEAD
+=======
 
+>>>>>>> e033c18e27a134b1832aaaca57abb82943347294
 import entity.Restaurant;
 import entity.OrderSheetPerTable;
 import entity.SalesRecords;
@@ -150,6 +153,7 @@ public class OrderController {
                 try {
                 	
                     tableNumber = input.nextInt();
+
                     System.out.println(SPACING2);
 
                     if (tableNumber == -1) {

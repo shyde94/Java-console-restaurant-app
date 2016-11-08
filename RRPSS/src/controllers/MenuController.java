@@ -47,7 +47,7 @@ public class MenuController {
     /**
      * Allows user to choose desired option based on a drop down list.
      * Methods will be called based on what user inputs. 
-     * @throws InputMismatchException
+     * @throws InputMismatchException invalid option
      */
     public void run() throws InputMismatchException {
         boolean x = true;
@@ -583,9 +583,9 @@ public class MenuController {
 
     /**
      * Saves Menu into text file, all changes made are recorded using this method. 
-     * @throws FileNotFoundException
-     * @throws IOException
-     * @throws ClassNotFoundException
+     * @throws FileNotFoundException if the file is not found
+     * @throws IOException if there is an error with input and output
+     * @throws ClassNotFoundException if the class is not found
      */
     public void saveMenu() throws FileNotFoundException, IOException, ClassNotFoundException {
         //Testing File IO
@@ -622,8 +622,8 @@ public class MenuController {
     }
     /**
      * Loads menu from text file when program starts. 
-     * @throws IOException
-     * @throws ClassNotFoundException
+     * @throws IOException if there is an error with the input and output
+     * @throws ClassNotFoundException if the class is not found
      */
     public void loadMenu() throws IOException, ClassNotFoundException {
         //Import back into collection

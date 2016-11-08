@@ -4,31 +4,55 @@ import java.util.ArrayList;
 
 import java.util.Date;
 
+/**
+ * ReservationAll Class contains functionality for all the reservations
+ * 9/11/2016
+ *
+ * @author Shide
+ * @author Eeyern
+ * @author Grace
+ * @author Xi Tong
+ */
 public class ReservationAll {
 
+    /**
+     * Reservation ArrayList 
+     */
     private ArrayList<Reservation> reservationList;
-
-    //Constructor
+    
+    /**
+     * Constructor for Reservation All to create an ArrayList of Reservations
+     */
     public ReservationAll() {
         reservationList = new ArrayList<Reservation>();
     }
 
     /**
-     *
-     * @param tableNumber the number assigned to the table
-     * @param numberOfPeople for how many people
-     * @param hpNumber handphone number of customer
-     * @param customerName name of customer
-     * @param start date and time the table is being reserved for
+     * getReservationList method retrieves the reservation list
+     * @return the reservation list
      */
     public ArrayList<Reservation> getReservationList() {
         return reservationList;
     }
 
+    /**
+     * setReservation method assigns all the reservations to a list
+     * @param reservation assigned reservations to list
+     */
     public void setReservation(ArrayList<Reservation> reservation) {
         this.reservationList = reservation;
     }
 
+    /**
+     * createReservation allows a reservation to be made
+     * @param tableNumber The tables number assigned to the reservation
+     * @param numberOfPeople The number of people attached to the reservation
+     * @param hpNumber The handphone number of the customer
+     * @param customerName The name of the customer
+     * @param dateReserved The date reserved
+     * @param timeOfArrival The time of the reservation
+     * @param slot The AM/PM slot
+     */
     public void createReservation(int tableNumber, int numberOfPeople, String hpNumber, String customerName, String dateReserved, String timeOfArrival, String slot) {
         Reservation newRes = new Reservation(tableNumber, numberOfPeople, hpNumber, customerName, dateReserved, timeOfArrival, slot);
         reservationList.add(newRes);
@@ -37,7 +61,7 @@ public class ReservationAll {
     }
 
     /**
-     *
+     * deleteReservation method removes a reservation from the list
      * @param todelete Reservation object to remove from reservationList
      */
     public void deleteReservation(Reservation todelete) {
@@ -57,7 +81,7 @@ public class ReservationAll {
     }
 
     /**
-     *
+     * checkReservationsOnDate will check the reservation list by date
      * @param input date object to check which tables are being reserved.
      */
     public void checkReservationsOnDate(String input) {
@@ -81,6 +105,13 @@ public class ReservationAll {
 
     }
 
+    /**
+     * reservedTablesonDate will check the tables that have a reservation
+     * on that date
+     * @param input the date
+     * @param slot time in AM/PM
+     * @return all the reserved tables
+     */
     public ArrayList<Integer> reservedTablesOnDate(String input, String slot) {
         //System.out.println("Input date:" + input);
         ArrayList<Integer> reservedTables = new ArrayList<Integer>();
@@ -95,6 +126,12 @@ public class ReservationAll {
         return reservedTables;
     }
 
+    /**
+     * reservationsMadeOnDate will check the reservations made on a specific date
+     * @param input is the date
+     * @param slot AM/PM slot
+     * @return the list of reservations
+     */
     public ArrayList<Reservation> reservationsMadeOnDate(String input, String slot) {
         //System.out.println("Input date:" + input);
         ArrayList<Reservation> tempList = new ArrayList<Reservation>();
@@ -110,6 +147,10 @@ public class ReservationAll {
 
         return tempList;
     }
+    
+    /**
+     * showAllReservations method will display all the reservations
+     */
 
     public void showAllReservations() {
         for (int i = 0; i < reservationList.size(); i++) {

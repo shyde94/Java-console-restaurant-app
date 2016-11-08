@@ -5,7 +5,6 @@ import controllers.OrderController;
 import controllers.ReservationController;
 import controllers.SalesRecordsController;
 
-
 import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -22,14 +21,35 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+/**
+ * Restaurant class is the overall controller of the rrpss system 9/11/2016
+ *
+ * @author Shide
+ * @author Eeyern
+ * @author Grace
+ * @author Xi Tong
+ *
+ */
 public class Restaurant {
 
     /**
-     * The constant spacing.
+     *  The constant spacing for menu
      */
     private final static String SPACING = "**********************************************";
+    
+    /**
+     * The constant spacing for user input
+     */
     private final static String SPACING2 = "##############################################";
 
+    /**
+     * Main Method will create the constructors for all the restaurant constants
+     * @throws FileNotFoundException if the file cannot be found
+     * @throws IOException if there is a problem with the writing and reading of
+     * the file
+     * @throws ClassNotFoundException class could not be found when loading
+     * @param args  main method argument
+     */
     public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
         System.out.println(SPACING2);
         System.out.println("Program Started...");
@@ -45,8 +65,8 @@ public class Restaurant {
         sRecordsC.loadSalesRecord();
         try {
             tableC.run();
-            
-        System.out.println(SPACING2);
+
+            System.out.println(SPACING2);
         } catch (InputMismatchException e) {
             System.out.println("Error caught by MenuTestingApp2");
         }
@@ -119,7 +139,7 @@ public class Restaurant {
     }
 
     public static void displayMenu() {
-        System.out.println(SPACING); 
+        System.out.println(SPACING);
         System.out.println("*  THE EMPERIAL FORTUNE COOKIES RESTAURANT   *");
         System.out.println("*    1. Order                                *");
         System.out.println("*    2. Menu                                 *");

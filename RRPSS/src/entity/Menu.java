@@ -116,6 +116,7 @@ public class Menu {
      * @param price price of the item.
      * @param desc description of the item.
      * @param type type of item, eg Mains, Drinks, Desserts, etc.
+     * @param n the index of the array
      */
     public void updateItem(String name, double price, String desc, String type, int n) {
         MenuItem temp = null;

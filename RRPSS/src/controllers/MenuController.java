@@ -73,6 +73,10 @@ public class MenuController {
                         }
                     } while (y);
                     break;
+                     case (2):
+                    addPPackage();
+                    System.out.println("Promotional Package Created Successfully");
+                    break;
                 case (3):
                     do {
                         try {
@@ -97,10 +101,6 @@ public class MenuController {
                             System.out.println("There is no such option!");
                         }
                     } while (y);
-                    break;
-                case (2):
-                    addPPackage();
-                    System.out.println("Promotional Package Created Successfully");
                     break;
                 case (5):
                     ArrayList<MenuItem> menuItems = menu.getMenuItem();

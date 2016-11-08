@@ -14,7 +14,15 @@ public class SalesRecords {
 		allTheSalesRecords = new ArrayList<OrderSheetPerTable>();
 		
 	}
+        
+        public ArrayList <OrderSheetPerTable> getSalesRecords(){
+            return allTheSalesRecords;
+        }
 	
+        public void setSalesRecords(ArrayList <OrderSheetPerTable> sales){
+            allTheSalesRecords = sales;
+        }
+        
 	public void printAllSalesRecords(){
 		for(int i=0;i<allTheSalesRecords.size();i++){
 			OrderSheetPerTable tempOrderSheet = allTheSalesRecords.get(i);

@@ -14,6 +14,9 @@ import entity.SalesRecords;
 import entity.Staff;
 import entity.Table;
 import entity.TableAll;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class OrderController {
 	private TableAll tIR;
@@ -72,6 +75,13 @@ public class OrderController {
                     break;
                 case (4):
                     this.PrintInvoiceAndCheckOut();
+            {
+                try {
+                    SalesRecordsController.saveSalesRecord();
+                } catch (IOException ex) {
+                    Logger.getLogger(OrderController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
                     break;
                 case (5):
                     this.viewOrder();

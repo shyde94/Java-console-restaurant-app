@@ -15,7 +15,6 @@ public class Menu {
     private ArrayList<PromotionalPackage> pPackage;
 
     
-    
     public Menu() {
         menuItem = new ArrayList<MenuItem>();
         types = new ArrayList<String>();
@@ -134,17 +133,13 @@ public class Menu {
      */
     public ArrayList<MenuItem> reOrderItems(String itemType) {
         ArrayList<MenuItem> updateItem = new ArrayList<MenuItem>();
+        int size = menuItem.size();
         // System.out.println("Size: " + size);
         for (int i = 0; i < menuItem.size(); i++) {
             if (menuItem.get(i).getType().equals(itemType)) {
                 //System.out.println(menuItem.get(i));
                 updateItem.add(menuItem.get(i));
             }
-        }
-        for(int i=0;i<pPackage.size();i++){
-        	if(itemType.equals("Promotional Package")){
-        		updateItem.add(pPackage.get(i));
-        	}
         }
         return updateItem;
 

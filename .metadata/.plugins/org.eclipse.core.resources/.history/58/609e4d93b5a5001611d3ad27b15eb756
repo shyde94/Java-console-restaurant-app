@@ -81,7 +81,7 @@ public class MenuController {
                     } while (y);
                     break;
 
-                case (4):
+                case (3):
                     do {
                         try {
                             this.deleteMenuItem();
@@ -98,13 +98,13 @@ public class MenuController {
                     addPPackage();
                     System.out.println("Promotional Package Created Successfully");
                     break;
-                case (5):
+                case (4):
                     ArrayList<MenuItem> menuItems = menu.getMenuItem();
                    // menu.displayMenuAndItems(menuItems);
                     menu.printMenuItemsMenu();
                     menu.printPromotionalPackages();
                     break;
-                case (6): {
+                case (5): {
                     try {
                         saveMenu();
                         System.out.println("Items Successfully Saved into menu");
@@ -128,9 +128,8 @@ public class MenuController {
         System.out.println("1. Create new menu item");
         System.out.println("2. Create Promotional Package~~");
         System.out.println("3. Update menu item / Propotional package");
-        System.out.println("4. Remove menu item/ Promotional package");
-        System.out.println("5. Display menu");
-        System.out.println("6. Save menu");
+        System.out.println("4. Display menu");
+        System.out.println("5. Save menu");
     }
 
     //Menu Item Functionality

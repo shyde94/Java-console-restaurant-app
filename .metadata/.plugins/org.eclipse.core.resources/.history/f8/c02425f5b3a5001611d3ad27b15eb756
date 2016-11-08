@@ -15,7 +15,6 @@ public class Menu {
     private ArrayList<PromotionalPackage> pPackage;
 
     
-    
     public Menu() {
         menuItem = new ArrayList<MenuItem>();
         types = new ArrayList<String>();

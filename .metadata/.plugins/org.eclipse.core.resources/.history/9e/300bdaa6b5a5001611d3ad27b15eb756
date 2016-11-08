@@ -129,8 +129,8 @@ public class MenuController {
         System.out.println("2. Create Promotional Package~~");
         System.out.println("3. Update menu item / Propotional package");
         System.out.println("4. Remove menu item/ Promotional package");
-        System.out.println("5. Display menu");
-        System.out.println("6. Save menu");
+        System.out.println("4. Display menu");
+        System.out.println("5. Save menu");
     }
 
     //Menu Item Functionality

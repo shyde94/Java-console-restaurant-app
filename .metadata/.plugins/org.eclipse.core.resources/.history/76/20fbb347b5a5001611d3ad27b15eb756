@@ -99,12 +99,15 @@ public class MenuController {
                     System.out.println("Promotional Package Created Successfully");
                     break;
                 case (5):
+                    //deletePPackage();
+                    System.out.println("Promotional Package Deleted Successfully");
+                case (6):
                     ArrayList<MenuItem> menuItems = menu.getMenuItem();
                    // menu.displayMenuAndItems(menuItems);
                     menu.printMenuItemsMenu();
                     menu.printPromotionalPackages();
                     break;
-                case (6): {
+                case (7): {
                     try {
                         saveMenu();
                         System.out.println("Items Successfully Saved into menu");
@@ -121,16 +124,6 @@ public class MenuController {
                     System.out.println("Please select a valid option");
             }
         }
-    }
-    
-    public void displayMenuOptions() {		//Display main menu options
-        System.out.println("Menu Options (Enter -1 to go back)");
-        System.out.println("1. Create new menu item");
-        System.out.println("2. Create Promotional Package~~");
-        System.out.println("3. Update menu item / Propotional package");
-        System.out.println("4. Remove menu item/ Promotional package");
-        System.out.println("5. Display menu");
-        System.out.println("6. Save menu");
     }
 
     //Menu Item Functionality
@@ -640,7 +633,15 @@ public class MenuController {
     /**
      * Displays options related to menu control.
      */
-
+    public void displayMenuOptions() {		//Display main menu options
+        System.out.println("Menu Options (Enter -1 to go back)");
+        System.out.println("1. Create new menu item");
+        System.out.println("2. Create Promotional Package~~");
+        System.out.println("3. Update menu item / Propotional package");
+        System.out.println("4. Remove menu item ");
+        System.out.println("5. Display menu");
+        System.out.println("6. Save menu");
+    }
 
     public static void showMenuTypes() {
         System.out.println("Please select item type: (Enter -1 to go back)");

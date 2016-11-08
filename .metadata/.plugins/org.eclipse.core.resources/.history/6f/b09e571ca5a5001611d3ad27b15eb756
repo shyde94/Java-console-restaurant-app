@@ -50,7 +50,6 @@ public class MenuTestingApp {
 				try{
 					displayMenu();
 					choice = input.nextInt();
-					y = false;
 				}catch(InputMismatchException e){
 					System.out.println("Please choose a valid option.");
 				}

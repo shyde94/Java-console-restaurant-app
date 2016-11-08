@@ -58,7 +58,7 @@ public class SalesRecordsController {
                 case (2):
                     do {
                         try {
-                            double revenue = this.getRevenueOnDate(1);
+                            double revenue = this.getRevenueOnDate(0);
                             y = false;
                         } catch (InputMismatchException e) {
                             System.out.println("Invalid option");

@@ -2,22 +2,12 @@
 <syncparticipants>
 <participant displayName="Git (RRPSS, RRPSS)" id="org.eclipse.egit.ui.modelCompareParticipant" secondary_id="1478637245811">
 <data forceFetch="false" root="false">
-<org.eclipse.team.ui.MODEL_PARTICIPANT_SETTINGS org.eclipse.team.ui.MODEL_PARTICIPANT_DESCRIPTION="RRPSS, RRPSS" startupAction="none">
-<org.eclipse.team.ui.MODEL_PARTICIPANT_REFRESH_SCHEDULE org.eclipse.team.ui.CTX_REFRESHSCHEDULE_ENABLED="false" org.eclipse.team.ui.CTX_REFRESHSCHEDULE_INTERVAL="3600" org.eclipse.team.ui.CTX_REFRESHSCHEDULE_RUNONCE="false"/>
-<org.eclipse.team.ui.MODEL_PARTICIPANT_MAPPINGS modelProviderId="org.eclipse.jdt.ui.modelProvider">
-<mappings>
-<resources resourcePath="/RRPSS" resourceType="4"/>
-</mappings>
-</org.eclipse.team.ui.MODEL_PARTICIPANT_MAPPINGS>
-<org.eclipse.team.ui.MODEL_PARTICIPANT_MAPPINGS modelProviderId="org.eclipse.core.resources.modelProvider">
-<mappings>
-<resources resourcePath="/RRPSS" resourceType="4"/>
+<org.eclipse.team.ui.MODEL_PARTICIPANT_SETTINGS org.eclipse.team.ui.MODEL_PARTICIPANT_DESCRIPTION="RRPSS, RRPSS" startupAction="none">&#x0A;<org.eclipse.team.ui.MODEL_PARTICIPANT_REFRESH_SCHEDULE org.eclipse.team.ui.CTX_REFRESHSCHEDULE_ENABLED="false" org.eclipse.team.ui.CTX_REFRESHSCHEDULE_INTERVAL="3600" org.eclipse.team.ui.CTX_REFRESHSCHEDULE_RUNONCE="false"/>
+<org.eclipse.team.ui.MODEL_PARTICIPANT_MAPPINGS modelProviderId="org.eclipse.core.resources.modelProvider">&#x0A;<mappings>&#x0A;<resources resourcePath="/RRPSS" resourceType="4"/>
 </mappings>
 </org.eclipse.team.ui.MODEL_PARTICIPANT_MAPPINGS>
 </org.eclipse.team.ui.MODEL_PARTICIPANT_SETTINGS>
-<gitSynchronizeData container="/Users/Shide/repos/rrpss/RRPSS" dstRev="06e3962faf70926609d8318b71150a20deab6fbc" inludeLocal="true" srcRev="HEAD">
-<includedPaths>
-<path path="/Users/Shide/repos/rrpss/RRPSS"/>
+<gitSynchronizeData container="/Users/Shide/repos/rrpss/RRPSS" dstRev="06e3962faf70926609d8318b71150a20deab6fbc" inludeLocal="true" srcRev="HEAD">&#x0A;<includedPaths>&#x0A;<path path="/Users/Shide/repos/rrpss/RRPSS"/>
 </includedPaths>
 </gitSynchronizeData>
 </data>

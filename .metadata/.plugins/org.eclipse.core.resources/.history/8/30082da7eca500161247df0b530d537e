@@ -63,6 +63,17 @@ public class Restaurant {
         mC.loadMenu();
         reserveC.loadReservations();
         sRecordsC.loadSalesRecord();
+<<<<<<< HEAD
+        
+=======
+        try {
+            tableC.run();
+
+            System.out.println(SPACING2);
+        } catch (InputMismatchException e) {
+            System.out.println("Error caught by MenuTestingApp2");
+        }
+>>>>>>> 2dc69c86b4f67a4ab0bd21b73a0ba6b53286527a
         boolean x = true;
         while (x) {
             // displayMenu();

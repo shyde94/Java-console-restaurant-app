@@ -13,10 +13,10 @@ public class Table {
 /**
  * Constructor for Table
  * @param tableNumber The number assigned to the table
- * @param seats The number of seats on this table
- * @param isReserved Whether the table has been reserved
+ * @param tableSeats The number of seats on this table
+ * @param isReservedAM  Whether the table has been reserved in AM
+ * @param isReservedPM Whether the table has been reserved in PM
  * @param isOccupied Whether the table is currently being occupied
- * @param customerID The customer assigned to this table as it is being occupied
  */
 	public Table (int tableNumber, int tableSeats, boolean isReservedAM, boolean isReservedPM, boolean isOccupied){
 		this.tableNumber = tableNumber;
@@ -30,6 +30,7 @@ public class Table {
 	
 	/**
 	 * Getter and Setter Methods	
+         * @return the table number
 	 */
 
 	public int getTableNumber(){

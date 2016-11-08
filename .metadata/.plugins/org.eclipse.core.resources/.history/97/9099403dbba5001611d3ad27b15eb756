@@ -160,16 +160,16 @@ public class Menu {
         menuItem.remove(tempMenuItem);
         //    menuItem.get(n).notifyPPackage();
         System.out.println("Item has been removed");
-        for(int i=0;i<pPackage.size();i++){
+       /* for(int i=0;i<pPackage.size();i++){
         	ArrayList<MenuItem> temp = new ArrayList<MenuItem>();
         	temp = pPackage.get(i).getItemList();
         	for(int j=0;j<temp.size();j++){
         		if(temp.get(j).equals(tempMenuItem)){
-        			temp.remove(tempMenuItem);
+        			temp.remove(j);
         		}
         	}
         	
-        }
+        }*/
     }
 
    /* public void displayMenuAndItems(ArrayList<MenuItem> mItem) {

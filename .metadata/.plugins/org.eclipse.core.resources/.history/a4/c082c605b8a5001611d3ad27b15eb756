@@ -53,7 +53,6 @@ public class MenuTestingApp {
 					y = false;
 				}catch(InputMismatchException e){
 					System.out.println("Please choose a valid option.");
-					input.nextLine();
 				}
 				
 			}while(y);

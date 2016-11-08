@@ -119,7 +119,7 @@ public class Menu {
      */
     public void updateItem(String name, double price, String desc, String type, int n) {
         MenuItem temp = null;
-        //temp = menuItem.get(n);
+        temp = menuItem.get(n);
         ArrayList<MenuItem> updateItem = reOrderItems(type);
         temp = updateItem.get(n);
         temp.setName(name);
@@ -155,9 +155,8 @@ public class Menu {
      * @param type item type
      */
     public void removeItem(int n, String type) {
-    	ArrayList<MenuItem> deleteType = reOrderItems(type);
-    	MenuItem tempMenuItem = deleteType.get(n);
-        menuItem.remove(tempMenuItem);
+    	MenuItem tempMenuItem = menuItem.get(n);
+        menuItem.remove(n);
         //    menuItem.get(n).notifyPPackage();
         System.out.println("Item has been removed");
         for(int i=0;i<pPackage.size();i++){
@@ -165,7 +164,7 @@ public class Menu {
         	temp = pPackage.get(i).getItemList();
         	for(int j=0;j<temp.size();j++){
         		if(temp.get(j).equals(tempMenuItem)){
-        			temp.remove(tempMenuItem);
+        			temp.remove(j);
         		}
         	}
         	

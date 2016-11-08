@@ -336,7 +336,7 @@ public class MenuController {
         boolean x = true;
         int index = 0;
         boolean y = true;
-        int choice=0;
+        int choice;
         while (x) {
             System.out.println("######## Remove Item: ########");
             String temp_type = "";

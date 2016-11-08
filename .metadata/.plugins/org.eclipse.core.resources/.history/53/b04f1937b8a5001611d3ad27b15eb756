@@ -336,12 +336,11 @@ public class MenuController {
         boolean x = true;
         int index = 0;
         boolean y = true;
-        int choice=0;
         while (x) {
             System.out.println("######## Remove Item: ########");
             String temp_type = "";
             ArrayList<MenuItem> deleteItem = new ArrayList<MenuItem>();
-            
+            int choice;
             //	menu.printMenuL();
             do {
                 y = true;

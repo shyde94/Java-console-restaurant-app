@@ -42,8 +42,6 @@ public class OrderController {
                             y = false;
                         } catch (InputMismatchException e) {
                             System.out.println("Invalid option");
-                        } catch (ParseException e){
-                        	System.out.println("Reservations not removed.");
                         }
                     } while (y);
                     break;

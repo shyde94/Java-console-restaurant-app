@@ -172,7 +172,6 @@ public class TableAll {
 		return tablesAvailable;
 	}
 	
-	//Problem here...only removes reservations on today. Not on days before today...hmmmm
 	public void expireReservations(ReservationAll rL, String todayString, int time_limit) throws ParseException{
 		Date today = new GregorianCalendar().getTime();
 		String restaurantShift = ReservationController.checkSlot(today);

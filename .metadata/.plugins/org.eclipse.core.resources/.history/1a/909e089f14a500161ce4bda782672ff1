@@ -97,11 +97,6 @@ public class Table {
 		orderSheet = new OrderSheetPerTable(tableNum, staffId, today);
 	}
 	
-	public void thisTableOrdered(){
-		System.out.println("Table number: " + getTableNumber());
-		orderSheet.printOrder();
-	}
-	
 	
 	public void customerCheckout(Date timeOfInvoice){
 		orderSheet.calTotalBill(timeOfInvoice); //calculates total bill including gst, timeOfInvoice is time/date this function was called

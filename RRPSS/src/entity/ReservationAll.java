@@ -16,10 +16,10 @@ import java.util.Date;
 public class ReservationAll {
 
     /**
-     * Reservation ArrayList 
+     * Reservation ArrayList
      */
     private ArrayList<Reservation> reservationList;
-    
+
     /**
      * Constructor for Reservation All to create an ArrayList of Reservations
      */
@@ -29,6 +29,7 @@ public class ReservationAll {
 
     /**
      * getReservationList method retrieves the reservation list
+     *
      * @return the reservation list
      */
     public ArrayList<Reservation> getReservationList() {
@@ -37,6 +38,7 @@ public class ReservationAll {
 
     /**
      * setReservation method assigns all the reservations to a list
+     *
      * @param reservation assigned reservations to list
      */
     public void setReservation(ArrayList<Reservation> reservation) {
@@ -45,6 +47,7 @@ public class ReservationAll {
 
     /**
      * createReservation allows a reservation to be made
+     *
      * @param tableNumber The tables number assigned to the reservation
      * @param numberOfPeople The number of people attached to the reservation
      * @param hpNumber The handphone number of the customer
@@ -62,6 +65,7 @@ public class ReservationAll {
 
     /**
      * deleteReservation method removes a reservation from the list
+     *
      * @param todelete Reservation object to remove from reservationList
      */
     public void deleteReservation(Reservation todelete) {
@@ -82,6 +86,7 @@ public class ReservationAll {
 
     /**
      * checkReservationsOnDate will check the reservation list by date
+     *
      * @param input date object to check which tables are being reserved.
      */
     public void checkReservationsOnDate(String input) {
@@ -106,8 +111,9 @@ public class ReservationAll {
     }
 
     /**
-     * reservedTablesonDate will check the tables that have a reservation
-     * on that date
+     * reservedTablesonDate will check the tables that have a reservation on
+     * that date
+     *
      * @param input the date
      * @param slot time in AM/PM
      * @return all the reserved tables
@@ -127,7 +133,9 @@ public class ReservationAll {
     }
 
     /**
-     * reservationsMadeOnDate will check the reservations made on a specific date
+     * reservationsMadeOnDate will check the reservations made on a specific
+     * date
+     *
      * @param input is the date
      * @param slot AM/PM slot
      * @return the list of reservations
@@ -147,11 +155,10 @@ public class ReservationAll {
 
         return tempList;
     }
-    
+
     /**
      * showAllReservations method will display all the reservations
      */
-
     public void showAllReservations() {
         for (int i = 0; i < reservationList.size(); i++) {
             reservationList.get(i).printReservation();

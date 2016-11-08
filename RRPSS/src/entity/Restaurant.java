@@ -22,7 +22,8 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 /**
- * Restaurant class is the overall controller of the rrpss system 9/11/2016
+ * Restaurant class is the overall controller of the rrpss system 
+ * 9/11/2016
  *
  * @author Shide
  * @author Eeyern
@@ -138,6 +139,9 @@ public class Restaurant {
         }
     }
 
+    /**
+     * displayMenu method displays the different options for the restaurant
+     */
     public static void displayMenu() {
         System.out.println(SPACING);
         System.out.println("*  THE EMPERIAL FORTUNE COOKIES RESTAURANT   *");

@@ -104,9 +104,9 @@ public class MenuController {
                     break;
                 case (5):
                     ArrayList<MenuItem> menuItems = menu.getMenuItem();
-                   // menu.displayMenuAndItems(menuItems);
-                    menu.printMenuItemsMenu();
-                    menu.printPromotionalPackages();
+                   menu.displayMenuAndItems(menuItems);
+                   // menu.printMenuItemsMenu();
+                   // menu.printPromotionalPackages();
                     break;
                 case (6): {
                     try {

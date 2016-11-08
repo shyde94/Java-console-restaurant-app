@@ -42,6 +42,7 @@ public class Menu {
         types.add(name);
     }
     /**
+     * printTypes method
      * Prints out all types of items in menuItem
      */
     public void printTypes() {
@@ -52,7 +53,7 @@ public class Menu {
     }
 
     /**
-     * 
+     * retrieves pPackage
      * @return Promotional Packages
      */
     public ArrayList<PromotionalPackage> getPPackage() {
@@ -64,13 +65,16 @@ public class Menu {
     }
 
     /**
-     * 
+     * retrives menuItem 
      * @return Main menu
      */
     public ArrayList<MenuItem> getMenuItem() {
         return this.menuItem;
     }
-
+    /**
+     * assign menuItem
+     * @param menu ArraList<MenuItem> object
+     */
     public void setMenuItem(ArrayList<MenuItem> menu) {
         this.menuItem = menu;
     }
@@ -171,33 +175,6 @@ public class Menu {
         	
         }
     }
-
-   /* public void displayMenuAndItems(ArrayList<MenuItem> mItem) {
-        for (int j = 0; j < types.size(); j++) {
-            System.out.println("######" + types.get(j) + "######");
-            for (int i = 0; i < mItem.size(); i++) {
-                if (mItem.get(i).getType().equals(types.get(j))) {
-                    System.out.printf("%-30s", mItem.get(i).getName());
-                    System.out.printf("%20s%n",
-                            new DecimalFormat("$###,##0.00").format(mItem.get(i).getPrice()));
-                    System.out.println("\"" + mItem.get(i).getDescription() + "\"");
-                }
-            }
-        }
-        //Promotional Packages
-        System.out.println("******" + "Promotional Packages" + "******");
-        for (int i = 0; i < pPackage.size(); i++) {
-            System.out.println("i:" + i);
-            System.out.printf("%-30s", "******" + pPackage.get(i).getName() + "******");
-            System.out.printf("%20s%n",
-                    new DecimalFormat("$###,##0.00").format(pPackage.get(i).getPrice()));
-            System.out.println("\"" + pPackage.get(i).getDesc() + "\"");
-            ArrayList<MenuItem> pItemList = pPackage.get(i).getItemList();
-            for (int j = 0; j < pItemList.size(); j++) {
-                System.out.println("- " + pItemList.get(j).getName());
-            }
-        }
-    }*/
     /**
      * Prints all items in menuItem.
      */
@@ -217,17 +194,6 @@ public class Menu {
         }
     }
     
-    public void printMenuItem() {
-        int x;
-        System.out.println("Menu:");
-        for (MenuItem s : menuItem) {
-            x = menuItem.indexOf(s);
-            x++;
-            System.out.print(x + ". ");
-            s.printItem();
-        }
-    }
-
     //Promotional Package Functions
   
 

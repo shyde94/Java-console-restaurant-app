@@ -24,8 +24,6 @@ import java.util.logging.Logger;
 
 public class OrderController {
 
-
-
     private final static String SPACING = "**********************************************";
     private final static String SPACING2 = "##############################################";
     private TableAll tIR;
@@ -268,11 +266,21 @@ public class OrderController {
                     System.out.println("Select item to change quantity for: (Enter -1 to go back)");
                     try {
                         choice = input.nextInt();
+                        if(choice==-1)break;
+                        System.out.println(SPACING2);
+                        tempMenuItem = orderSheetTemp.getOrders().get(choice - 1);
                         System.out.println(SPACING2);
                         y = false;
                     } catch (InputMismatchException e) {
                         System.out.println("Please enter a number");
                         input.nextLine();
+                    }
+                    catch (ArrayIndexOutOfBoundsException e) {
+                    	System.out.println("Order does not exist.Please try again1.");
+                    	input.nextLine();
+                    }catch (IndexOutOfBoundsException e) {
+                    	System.out.println("Order does not exist.Please try again2.");
+                    	input.nextLine();
                     }
                 } while (y);
                 if (choice < 0) {
@@ -282,19 +290,12 @@ public class OrderController {
                 do {
                     y = true;
                     try {
-                        tempMenuItem = orderSheetTemp.getOrders().get(choice - 1);
                         System.out.println("Input new quantity: (Enter -1 to go back)");
                         quantity = input.nextInt();
                         System.out.println(SPACING2);
                         y = false;
                     } catch (InputMismatchException e) {
                         System.out.println("Please enter a number: ");
-                        input.nextLine();
-                    } catch (ArrayIndexOutOfBoundsException e) {
-                        System.out.println("Order does not exist.Please try again.");
-                        input.nextLine();
-                    } catch (IndexOutOfBoundsException e) {
-                        System.out.println("Order does not exist.Please try again.");
                         input.nextLine();
                     }
                 } while (y);

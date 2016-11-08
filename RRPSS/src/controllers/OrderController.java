@@ -9,7 +9,8 @@ import java.util.Scanner;
 
 import entity.Menu;
 import entity.MenuItem;
-import entity.MenuTestingApp;
+
+import entity.Restaurant;
 import entity.OrderSheetPerTable;
 import entity.SalesRecords;
 import entity.Staff;
@@ -128,6 +129,7 @@ public class OrderController {
                 System.out.println("Enter staff ID (Enter -1 to go back)");
                 try {
                     staffId = input.nextInt();
+                    System.out.println(SPACING2);
                     y = false;
                 } catch (InputMismatchException e) {
                     System.out.println("Invalid staff ID");
@@ -143,6 +145,7 @@ public class OrderController {
                 System.out.println("Please enter table number first: (Enter -1 to go back)");
                 try {
                     tableNumber = input.nextInt();
+                    System.out.println(SPACING2);
                     if (tableNumber == -1) {
                         break;
                     }
@@ -173,6 +176,7 @@ public class OrderController {
                 do {
                     try {
                         quantity = input.nextInt();
+                        System.out.println(SPACING2);
                         y = false;
                     } catch (InputMismatchException e) {
                         System.out.println("Please enter a number.");

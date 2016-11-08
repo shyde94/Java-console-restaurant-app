@@ -64,12 +64,46 @@ public class SalesRecords {
 				tempRecords.get(i).printOrderSheetDetails();
 				revenue += tempRecords.get(i).getTotalBill();
 			}
-			System.out.println("######################## Revenue in "+ dateToCheck+" = "+ revenue);
+			System.out.println(" Revenue in "+ dateToCheck+" = "+ revenue);
 		}
 		return revenue;
 		
 	}
+	 public static void saveSalesRecord() throws FileNotFoundException, IOException {
+	        File file = new File("SalesRecord.txt");
+	        ArrayList<OrderSheetPerTable> sales = SalesRecords.allTheSalesRecords;
+	        FileOutputStream fo = new FileOutputStream(file);
+	        ObjectOutputStream output = new ObjectOutputStream(fo);
 
+	        for (int i = 0; i < sales.size(); i++) {
+	            output.writeObject(sales.get(i));
+	        }
+
+	        System.out.println("Sales saved Successfully");
+	        output.close();
+	        fo.close();
+	 }
+	 
+	 public void loadSalesRecord() throws FileNotFoundException, IOException, ClassNotFoundException {
+	        File file = new File("SalesRecord.txt");
+	        FileInputStream fi = new FileInputStream(file);
+	        ObjectInputStream input1 = new ObjectInputStream(fi);
+
+	        ArrayList<OrderSheetPerTable> sales = new ArrayList<OrderSheetPerTable>();
+
+	        try {
+	            while (true) {
+	                OrderSheetPerTable o = (OrderSheetPerTable) input1.readObject();
+	                sales.add(o);
+	            }
+	        } catch (EOFException ex) {
+	            allTheSalesRecords.setSalesRecords(sales);
+
+	            System.out.println("Sales loaded Successfully");
+	        }
+
+	    }
+	
 }
 
 

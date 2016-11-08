@@ -33,8 +33,7 @@ public class MenuTestingApp {
 
 		mC.loadMenu();
 		reserveC.loadReservations();
-        sRecordsC.loadSalesRecord();
-        
+                sRecordsC.loadSalesRecord();
 		boolean x = true;
 		while (x) {
 			// displayMenu();

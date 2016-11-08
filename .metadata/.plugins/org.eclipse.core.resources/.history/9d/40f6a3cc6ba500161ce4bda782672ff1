@@ -421,7 +421,7 @@ public class OrderController {
 			if(tIR.checkOrderSheetInit(tableNumber)){
 				OrderSheetPerTable orderSheetTemp = tempTable.getOrderSheet();
 				tempTable.customerCheckout(today);
-				SalesRecordsController.saveSalesRecord();
+				SalesRecords.saveSalesRecord();
 				x = false;
 			}
 			else{

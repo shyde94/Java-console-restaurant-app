@@ -64,7 +64,7 @@ public class SalesRecords {
 				tempRecords.get(i).printOrderSheetDetails();
 				revenue += tempRecords.get(i).getTotalBill();
 			}
-			System.out.println("######################## Revenue in "+ dateToCheck+" = "+ revenue);
+			System.out.println(" Revenue in "+ dateToCheck+" = "+ revenue);
 		}
 		return revenue;
 		

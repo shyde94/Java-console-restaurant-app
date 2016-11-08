@@ -160,7 +160,6 @@ public class SalesRecordsController {
         System.out.println("Sales saved Successfully");
         output.close();
         fo.close();
-    	
     }
 
     public void loadSalesRecord() throws FileNotFoundException, IOException, ClassNotFoundException {
@@ -180,7 +179,6 @@ public class SalesRecordsController {
 
             System.out.println("Sales loaded Successfully");
         }
-    	
 
     }
 
@@ -190,7 +188,7 @@ public class SalesRecordsController {
         System.out.println("2. Calculate Revenue on specific date");
         System.out.println("3. Calculate Revenue in specific month");
         System.out.println("4. See all sales records");
-        //System.out.println("5. Save Records");
-        //System.out.println("6. Load Records");
+        System.out.println("5. Save Records");
+        System.out.println("6. Load Records");
     }
 }

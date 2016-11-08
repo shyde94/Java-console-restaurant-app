@@ -14,8 +14,6 @@ import entity.SalesRecords;
 import entity.Staff;
 import entity.Table;
 import entity.TableAll;
-
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -76,12 +74,7 @@ public class OrderController {
                     } while (y);
                     break;
                 case (4):
-				try {
-					this.PrintInvoiceAndCheckOut();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					System.out.println("An error has occured, this checkout could not be saved.");
-				}
+                    this.PrintInvoiceAndCheckOut();
             {
                 try {
                     SalesRecordsController.saveSalesRecord();
@@ -380,7 +373,7 @@ public class OrderController {
 		}
 	}
 	
-	public void PrintInvoiceAndCheckOut() throws FileNotFoundException, IOException{
+	public void PrintInvoiceAndCheckOut(){
 		Scanner input = new Scanner(System.in);
 		boolean x = true;
 		boolean y = true;
@@ -421,7 +414,6 @@ public class OrderController {
 			if(tIR.checkOrderSheetInit(tableNumber)){
 				OrderSheetPerTable orderSheetTemp = tempTable.getOrderSheet();
 				tempTable.customerCheckout(today);
-				SalesRecordsController.saveSalesRecord();
 				x = false;
 			}
 			else{

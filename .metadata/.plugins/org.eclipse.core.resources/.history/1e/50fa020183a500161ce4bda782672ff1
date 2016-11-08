@@ -180,7 +180,7 @@ public class OrderSheetPerTable implements Serializable{
 		System.out.println("Date and Time of Invoice: " + dateToday);
 		System.out.println("Items ordered:");
 		printBill();
-		
+		System.out.println("Total Bill: "+ totalBill);
 	}
 	
 	

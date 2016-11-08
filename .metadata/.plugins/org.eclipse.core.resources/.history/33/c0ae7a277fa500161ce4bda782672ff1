@@ -17,7 +17,7 @@ public class TableAll {
 	private static int numTwoSeats;
 	private int totalNumOfTables;
 	private enum SeatsPerTable {
-	    A(10), B(8), C(4), D(2); //So that we can change the number of seats at each table if need be.
+	    A(10), B(8), C(4), D(2);
 		private int value;
 		private SeatsPerTable(int value) {
 				this.value = value;

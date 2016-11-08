@@ -81,7 +81,7 @@ public class SalesRecordsController {
                 case (4):
                     recordsOfSales.printAllSalesRecords();
                     break;
-                case (5):
+                /*case (5):
                     try {
                         saveSalesRecord();
                     } catch (IOException ex) {
@@ -98,7 +98,7 @@ public class SalesRecordsController {
                         Logger.getLogger(SalesRecordsController.class.getName()).log(Level.SEVERE, null, ex);
                     }
 
-                    break;
+                    break;*/
                 case (-1):
                     return;
                 default:
@@ -160,11 +160,10 @@ public class SalesRecordsController {
         System.out.println("Sales saved Successfully");
         output.close();
         fo.close();
-    	
     }
 
     public void loadSalesRecord() throws FileNotFoundException, IOException, ClassNotFoundException {
-        File file = new File("SalesRecord.txt");
+        /*File file = new File("SalesRecord.txt");
         FileInputStream fi = new FileInputStream(file);
         ObjectInputStream input1 = new ObjectInputStream(fi);
 
@@ -179,8 +178,8 @@ public class SalesRecordsController {
             recordsOfSales.setSalesRecords(sales);
 
             System.out.println("Sales loaded Successfully");
-        }
-    	
+        }*/
+    	recordsOfSales.loadSalesRecord();
 
     }
 

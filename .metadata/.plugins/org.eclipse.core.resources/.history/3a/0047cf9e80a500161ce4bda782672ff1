@@ -148,16 +148,16 @@ public class OrderSheetPerTable implements Serializable{
 	public void calTotalBill(Date timeOfInvoice){
 		 //This means that customer is done. Ready to pay the bill.
 		setInvoiceDateTime(timeOfInvoice);
-		totalBill=billBeforeGST() + calGST();
-		
-		 System.out.println("TotalBill: " + totalBill);
-		 
+		totalBill=0;
+		 for(int i=0;i<subTotalPrice.size();i++){
+			 System.out.println("Sub total:  " + subTotalPrice.get(i));
+			 totalBill += subTotalPrice.get(i);
+		 }
+		 double gst = calGST();
+		 totalBill += gst;
 	}
 	public double calGST(){
-		
-		double billBeforeGST= billBeforeGST();
-		
-		double gst = (22.5/100) * billBeforeGST;
+		double gst = (22.5/100) * totalBill;
 		return gst;
 	}
 	
@@ -168,7 +168,6 @@ public class OrderSheetPerTable implements Serializable{
 		System.out.println("SubTotal: "+ billBeforeGST());
 		System.out.println("GST: " + calGST());
 		System.out.println("Total bill: " + totalBill);
-		//TotalBill should be subTotal + GST
 		
 	}
 	
@@ -180,7 +179,7 @@ public class OrderSheetPerTable implements Serializable{
 		System.out.println("Date and Time of Invoice: " + dateToday);
 		System.out.println("Items ordered:");
 		printBill();
-		
+		System.out.println("Total Bill: "+ totalBill);
 	}
 	
 	

@@ -81,7 +81,7 @@ public class SalesRecordsController {
                 case (4):
                     recordsOfSales.printAllSalesRecords();
                     break;
-                case (5):
+                /*case (5):
                     try {
                         saveSalesRecord();
                     } catch (IOException ex) {
@@ -98,7 +98,7 @@ public class SalesRecordsController {
                         Logger.getLogger(SalesRecordsController.class.getName()).log(Level.SEVERE, null, ex);
                     }
 
-                    break;
+                    break;*/
                 case (-1):
                     return;
                 default:
@@ -147,7 +147,7 @@ public class SalesRecordsController {
 
     }
 
-    public static void saveSalesRecord() throws FileNotFoundException, IOException {
+   /* public static void saveSalesRecord() throws FileNotFoundException, IOException {
         File file = new File("SalesRecord.txt");
         ArrayList<OrderSheetPerTable> sales = SalesRecords.allTheSalesRecords;
         FileOutputStream fo = new FileOutputStream(file);
@@ -160,7 +160,6 @@ public class SalesRecordsController {
         System.out.println("Sales saved Successfully");
         output.close();
         fo.close();
-    	
     }
 
     public void loadSalesRecord() throws FileNotFoundException, IOException, ClassNotFoundException {
@@ -180,9 +179,8 @@ public class SalesRecordsController {
 
             System.out.println("Sales loaded Successfully");
         }
-    	
 
-    }
+    }*/
 
     public void displayMenuOptions() {
         System.out.println("Select option: (Enter -1 to go back)");

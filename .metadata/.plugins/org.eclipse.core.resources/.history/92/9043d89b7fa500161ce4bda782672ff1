@@ -99,10 +99,7 @@ public class Table {
 	
 	public void thisTableOrdered(){
 		System.out.println("Table number: " + getTableNumber());
-		if(orderSheet != null)orderSheet.printOrder();
-		else{
-			System.out.println("There are no orders. ");
-		}
+		orderSheet.printOrder();
 	}
 	
 	

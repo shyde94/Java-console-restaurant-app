@@ -2,8 +2,7 @@ package entity;
 
 /**
  * Staff class defines staff members working in the restaurant
- *
- * 9/11/2016
+ * @since 9/11/2016
  *
  * @author Shide
  * @author Eeyern

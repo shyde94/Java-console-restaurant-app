@@ -41,7 +41,6 @@ public class SalesRecordsController {
     }
 
     public void run() throws InputMismatchException {
-        System.out.println("###########      Sales Records      ##########");
         boolean x = true;
         Scanner input = new Scanner(System.in);
         while (x) {
@@ -85,24 +84,6 @@ public class SalesRecordsController {
                     break;
                 case (4):
                     recordsOfSales.printAllSalesRecords();
-                    break;
-                case (5):
-                    try {
-                        saveSalesRecord();
-                    } catch (IOException ex) {
-                        Logger.getLogger(SalesRecordsController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-
-                    break;
-                case (6):
-                    try {
-                        loadSalesRecord();
-                    } catch (IOException ex) {
-                        Logger.getLogger(SalesRecordsController.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (ClassNotFoundException ex) {
-                        Logger.getLogger(SalesRecordsController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-
                     break;
                 case (-1):
                     return;
@@ -194,7 +175,5 @@ public class SalesRecordsController {
         System.out.println("*    3. Calculate Revenue in specific month  *");
         System.out.println("*    4. See all sales records                *");
         System.out.println(SPACING);
-        //System.out.println("5. Save Records");
-        //System.out.println("6. Load Records");
     }
 }

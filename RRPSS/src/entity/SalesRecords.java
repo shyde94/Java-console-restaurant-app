@@ -14,6 +14,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import controllers.ReservationController;
+import java.text.DecimalFormat;
 
 /**
  * SalesRecords class contains all the sales records 9/11/2016
@@ -106,14 +107,14 @@ public class SalesRecords {
                 tempRecords.get(i).printOrderSheetDetails();
                 revenue += tempRecords.get(i).getTotalBill();
             }
-
+            
             System.out.println("Time period: " + dateToCheck);
-            System.out.println("###### Revenue in " + dateToCheck + " = " + revenue + " #######");
+            System.out.printf("###### Revenue in " + dateToCheck + "   "+ new DecimalFormat("$###,##0.00").format(revenue) + " #######");
+            System.out.println("");
             System.out.println(SPACING2);
 
         }
         return revenue;
-
     }
 
 }

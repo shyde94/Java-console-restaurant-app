@@ -142,7 +142,6 @@ public class SalesRecordsController {
      * @return the revenue on date
      */
     public double getRevenueOnDate(int choice) {
-    	System.out.println("GENERATING SALES RECORD...");
         Scanner input = new Scanner(System.in);
         boolean x = true;
         String dateToCheck = "";

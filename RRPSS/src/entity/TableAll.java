@@ -280,11 +280,14 @@ public class TableAll {
         ArrayList<Integer> reservedTablesPM = rL.reservedTablesOnDate(todayString, "PM");
         for (int i = 0; i < totalNumOfTables; i++) {
             if (reservedTablesAM.contains(allTheTables.get(i).getTableNumber())) {
+            	
                 Table temp1 = allTheTables.get(i);
                 temp1.setIsReservedAM(true);
             }
             if (reservedTablesPM.contains(allTheTables.get(i).getTableNumber())) {
+            	
                 Table temp1 = allTheTables.get(i);
+                
                 temp1.setIsReservedPM(true);
             }
         }
@@ -315,12 +318,29 @@ public class TableAll {
     public ArrayList<Table> getAvailableTables() {
         ArrayList<Table> tablesAvailable = new ArrayList<Table>();
         Table temp = null;
-        for (int i = 0; i < totalNumOfTables; i++) {
-            if (allTheTables.get(i).isOccupied()) {
-                temp = allTheTables.get(i);
-                tablesAvailable.add(temp);
-            }
-        }
+        Date now = new GregorianCalendar().getTime();
+        String Slot = "";
+        try {
+			Slot = ReservationController.checkSlot(now);
+			for (int i = 0; i < totalNumOfTables; i++) {
+	        	if(Slot.equals("AM")){
+	        		if (!(allTheTables.get(i).isOccupied()) && !( allTheTables.get(i).isReservedAM())) {
+	                    temp = allTheTables.get(i);
+	                    tablesAvailable.add(temp);
+	                }
+	        	}else if(Slot.equals("PM")){
+	        		if (!(allTheTables.get(i).isOccupied()) && !(allTheTables.get(i).isReservedPM())) {
+	                    temp = allTheTables.get(i);
+	                    tablesAvailable.add(temp);
+	                }
+	        	}else{
+	        		System.out.println("Unable to check for available tables at the moment. ");
+	        	}   
+	        }
+		} catch (ParseException e) {
+			System.out.println("Unable to check available tables at the moment. ");
+		}
+        
         return tablesAvailable;
     }
 

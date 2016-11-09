@@ -116,9 +116,16 @@ public class Restaurant {
                     }
                     break;
                 case (4):
-
+                	tableC.getAvailableTables();
                     break;
                 case (5):
+                    try {
+                        tableC.showAllTableStatuses();;
+                    } catch (InputMismatchException e) {
+                        System.out.println("Error caught by MenuTestingApp2");
+                    }
+                    break;
+                case (6):
                     try {
                         sRecordsC.run();
                     } catch (InputMismatchException e) {
@@ -142,8 +149,9 @@ public class Restaurant {
         System.out.println("*    1. Order                                *");
         System.out.println("*    2. Menu                                 *");
         System.out.println("*    3. Reservations                         *");
-        System.out.println("*    4. Check table availability             *");
-        System.out.println("*    5. Sales Records                        *");
+        System.out.println("*    4. Check current table availability     *");
+        System.out.println("*    5. Show current table statuses          *");
+        System.out.println("*    6. Sales Records                        *");
         System.out.println(SPACING);
     }
 }

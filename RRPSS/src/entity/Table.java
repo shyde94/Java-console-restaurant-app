@@ -153,6 +153,9 @@ public class Table {
         if (isOccupied) {
             System.out.println("Table Occupied");
         }
+        if(!(isOccupied || isReservedAM || isReservedPM)){
+        	System.out.println("Available");
+        }
     }
 
     /**

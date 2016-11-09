@@ -37,6 +37,7 @@ public class TableController {	//This class is just to settle which tables are b
 		DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 		String todayString = df.format(today);
 		
+		
 		System.out.println("Syncing tables with reservations list");
 		TableRecords.syncTables(todayString, this.rL);
 		try{
@@ -45,6 +46,24 @@ public class TableController {	//This class is just to settle which tables are b
 		}catch(ParseException e){
 			System.out.println("OH SHIT.");
 		}
+		//TableRecords.showTableStatuses();
 			//System.out.println("Please Select option: (Enter -1 to go back)");
+	}
+	
+	public void getAvailableTables(){
+		System.out.println("These are the tables available at the moment:");
+		ArrayList<Table> tempTableList = TableRecords.getAvailableTables();
+		if(tempTableList.isEmpty()){
+			System.out.println("All the tables are currently occupied or reserved during this timeslot. Please wait");
+		}else{
+			for(int i=0;i<tempTableList.size();i++){
+				tempTableList.get(i).displayTable();
+			}
+		}
+	}
+	
+	public void showAllTableStatuses(){
+		System.out.println("Curent status of all tables: ");
+		TableRecords.showTableStatuses();
 	}
 }

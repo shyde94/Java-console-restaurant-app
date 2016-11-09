@@ -56,17 +56,10 @@ public class ReservationController {
                     do {
                         try {
                             this.createReservation();
-                            this.saveReservations();
                             y = false;
                         } catch (InputMismatchException e) {
                             System.out.println("Invalid option");
-                        } catch (FileNotFoundException e) {
-							System.out.println("Error saving reservation.");
-						} catch (ClassNotFoundException e) {
-							System.out.println("Error saving reservation.");
-						} catch (IOException e) {
-							System.out.println("Error saving reservation.");
-						}
+                        }
                     } while (y);
                     break;
                 case (2):
@@ -85,6 +78,7 @@ public class ReservationController {
                     do {
                         try {
                             this.removeReservation(1);
+                            
                             y = false;
                         } catch (InputMismatchException e) {
                             System.out.println("Invalid Input. 3");
@@ -97,19 +91,13 @@ public class ReservationController {
                     do {
                         try {
                             this.removeReservation(0);
-                            this.saveReservations();
+                            
                             y = false;
                         } catch (InputMismatchException e) {
                             System.out.println("Invalid Input. 3");
                         } catch (ArrayIndexOutOfBoundsException e) {
                             System.out.println("There is no such option!");
-                        } catch (FileNotFoundException e) {
-                        	System.out.println("Error saving reservation data.");
-						} catch (ClassNotFoundException e) {
-							System.out.println("Error saving reservation data.");
-						} catch (IOException e) {
-							System.out.println("Error saving reservation data.");
-						}
+                        }
                     } while (y);
                     break;
                 case (5):
@@ -140,17 +128,23 @@ public class ReservationController {
         //4. Search for tables that have at most pax + 3 seats. 
         //5. If have, input name, hp number. 
         //6. Create reservation 
-        allTheReservations.createReservation(1, 2, "97811150", "Foo Shi De", "14-11-2016", "1100", "AM");
-        allTheReservations.createReservation(1, 2, "97811150", "Apple", "31-11-2016", "1730", "PM");
-        allTheReservations.createReservation(3, 2, "97811150", "Banana", "5-12-2016", "1200", "AM");
-        allTheReservations.createReservation(3, 2, "97811150", "Pineapple", "05-12-2016", "1730", "PM");
-        allTheReservations.createReservation(4, 2, "97811150", "habaaba", "05-12-2016", "1230", "AM");
-        allTheReservations.createReservation(4, 2, "123123123", "John", "25-12-2016", "1800", "PM");
-        //allTheReservations.createReservation(3, 2, "123123123", "John", "05-11-2016", "1200","AM");
-        //allTheReservations.createReservation(4, 2, "123123123", "John", "05-11-2016", "1200","AM");
-        //allTheReservations.createReservation(9, 2, "123123123", "John", "05-11-2016", "1200","AM");
-        //allTheReservations.createReservation(10, 2, "123123123", "John", "05-11-2016", "1200","AM");
-
+        /*allTheReservations.createReservation(1, 2, "97811150", "Foo Shi De", "09-11-2016", "1400", "AM");
+        allTheReservations.createReservation(1, 2, "97811150", "Apple", "09-11-2016", "1730", "PM");
+        allTheReservations.createReservation(3, 2, "97811150", "Banana", "09-11-2016", "1400", "AM");
+        allTheReservations.createReservation(3, 2, "97811150", "Pineapple", "09-11-2016", "1730", "PM");
+        allTheReservations.createReservation(4, 2, "97811150", "habaaba", "09-11-2016", "1830", "PM");
+        allTheReservations.createReservation(5, 2, "123123123", "John", "09-11-2016", "1800", "PM");
+        allTheReservations.createReservation(4, 2, "123123123", "John", "09-11-2016", "1400","AM");
+        allTheReservations.createReservation(5, 2, "123123123", "John", "09-11-2016", "1400","AM");
+        allTheReservations.createReservation(9, 2, "123123123", "John", "09-11-2016", "1400","AM");
+        allTheReservations.createReservation(8, 2, "123123123", "John", "039-11-2016", "1400","AM");
+    	allTheReservations.createReservation(10, 2, "123123123", "John", "09-11-2016", "1700","PM");
+    	try {
+			saveReservations();
+		} catch (ClassNotFoundException | IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}*/
         Scanner input = new Scanner(System.in);
         String inputDate;
         String inputTime;

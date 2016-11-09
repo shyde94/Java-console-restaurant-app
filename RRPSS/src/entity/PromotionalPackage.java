@@ -36,7 +36,7 @@ public class PromotionalPackage extends MenuItem implements Serializable {
     
     /**
      * getItemList method retrieves the MenuItems in the promotional package
-     * @return 
+     * @return the promotional package list
      */
     public ArrayList<MenuItem> getItemList() {
         return pItemList;
@@ -53,7 +53,7 @@ public class PromotionalPackage extends MenuItem implements Serializable {
             pItemList.get(i).printItem();
         }
     }
-    //Set the menu containing the promotional package
+    
    
 
 }

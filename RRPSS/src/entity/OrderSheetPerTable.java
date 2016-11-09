@@ -10,6 +10,9 @@ import java.io.Serializable;
 /**
  * OrderSheetPerTable class contains of what each table has ordered during 
  * each turnover. One OrderSheetPerTable object to one Table Object.
+ * 
+ * 9/11/2016
+ * 
  * @author Shide
  * @author Eeyern
  * @author Grace
@@ -46,118 +49,130 @@ public class OrderSheetPerTable implements Serializable {
         invoiceDateTime = null;
     }
     /**
-     * Get table number of orderSheet
+     * getTableNum method retrives table number in orderSheet
      * @return the table number
      */
     public int getTableNum() {
         return tableNum;
     }
     /**
-     * set Table number of ordersheet
+     * setableNum method assigns table number of ordersheet
      * @param tableNum the table number
      */
     public void setTableNum(int tableNum) {
         this.tableNum = tableNum;
     }
     /**
-     * Retrieve staff id in order sheet
+     * getStaffId method retrieves staff id in order sheet
      * @return the staff id
      */
     public int getStaffId() {
         return staffId;
     }
     /**
-     * assign staff id in order sheet
+     * setStaffId method assigns staff id in order sheet
      * @param staffId the staff id
      */
     public void setStaffId(int staffId) {
         this.staffId = staffId;
     }
     /**
-     * Retrieve date and time ordersheet was instantiated
+     * getDateNTime method retrieves date and time ordersheet was instantiated
      * @return the date and time
      */
     public Date getDateNTime() {
         return dateNTime;
     }
     /**
-     * Assign date and time ordersheet was instantiated
+     * setDateNTime method assigns date and time ordersheet was instantiated
      * @param dateNTime the date and time
      */
     public void setDateNTime(Date dateNTime) {
         this.dateNTime = dateNTime;
     }
+
     /**
-     * Retrieve all the orders that customers at one table make
+     * getORders method retrieves all the orders that customers at one table 
+     * make
+     * @return the menu items orders
      */
     public ArrayList<MenuItem> getOrders() {
         return orders;
     }
     /**
-     * Assign set of menuItems to ordersheet
+     * setOrders assign set of menuItems to ordersheet
      * @param orders refer to menuItem objects
      */
     public void setOrders(ArrayList<MenuItem> orders) {
         this.orders = orders;
     }
     /**
-     * Retrieve ArrayList of Integer containing quantity ordered for each item
-     * @return ArrayList<Integer> quantityFEO
+     * getQuantityForEachOrder retrieve ArrayList of Integer 
+     * containing quantity ordered for each item
+     * @return quantityFEO returns the quantity of each order
      */
     public ArrayList<Integer> getQuantityForEachOrder() {
         return quantityFEO;
     }
     /**
-     * Assign quantityFEO to specified ArrayList
+     * setQuantityForEachOrder assigns quantityFEO to specified ArrayList
      * @param quantityForEachOrder ArrayList of Integer objects
      */
     public void setQuantityForEachOrder(ArrayList<Integer> quantityForEachOrder) {
         this.quantityFEO = quantityForEachOrder;
     }
     /**
-     * Retrieve ArrayList of Double type containing price of each item ordered * quantity
-     * @return ArrayList<Double> subTotalPrice;
+     * getSubTotalPrice method retrieves ArrayList of Double type 
+     * containing price of each item ordered * quantity
+     * @return subTotalPrice is the price before GST
      */
     public ArrayList<Double> getSubTotalPrice() {
         return subTotalPrice;
     }
     /**
-     * Assign subTotalPrice to given ArrayList
+     * setSubTotalPrice method assigns subTotalPrice to given ArrayList
      * @param subTotalPrice ArrayList<Double> object to assign
+     */
+    
+    /**
+     * setSubTotalPrice method assigns subTotalPrice to given ArrayList
+     * @param subTotalPrice the subTotalPrice arraylist
      */
     public void setSubTotalPrice(ArrayList<Double> subTotalPrice) {
         this.subTotalPrice = subTotalPrice;
     }
+    
     /**
-     * Retrieve staffIDs that keyed orders in for table 
-     * @return ArrayList<Integer> containing staffID
+     * getStaffIDs method retrieves staffIDs that keyed orders in for table 
+     * @return staffIds arraylist
      */
     public ArrayList<Integer> getStaffIDs() {
         return staffIds;
     }
     /**
-     * Assign staffIds to given ArrayList
-     * @param staffIds ArrayList<Integer> object to staffIds
+     * setStaffIds method assigns staffIds to given ArrayList
+     * @param staffIds staffIds arraylist
      */
     public void setStaffIds(ArrayList<Integer> staffIds) {
         this.staffIds = staffIds;
     }
     /**
-     * Retrieve total bill
+     * getTotalBil method retrieves total bill
      * @return totalBill attribute of order sheet. 
      */
     public double getTotalBill() {
         return totalBill;
     }
     /**
-     * Assigns totalBill to given argument
+     * setTotalBill method assigns totalBill to given argument
      * @param bill argument to assign to totalBill
      */
     public void setTotalBill(double bill) {
         totalBill = bill;
     }
     /**
-     * Assign date and time invoice was created to invoiceDateTime
+     * setInvoiceDateTime method assigns date and time invoice was 
+     * created to invoiceDateTime
      * @param InvoiceDateTime Date object
      */
     public void setInvoiceDateTime(Date InvoiceDateTime) {
@@ -165,7 +180,7 @@ public class OrderSheetPerTable implements Serializable {
     }	
     
     /**
-     * Retrieve date and time invoice was created
+     * getInvoiceDateTime method retrieves date and time invoice was created
      * @return Date Object invoiceDateTime
      */
     public Date getInvoiceDateTime() {
@@ -195,7 +210,7 @@ public class OrderSheetPerTable implements Serializable {
 
     }
 
-    //Update quantity of an order
+ 
     /**
      * ChangeQuantity method to amend quantity of an item that was ordered.
      * @param item the item to amend the quantity for
@@ -212,7 +227,7 @@ public class OrderSheetPerTable implements Serializable {
             System.out.println("You have not ordered " + item.getName());
         }
     }
-    //To remove order from OrderSheet
+ 
     /**
      * removeOrder removes an order from order sheet. 
      * @param item MenuItem in order to remove from
@@ -237,8 +252,8 @@ public class OrderSheetPerTable implements Serializable {
         }
     }
     /**
-     * Caluclate price of all orders, excluding GST
-     * @return
+     * billBeforeGST method calculate price of all orders, excluding GST
+     * @return the price of all orders before GST
      */
     public double billBeforeGST() {
         double beforeGST = 0;
@@ -249,7 +264,7 @@ public class OrderSheetPerTable implements Serializable {
     }
     
     /**
-     * Calculates total bill, including gst.
+     * calTotalBill method Calculates total bill, including gst.
      * @param timeOfInvoice date/time of checkout
      */
     public void calTotalBill(Date timeOfInvoice) {
@@ -258,7 +273,7 @@ public class OrderSheetPerTable implements Serializable {
         totalBill = billBeforeGST() + calGST();
     }
     /**
-     * Calculates gst 
+     * calGST method calculates the GST
      * @return gst
      */
     public double calGST() {
@@ -269,7 +284,7 @@ public class OrderSheetPerTable implements Serializable {
         return gst;
     }
     /**
-     * Prints invoice
+     * printBill method prints invoice
      */
     public void printBill() {
 		System.out.println("==========Emperial Fortune Cookies Restaurant============");
@@ -314,7 +329,7 @@ public class OrderSheetPerTable implements Serializable {
 		System.out.println("\n============= Thank you! Please come again! =============\n");
     }
     /**
-     * Print all attributes of order sheet
+     * printOrderSheetDetails method Print all attributes of order sheet
      */
     public void printOrderSheetDetails() {
         System.out.println("");

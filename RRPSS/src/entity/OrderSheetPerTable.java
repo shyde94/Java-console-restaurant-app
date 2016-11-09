@@ -3,6 +3,7 @@ package entity;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.text.DecimalFormat;
 
 
 import java.io.Serializable;
@@ -277,9 +278,12 @@ public class OrderSheetPerTable implements Serializable {
         for (int i = 0; i < orders.size(); i++) {
             System.out.println(i + 1 + ". Item:" + orders.get(i).getName() + ", Qty: " + quantityFEO.get(i) + ", Price: " + subTotalPrice.get(i));
         }
-        System.out.println("SubTotal: " + billBeforeGST());
-        System.out.println("GST: " + calGST());
-        System.out.println("Total bill: " + totalBill);
+        System.out.printf("SubTotal: " + "%30s%n",
+                            new DecimalFormat("$###,##0.00").format(billBeforeGST()));
+        System.out.printf("GST: " + "%35s%n",
+                            new DecimalFormat("$###,##0.00").format(calGST()));
+        System.out.printf("Total bill: " + "%35s%n",
+                            new DecimalFormat("$###,##0.00").format(totalBill));
         //TotalBill should be subTotal + GST
 
     }

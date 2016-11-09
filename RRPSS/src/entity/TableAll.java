@@ -10,8 +10,8 @@ import java.util.GregorianCalendar;
 import controllers.ReservationController;
 
 /**
- * TableAll Class contains all the tables 9/11/2016
- *
+ * TableAll Class contains all the tables
+ * @since 9/11/2016
  * @author Shide
  * @author Eeyern
  * @author Grace

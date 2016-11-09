@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * MenuItem Class contains details about a menu item
  * 
- * 9/11/2016
+ * @since 9/11/2016
  * 
  * @author Shide
  * @author Eeyern

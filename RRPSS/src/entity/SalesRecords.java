@@ -17,8 +17,8 @@ import controllers.ReservationController;
 import java.text.DecimalFormat;
 
 /**
- * SalesRecords class contains all the sales records 9/11/2016
- *
+ * SalesRecords class contains all the sales records
+ * @since 9/11/2016
  * @author Shide
  * @author Eeyern
  * @author Grace

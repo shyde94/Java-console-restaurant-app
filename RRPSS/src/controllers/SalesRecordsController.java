@@ -23,7 +23,7 @@ import java.io.ObjectOutputStream;
 /**
  * SalesRecordsController
  * 
- * 9/11/2016
+ * @since 9/11/2016
  *
  * @author Shide
  * @author Eeyern

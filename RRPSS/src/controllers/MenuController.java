@@ -24,6 +24,8 @@ import java.util.logging.Logger;
  * Includes methods to create, append and delete items and promotional packages. 
  * Also serves as a basic UI for user to use, with necessary control flows
  * 
+ * @since 9/11/2016
+ * 
  * @author Shide 
  * @author Eeyern 
  * @author Grace 

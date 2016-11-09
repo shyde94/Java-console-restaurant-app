@@ -23,8 +23,8 @@ import java.util.ArrayList;
 
 /**
  * Restaurant class is the overall controller of the rrpss system 
- * 9/11/2016
  *
+ * @since 9/11/2016
  * @author Shide
  * @author Eeyern
  * @author Grace

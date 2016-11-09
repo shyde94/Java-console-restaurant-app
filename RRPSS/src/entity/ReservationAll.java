@@ -6,7 +6,7 @@ import java.util.Date;
 
 /**
  * ReservationAll Class contains functionality for all the reservations
- * 9/11/2016
+ * @since 9/11/2016
  *
  * @author Shide
  * @author Eeyern

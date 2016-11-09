@@ -5,8 +5,9 @@ import java.util.Date;
 
 /**
  * Reservation Class contains all the information related to a reservation
- * 9/11/2016
  *
+ * @since 9/11/2016
+ * 
  * @author Shide
  * @author Eeyern
  * @author Grace

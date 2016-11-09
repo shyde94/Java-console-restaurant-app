@@ -32,7 +32,7 @@ import java.util.logging.Logger;
 /**
  * ReservationController Class facilitates the reservation process
  * 
- * 9/11/2016
+ * @since 9/11/2016
  *
  * @author Shide
  * @author Eeyern

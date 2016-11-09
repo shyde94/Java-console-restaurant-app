@@ -3,8 +3,8 @@ package entity;
 import java.util.Date;
 
 /**
- * Table class involves all the information of a specific table 9/11/2016
- *
+ * Table class involves all the information of a specific table
+ * @since 9/11/2016
  * @author Shide
  * @author Eeyern
  * @author Grace

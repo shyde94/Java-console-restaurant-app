@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * PromotionalPackage Class is inherited from MenuItem and contains more than
  * 1 menu item
  * 
- * 9/11/2016
+ * @since 9/11/2016
  *
  * @author Shide
  * @author Eeyern

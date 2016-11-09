@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * Menu class, represents restaurant menu. Contains 2 ArrrayList, 1 storing
  * individual MenuItem objects and one storing PromotionalPackage Objects.
  *
- * 9/11/2016
+ * @since 9/11/2016
  *
  * @author Shide
  * @author Eeyern

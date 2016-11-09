@@ -7,8 +7,12 @@ import java.util.ArrayList;
  * Menu class, represents restaurant menu. Contains 2 ArrrayList, 1 storing
  * individual MenuItem objects and one storing PromotionalPackage Objects.
  *
- * @author Shide
+ * 9/11/2016
  *
+ * @author Shide
+ * @author Eeyern
+ * @author Grace
+ * @author Xi Tong
  */
 public class Menu {
 
@@ -16,6 +20,9 @@ public class Menu {
     private ArrayList<String> types;
     private ArrayList<PromotionalPackage> pPackage;
 
+    /**
+     * Menu Constructor contains details about the menu
+     */
     public Menu() {
         menuItem = new ArrayList<MenuItem>();
         types = new ArrayList<String>();
@@ -27,7 +34,7 @@ public class Menu {
     }
 
     /**
-     * getTypes method
+     * getTypes method retrieves the types array of menu items
      *
      * @return types of items restaurant serves, eg. Mains, Drinks, etc.
      */
@@ -36,7 +43,7 @@ public class Menu {
     }
 
     /**
-     * Addnew type of menu item into the menuItem.
+     * addTypes method assigns new type of menu item type into the menuItem.
      *
      * @param name what to call the new type.
      */
@@ -45,8 +52,8 @@ public class Menu {
     }
 
     /**
-     * printTypes method
-     * Prints out all types of items in menuItem
+     * printTypes method will print out all the types in the menu Prints out all
+     * types of items in menuItem
      */
     public void printTypes() {
         System.out.println("Types are: ");
@@ -56,36 +63,42 @@ public class Menu {
     }
 
     /**
+     * getPPackage method retrieves all the promotional packages
+     *
      * @return Promotional Packages
      */
     public ArrayList<PromotionalPackage> getPPackage() {
         return this.pPackage;
     }
 
+    /**
+     * setPPackage method assigns the promotional package
+     *
+     * @param PPackage the promotional package
+     */
     public void setPPackage(ArrayList<PromotionalPackage> PPackage) {
         this.pPackage = PPackage;
     }
 
     /**
+     * getMenuItem method retrieves the menu item
      *
-
-     * retrieves menuItem 
-
-     * @return Main menu
+     * @return the menu item
      */
     public ArrayList<MenuItem> getMenuItem() {
         return this.menuItem;
     }
+
     /**
-     * assign menuItem
-     * @param menu ArraList<MenuItem> object
+     * setMenuItem will assign the menu item array
+     * @param menu the menu item array
      */
     public void setMenuItem(ArrayList<MenuItem> menu) {
         this.menuItem = menu;
     }
 
     /**
-     * Retrieves the position of the menu item id in the menuItem
+     * getMenuItemID Retrieves the position of the menu item id in the menuItem
      *
      * @param id the position of the menu item in the menuItem
      * @return the reference of the menu item
@@ -95,7 +108,7 @@ public class Menu {
     }
 
     /**
-     * Creates new menu item and adds it into menuItem.
+     * addItemm method creates new menu item and adds it into menuItem.
      *
      * @param name name of the item.
      * @param price price of the item.
@@ -110,7 +123,8 @@ public class Menu {
     }
 
     /**
-     * Creates a new promotional package and adds it into pPackage.
+     * addPPackage method creates a new promotional package and adds it into
+     * pPackage.
      *
      * @param name name of promotional package
      * @param price price of promotional package
@@ -125,7 +139,7 @@ public class Menu {
     }
 
     /**
-     * Append an item in menuItem.
+     * updateItem method appends an item in menuItem.
      *
      * @param name name of the item.
      * @param price price of the item.
@@ -145,7 +159,8 @@ public class Menu {
     }
 
     /**
-     * Extracts item from menuItem according to type specified.
+     * reOrderItems method extracts item from menuItem according to type
+     * specified.
      *
      * @param itemType type of item to extract, eg Mains, Drinks, etc.
      * @return ArrayList containing MenuItem Objects.
@@ -169,7 +184,7 @@ public class Menu {
     }
 
     /**
-     * Delete item from menuItem.
+     * removeItem method delete item from menuItem.
      *
      * @param n position of item in menuItem
      * @param type item type
@@ -192,8 +207,12 @@ public class Menu {
         }
     }
 
-
-     public void displayMenuAndItems(ArrayList<MenuItem> mItem) {
+    /**
+     * displayMenuAndItems method displays all the menu's and items
+     *
+     * @param mItem the menu item array
+     */
+    public void displayMenuAndItems(ArrayList<MenuItem> mItem) {
         for (int j = 0; j < types.size(); j++) {
             System.out.println("######" + types.get(j) + "######");
             for (int i = 0; i < mItem.size(); i++) {
@@ -212,7 +231,7 @@ public class Menu {
             System.out.printf("%-30s", "******" + pPackage.get(i).getName() + "******");
             System.out.printf("%20s%n",
                     new DecimalFormat("$###,##0.00").format(pPackage.get(i).getPrice()));
-            System.out.println("\"" + pPackage.get(i).getDescription()+ "\"");
+            System.out.println("\"" + pPackage.get(i).getDescription() + "\"");
             ArrayList<MenuItem> pItemList = pPackage.get(i).getItemList();
             for (int j = 0; j < pItemList.size(); j++) {
                 System.out.println("- " + pItemList.get(j).getName());
@@ -240,5 +259,4 @@ public class Menu {
         }
     }
 
-    
 }

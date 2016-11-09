@@ -22,6 +22,16 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * OrderController Class organises the orders in the restaurant
+ * 
+ * 9/11/2016
+ *
+ * @author Shide
+ * @author Eeyern
+ * @author Grace
+ * @author Xi Tong
+ */
 public class OrderController {
 
     private final static String SPACING = "**********************************************";
@@ -30,6 +40,10 @@ public class OrderController {
     private Menu menuToOrderFrom;
     //private ArrayList<Staff> allTheStaff;
 
+    /**
+     * OrderController Constructor will invoke the creation of menu controller 
+     * and table records
+     */
     public OrderController(){
     	tIR = TableController.TableRecords;
     	menuToOrderFrom = MenuController.menu;
@@ -37,6 +51,9 @@ public class OrderController {
     	
     }
 
+    /**
+     * @throws InputMismatchException there is a input error
+     */
     public void run() throws InputMismatchException {
 
         boolean x = true;
@@ -111,6 +128,11 @@ public class OrderController {
         }
     }
 
+    /**
+     * addOrderToOrderSheet method will create a new order
+     * @throws IndexOutOfBoundsException index to the arraylist is out of range
+     * @throws ParseException error has been reached unexpectedly whilst parsing
+     */
     public void addOrderToOrderSheet() throws IndexOutOfBoundsException, ParseException {
         //1. Ask for table number
         //2. Check if table has been initialised. If have proceed, if havent, must initialise ordersheet first. Input required: staffId, date, table Num)
@@ -211,6 +233,9 @@ public class OrderController {
     }
 
     //Method to update orderSheet
+    /**
+     * updateOrderSheetPerTable will update the order
+     */
     public void updateOrderSheetPerTable() {
         Scanner input = new Scanner(System.in);
         boolean x = true;
@@ -317,6 +342,9 @@ public class OrderController {
 
     }
 
+    /**
+     * removeOrderFromOrderSheet method will remove the order
+     */
     public void removeOrderFromOrderSheet() {
         Scanner input = new Scanner(System.in);
         boolean x = true;
@@ -405,6 +433,13 @@ public class OrderController {
         }
     }
 
+    /**
+     * PrintInvoiceAndCheckOut will print an invoice and check out the order 
+     * @throws FileNotFoundException the file could not be found in the 
+     * directory
+     * @throws IOException input or output has been entered or received 
+     * incorrectly 
+     */
     public void PrintInvoiceAndCheckOut() throws FileNotFoundException, IOException {
         Scanner input = new Scanner(System.in);
         boolean x = true;
@@ -460,6 +495,9 @@ public class OrderController {
         }
     }
 
+    /**
+     * viewOrder method will show the order by table
+     */
     public void viewOrder() {
         Scanner input = new Scanner(System.in);
         boolean x = true;
@@ -485,6 +523,9 @@ public class OrderController {
 
     }
 
+    /**
+     * showAllOrders method will display all the orders
+     */
     public void showAllOrders() {
         System.out.println("Displaying all orders:");
         ArrayList<OrderSheetPerTable> allOrdersAtTheMoment = tIR.consolidateOrderSheets();
@@ -496,6 +537,9 @@ public class OrderController {
         }
     }
 
+    /**
+     * displayMenuOptions will show all the order options
+     */
     public void displayMenuOptions() {
         System.out.println(SPACING);
         System.out.println("*                ORDER OPTIONS               *");

@@ -20,6 +20,16 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+/**
+ * SalesRecordsController
+ * 
+ * 9/11/2016
+ *
+ * @author Shide
+ * @author Eeyern
+ * @author Grace
+ * @author Xi Tong
+ */
 public class SalesRecordsController {
 
     private SalesRecords recordsOfSales;
@@ -28,18 +38,35 @@ public class SalesRecordsController {
     
     private final static String SPACING2 = "##############################################";
 
+    /**
+     * SalesRecordsController constructor will create a new sales records 
+     * class
+     */
     public SalesRecordsController() {
         recordsOfSales = new SalesRecords();
     }
 
+    /**
+     * getRecordsOfSales will retrieve all the invoices
+     * @return the invoices
+     */
     public SalesRecords getRecordsOfSales() {
         return recordsOfSales;
     }
 
+    /**
+     * setRecordsOfSales will assign all the invoices
+     * @param s all the invoices
+     */
     public void setRecordsOfSales(SalesRecords s) {
         recordsOfSales = s;
     }
 
+    /**
+     * run method will start the SalesRecordsController
+     * @throws InputMismatchException input and output checking when writing
+     * or reading
+     */
     public void run() throws InputMismatchException {
         boolean x = true;
         Scanner input = new Scanner(System.in);
@@ -94,6 +121,11 @@ public class SalesRecordsController {
 
     }
 
+    /**
+     * getRevenueToday method will print all the invoices made today as well as
+     * print out the total revenue made
+     * @return revenue made today
+     */
     public double getRevenueToday() {
         System.out.println("Get revenue today");
         Date today = new GregorianCalendar().getTime();
@@ -103,6 +135,12 @@ public class SalesRecordsController {
         return revenue;
     }
 
+    /**
+     * getRevenueOnDate method will print all the invoices made on a given date
+     * as well as a print out of the total revenue made
+     * @param choice the date
+     * @return the revenue on date
+     */
     public double getRevenueOnDate(int choice) {
         Scanner input = new Scanner(System.in);
         boolean x = true;
@@ -129,7 +167,12 @@ public class SalesRecordsController {
 
     }
 
-    
+    /**
+     * saveSalesRecord saves all the invoices made to a file
+     * @throws FileNotFoundException if the file is not found
+     * @throws IOException if there is a problem with writing the object to 
+     * the file
+     */
     public static void saveSalesRecord() throws FileNotFoundException, IOException {
         File file = new File("SalesRecord.txt");
         ArrayList<OrderSheetPerTable> sales = SalesRecords.allTheSalesRecords;
@@ -146,6 +189,14 @@ public class SalesRecordsController {
     	
     }
 
+    /**
+     * loadSalesRecord will retrieve all the sales from the file
+     * @throws FileNotFoundException if the file is not found
+     * @throws IOException if there was an error in reading from the file 
+     * during input
+     * @throws ClassNotFoundException if the class for storing the read data 
+     * cannot be found
+     */
     public void loadSalesRecord() throws FileNotFoundException, IOException, ClassNotFoundException {
         File file = new File("SalesRecord.txt");
         FileInputStream fi = new FileInputStream(file);
@@ -167,6 +218,9 @@ public class SalesRecordsController {
 
     }
 
+    /**
+     * displayMenuOptions method will display all the sales record options
+     */
     public void displayMenuOptions() {
         System.out.println("*            SALES RECORDS OPTIONS           *");
         System.out.println("*  Please select option: (Enter -1 to return)*");

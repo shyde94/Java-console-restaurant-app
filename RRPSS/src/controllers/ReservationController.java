@@ -29,6 +29,16 @@ import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * ReservationController Class facilitates the reservation process
+ * 
+ * 9/11/2016
+ *
+ * @author Shide
+ * @author Eeyern
+ * @author Grace
+ * @author Xi Tong
+ */
 public class ReservationController {
 
     public static ReservationAll allTheReservations;
@@ -37,11 +47,19 @@ public class ReservationController {
     private final static String SPACING = "**********************************************";
     private final static String SPACING2 = "##############################################";
 
+    /**
+     * ReservationController constructor assigns the tables 
+     */
     public ReservationController() {
         allTheReservations = new ReservationAll();
         allTheTables = new TableAll(5, 5, 10, 10);
     }
 
+    /**
+     * run Method will run the controller upon start
+     * @throws InputMismatchException write or read error
+     * @throws NoSuchElementException  when there is no element error
+     */
     public void run() throws InputMismatchException, NoSuchElementException {
         boolean x = true;
         Scanner input = new Scanner(System.in);
@@ -120,6 +138,9 @@ public class ReservationController {
         }
     }
 
+    /**
+     * createReservation method facilitates a reservation
+     */
     public void createReservation() {
         //1. get date and time as input
         //2. check that not same day or max 1 month
@@ -254,6 +275,10 @@ public class ReservationController {
         
     }
 
+    /**
+     * checkReservation method will check if there is a reservation on a 
+     * given date
+     */
     public void checkReservation() {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter date to check: ");
@@ -262,6 +287,10 @@ public class ReservationController {
 
     }
 
+    /**
+     * removeReservation method will remove a reservation
+     * @param hpOrdate can be phone number or a date
+     */
     public void removeReservation(int hpOrdate) {
         //1. input name and handphone number
         //2. check reservationList for match
@@ -348,6 +377,14 @@ public class ReservationController {
     }
 
     //Converts string given into format to create date object
+    /**
+     * stringToCalendar method will convert the string date to a calendar date
+     * @param format the format pattern
+     * @param inputDate the date
+     * @param inputTime the time
+     * @return the converted date
+     * @throws ParseException parsing in the wrong format
+     */
     public static Calendar stringToCalender(String format, String inputDate, String inputTime) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat();
         sdf.applyPattern(format);
@@ -361,6 +398,13 @@ public class ReservationController {
         return calendar;
     }
 
+    /**
+     * checkSlot method will check if the reservation is in the AM or PM
+     * session of a given date
+     * @param slot the time
+     * @return AM or PM
+     * @throws ParseException parsing in the wrong format
+     */
     public static String checkSlot(String slot) throws ParseException {	//method to check if reservation slot is in AM / PM period
         String timeSlot = "";
         Date slotD = new SimpleDateFormat("HHmm").parse(slot);
@@ -380,6 +424,13 @@ public class ReservationController {
         return timeSlot;
     }
 
+    /**
+     * checkSlot method of the current date and checks whether it is in the 
+     * AM or PM slot
+     * @param now the current date
+     * @return AM or PM
+     * @throws ParseException parsing in the wrong format 
+     */
     public static String checkSlot(Date now) throws ParseException {	//method to check if reservation slot is in AM / PM period
         String timeSlot = "";
         Calendar x = new GregorianCalendar();
@@ -405,6 +456,12 @@ public class ReservationController {
         return timeSlot;
     }
 
+    /**
+     * saveReservations method saves the reservations to a file
+     * @throws FileNotFoundException the file could not be found
+     * @throws IOException writing of the file
+     * @throws ClassNotFoundException the class could not be found
+     */
     public static void saveReservations() throws FileNotFoundException, IOException, ClassNotFoundException {
         //Testing File IO
         File file = new File("Reservations.txt");
@@ -428,6 +485,11 @@ public class ReservationController {
         fo.close();
     }
 
+    /**
+     * loadReservations method loads all the saved reservations from the file
+     * @throws IOException reading of the file
+     * @throws ClassNotFoundException the class not found
+     */
     public void loadReservations() throws IOException, ClassNotFoundException {
         //Import back into collection
         File file = new File("Reservations.txt");
@@ -450,6 +512,9 @@ public class ReservationController {
 
     }
 
+    /**
+     * displayMenuOptions method will display all the reservation options
+     */
     public void displayMenuOptions() {		//Display main menu options
         System.out.println(SPACING);
         System.out.println("*            RESERVATION OPTIONS             *");

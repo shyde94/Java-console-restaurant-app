@@ -399,7 +399,7 @@ public class TableAll {
                     }
                     Reservation todelete = holdingArrayList.get(i);
                     rL.deleteReservation(todelete);
-                    
+                    //}	
                 }
             }
             reservationsTodayAM = rL.reservationsMadeOnDate(todayString, "AM");//Refresh reservationsTodayAM.

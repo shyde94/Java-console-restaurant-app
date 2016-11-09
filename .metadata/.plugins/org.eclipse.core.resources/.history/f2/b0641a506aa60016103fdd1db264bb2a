@@ -1,7 +1,6 @@
 package controllers;
 
 import java.util.Date;
-import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -44,12 +43,6 @@ public class TableController {	//This class is just to settle which tables are b
 		try{
 			//System.out.println("Testing removal of expired reservations");
 			TableRecords.expireReservations(rL, todayString, 30);
-			try {
-				ReservationController.saveReservations();
-			} catch (ClassNotFoundException | IOException e) {
-				// TODO Auto-generated catch block
-				
-			}
 		}catch(ParseException e){
 			System.out.println("OH SHIT.");
 		}

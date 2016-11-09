@@ -256,9 +256,6 @@ public class OrderSheetPerTable implements Serializable {
         //This means that customer is done. Ready to pay the bill.
         setInvoiceDateTime(timeOfInvoice);
         totalBill = billBeforeGST() + calGST();
-
-        System.out.println("TotalBill: " + totalBill);
-
     }
     /**
      * Calculates gst 
@@ -275,17 +272,46 @@ public class OrderSheetPerTable implements Serializable {
      * Prints invoice
      */
     public void printBill() {
-        for (int i = 0; i < orders.size(); i++) {
-            System.out.println(i + 1 + ". Item:" + orders.get(i).getName() + ", Qty: " + quantityFEO.get(i) + ", Price: " + subTotalPrice.get(i));
-        }
-        System.out.printf("SubTotal: " + "%30s%n",
-                            new DecimalFormat("$###,##0.00").format(billBeforeGST()));
-        System.out.printf("GST: " + "%35s%n",
-                            new DecimalFormat("$###,##0.00").format(calGST()));
-        System.out.printf("Total bill: " + "%35s%n",
-                            new DecimalFormat("$###,##0.00").format(totalBill));
-        //TotalBill should be subTotal + GST
-
+		System.out.println("==========Emperial Fortune Cookies Restaurant============");
+		System.out.println("Staff ID      : " + getStaffId() );
+		System.out.println("Table ID        : " + tableNum );
+		System.out.println("Date(DD/MM/YYYY): " + ( dateNTime ).getDate() + "/" + ( dateNTime ).getMonth() + "/" + ( ( dateNTime ).getYear() + 1900 ));
+		System.out.println("---------------------------------------------------------");
+		
+		double sum = 0;
+		
+		if(orders.size() > 0){
+			System.out.println("Menu Items  : ");
+			
+			for(int i = 0; i < orders.size(); i++ )
+			{
+                            if (!(orders.get(i).getType().equals("Promotional Package"))){
+				System.out.printf("    %dx %-30s $%3.2f\n" , (quantityFEO.get(i)) , (orders.get(i)).getName() , ( (quantityFEO.get(i)) * (orders.get(i)).getPrice() ));
+				sum += orders.get(i).getPrice()*(quantityFEO.get(i));
+                            }
+			}
+		}
+		
+		if(orders.size() > 0){
+			System.out.println("---------------------------------------------------------");
+			System.out.println("Promotional Set Packages  : ");
+			
+			for(int i = 0; i < orders.size(); i++ )
+			{
+                            if (orders.get(i).getType().equals("Promotional Package")){
+				System.out.printf("    %dx %-30s $%3.2f\n" , (quantityFEO.get(i)) , (orders.get(i)).getName() , ( (quantityFEO.get(i)) * (orders.get(i)).getPrice() ));
+				sum += orders.get(i).getPrice()*(quantityFEO.get(i));
+                            }
+			}
+		}
+		
+		System.out.println("---------------------------------------------------------");
+			System.out.printf("SubTotal               :              $%.2f\n" , ( billBeforeGST()));
+		
+		System.out.printf("Taxes                  :              $%.2f\n" , ( calGST()));
+		System.out.println("---------------------------------------------------------	");
+		System.out.printf("TOTAL                  :              $%.2f\n" , (totalBill) );
+		System.out.println("\n============= Thank you! Please come again! =============\n");
     }
     /**
      * Print all attributes of order sheet

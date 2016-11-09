@@ -165,7 +165,8 @@ public class ReservationController {
                     return;
                 }
                 Calendar today = new GregorianCalendar();		//Get current date and time
-
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                String todayString = sdf.format(today.getTime());
                 try {
                     slot = checkSlot(inputTime);
                     if (slot.equals("")) {
@@ -176,7 +177,7 @@ public class ReservationController {
                     Calendar dntFromUser = stringToCalender("dd-MM-yyyy HHmm", inputDate, inputTime);	//Convert input date & time to calendar object           
                     Calendar oneMonthFromNow = new GregorianCalendar();
                     oneMonthFromNow.add(Calendar.DAY_OF_MONTH, 30);//Get date one month from now
-                    if (dntFromUser.compareTo(today) <= 0 || dntFromUser.compareTo(oneMonthFromNow) == 1) {
+                    if (dntFromUser.compareTo(today) <= 0 || dntFromUser.compareTo(oneMonthFromNow) == 1 || todayString.equals(inputDate)) {
                         System.out.println("You cannot reserve on this date");
                     } else {
                         System.out.println("Please wait...");

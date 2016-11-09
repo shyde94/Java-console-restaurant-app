@@ -208,7 +208,6 @@ public class Menu {
         //Promotional Packages
         System.out.println("******" + "Promotional Packages" + "******");
         for (int i = 0; i < pPackage.size(); i++) {
-            System.out.println("i:" + i);
             System.out.printf("%-30s", "******" + pPackage.get(i).getName() + "******");
             System.out.printf("%20s%n",
                     new DecimalFormat("$###,##0.00").format(pPackage.get(i).getPrice()));

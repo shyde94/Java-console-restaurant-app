@@ -3,10 +3,29 @@ package entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * PromotionalPackage Class is inherited from MenuItem and contains more than
+ * 1 menu item
+ * 
+ * 9/11/2016
+ *
+ * @author Shide
+ * @author Eeyern
+ * @author Grace
+ * @author Xi Tong
+ */
 public class PromotionalPackage extends MenuItem implements Serializable {
     private ArrayList<MenuItem> pItemList;
  
-
+/**
+ * PromotionalPackage Constructor describes a promotional package, taken from
+ * MenuItem
+ * @param pName the promotional package name
+ * @param pPrice the promotional package price
+ * @param pDesc the promotional package description
+ * @param ptype the promotional package type
+ * @param a the arraylist of items in the promotional package
+ */
     public PromotionalPackage(String pName, Double pPrice, String pDesc, String ptype, ArrayList<MenuItem> a){
        
         super(pName, pPrice, pDesc,ptype);
@@ -14,65 +33,19 @@ public class PromotionalPackage extends MenuItem implements Serializable {
         
         
     }
-
-    //Print Method for all the Promotional Packages
-
     
-    
-    //Removes an item from the promotional package and updates the price
-    /*public void update(MenuItem menuItem){
-        pItemList.remove(menuItem);
-        double totalPrice = 0;
-        for (int i = 0; i < pItemList.size(); i++ ){
-            totalPrice = totalPrice + pItemList.get(i).getPrice();
-        }
-        if (totalPrice < pPrice){
-            totalPrice = pPrice;
-        }
-    }*/
-    
-    //Replaces one item with another in the promotional package
-    //and updates the price
-    /*public void update (MenuItem oldItem, MenuItem newItem){
-        pItemList.remove(oldItem);
-        pItemList.add(newItem);
-        double totalPrice = 0;
-        for (int i = 0; i < pItemList.size(); i++ ){
-            totalPrice = totalPrice + pItemList.get(i).getPrice();
-        }
-        if (totalPrice < pPrice){
-            totalPrice = pPrice;
-        }
-    }   
-    */
-    /*
-    public void printPPackage(){
-        System.out.println(getName()+ "   "+ getPrice()+"   "+getDesc());
-        System.out.println()
-                
-    }
-    */
-    
-    /*
-    public String getName() {
-        return pName;
-    }
-
-    public double getPrice() {
-        return pPrice;
-    }
-
-    public String getDesc() {
-        return pDesc;
-    }
-    
-    */
-    
-    
+    /**
+     * getItemList method retrieves the MenuItems in the promotional package
+     * @return 
+     */
     public ArrayList<MenuItem> getItemList() {
         return pItemList;
     }
 
+    /**
+     * printPromotionalPackage method will print out the promotional package 
+     * details
+     */
     public void printPromotionalPackage(){
         System.out.println("Name: " + super.getName());
         System.out.println("Price: " + super.getPrice());

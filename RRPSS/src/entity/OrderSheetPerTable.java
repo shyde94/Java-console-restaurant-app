@@ -47,42 +47,42 @@ public class OrderSheetPerTable implements Serializable {
     }
     /**
      * Get table number of orderSheet
-     * @return
+     * @return the table number
      */
     public int getTableNum() {
         return tableNum;
     }
     /**
      * set Table number of ordersheet
-     * @param tableNum
+     * @param tableNum the table number
      */
     public void setTableNum(int tableNum) {
         this.tableNum = tableNum;
     }
     /**
      * Retrieve staff id in order sheet
-     * @return
+     * @return the staff id
      */
     public int getStaffId() {
         return staffId;
     }
     /**
      * assign staff id in order sheet
-     * @param staffId
+     * @param staffId the staff id
      */
     public void setStaffId(int staffId) {
         this.staffId = staffId;
     }
     /**
      * Retrieve date and time ordersheet was instantiated
-     * @return
+     * @return the date and time
      */
     public Date getDateNTime() {
         return dateNTime;
     }
     /**
      * Assign date and time ordersheet was instantiated
-     * @param dateNTime
+     * @param dateNTime the date and time
      */
     public void setDateNTime(Date dateNTime) {
         this.dateNTime = dateNTime;

@@ -21,13 +21,13 @@ import java.io.Serializable;
 public class OrderSheetPerTable implements Serializable {
 
     private int tableNum;
-    private int staffId;
+    private String staffId;
     private Date dateNTime;
     private Date invoiceDateTime;
     private ArrayList<MenuItem> orders;
     private ArrayList<Integer> quantityFEO;
     private ArrayList<Double> subTotalPrice;
-    private ArrayList<Integer> staffIds;
+    private ArrayList<String> staffIds;
     private double totalBill;
     private final static String SPACING2 = "##############################################";
 
@@ -37,14 +37,14 @@ public class OrderSheetPerTable implements Serializable {
      * @param staffId staff who created order sheet
      * @param today date and time ordersheet was created
      */
-    public OrderSheetPerTable(int tableNum, int staffId, Date today) {
+    public OrderSheetPerTable(int tableNum, String staffId, Date today) {
         this.setTableNum(tableNum);
         this.setStaffId(staffId);
         this.setDateNTime(today);
         orders = new ArrayList<MenuItem>();
         quantityFEO = new ArrayList<Integer>();
         subTotalPrice = new ArrayList<Double>();
-        staffIds = new ArrayList<Integer>();
+        staffIds = new ArrayList<String>();
         totalBill = 0;
         invoiceDateTime = null;
     }
@@ -66,15 +66,15 @@ public class OrderSheetPerTable implements Serializable {
      * getStaffId method retrieves staff id in order sheet
      * @return the staff id
      */
-    public int getStaffId() {
+    public String getStaffId() {
         return staffId;
     }
     /**
      * setStaffId method assigns staff id in order sheet
-     * @param staffId the staff id
+     * @param staffId2 the staff id
      */
-    public void setStaffId(int staffId) {
-        this.staffId = staffId;
+    public void setStaffId(String staffId2) {
+        this.staffId = staffId2;
     }
     /**
      * getDateNTime method retrieves date and time ordersheet was instantiated
@@ -146,14 +146,14 @@ public class OrderSheetPerTable implements Serializable {
      * getStaffIDs method retrieves staffIDs that keyed orders in for table 
      * @return staffIds arraylist
      */
-    public ArrayList<Integer> getStaffIDs() {
+    public ArrayList<String> getStaffIDs() {
         return staffIds;
     }
     /**
      * setStaffIds method assigns staffIds to given ArrayList
      * @param staffIds staffIds arraylist
      */
-    public void setStaffIds(ArrayList<Integer> staffIds) {
+    public void setStaffIds(ArrayList<String> staffIds) {
         this.staffIds = staffIds;
     }
     /**
@@ -193,7 +193,7 @@ public class OrderSheetPerTable implements Serializable {
      * @param quantity Desired number of MenuItem objects
      * @param staffId StaffId that keyed in order.
      */
-    public void addOrder(MenuItem item, int quantity, int staffId) {
+    public void addOrder(MenuItem item, int quantity, String staffId) {
         if (orders.contains(item)) {
             int existingItem = orders.indexOf(item);
             int existingQuantity = quantityFEO.get(existingItem);
@@ -205,7 +205,7 @@ public class OrderSheetPerTable implements Serializable {
             quantityFEO.add(quantity);
             subTotalPrice.add(item.getPrice() * quantity);
             staffIds.add(staffId);
-            System.out.println("Item ordered: " + item.getName() + " Qty: " + quantity);
+            //System.out.println("Item ordered: " + item.getName() + " Qty: " + quantity);
         }
 
     }
@@ -217,7 +217,7 @@ public class OrderSheetPerTable implements Serializable {
      * @param quantity the new quantity
      * @param staffId the staff 
      */
-    public void changeQuantity(MenuItem item, int quantity, int staffId) {
+    public void changeQuantity(MenuItem item, int quantity, String staffId) {
         int i = orders.indexOf(item);
         if (i != -1) {
             quantityFEO.set(i, quantity);
@@ -287,10 +287,12 @@ public class OrderSheetPerTable implements Serializable {
      * printBill method prints invoice
      */
     public void printBill() {
+    	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    	
 		System.out.println("==========Emperial Fortune Cookies Restaurant============");
 		System.out.println("Staff ID      : " + getStaffId() );
 		System.out.println("Table ID        : " + tableNum );
-		System.out.println("Date(DD/MM/YYYY): " + ( dateNTime ).getDate() + "/" + ( dateNTime ).getMonth() + "/" + ( ( dateNTime ).getYear() + 1900 ));
+		System.out.println("Date(DD/MM/YYYY): " + sdf.format(dateNTime) );
 		System.out.println("---------------------------------------------------------");
 		
 		double sum = 0;

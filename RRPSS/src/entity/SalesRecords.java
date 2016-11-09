@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import controllers.ReservationController;
 import java.text.DecimalFormat;
@@ -97,24 +98,34 @@ public class SalesRecords {
      * @param format of the date
      * @return  the total sales records by date
      */
-    public double CalculateRevenueOnDate(String dateToCheck, String format) {
-        double revenue = 0;
+    public double GenerateSalesReport(String dateToCheck, String format) {
+        Date today = new GregorianCalendar().getTime();
+    	double revenue = 0;
         SimpleDateFormat sdf = new SimpleDateFormat(format);
-        ArrayList<Double> breakDown = new ArrayList<Double>();
         ArrayList<OrderSheetPerTable> tempRecords = QuerySalesRecordsOnDate(dateToCheck, format);
+        OrderSheetPerTable TheSalesReportOrderSheet = new OrderSheetPerTable(-1,"-1",today);
         if (!(tempRecords.isEmpty())) {
             for (int i = 0; i < tempRecords.size(); i++) {
-                tempRecords.get(i).printOrderSheetDetails();
-                revenue += tempRecords.get(i).getTotalBill();
+                //tempRecords.get(i).printOrderSheetDetails();
+            	OrderSheetPerTable tempOrderSheet = tempRecords.get(i);
+            	ArrayList<MenuItem> tempOrders = tempRecords.get(i).getOrders();
+            	for(int j=0;j<tempOrders.size();j++){
+            		TheSalesReportOrderSheet.addOrder(tempOrders.get(j),tempOrderSheet.getQuantityForEachOrder().get(j) , "-1");
+            	}
+            	revenue += tempRecords.get(i).getTotalBill();
+            	TheSalesReportOrderSheet.setTotalBill(revenue);
             }
+            TheSalesReportOrderSheet.printBill();
             
-            System.out.println("Time period: " + dateToCheck);
-            System.out.printf("###### Revenue in " + dateToCheck + "   "+ new DecimalFormat("$###,##0.00").format(revenue) + " #######");
+            /*System.out.println("Time period: " + dateToCheck);
+            System.out.printf("###### Sales report for: " + dateToCheck + "   "+ new DecimalFormat("$###,##0.00").format(revenue) + " #######");
             System.out.println("");
-            System.out.println(SPACING2);
+            System.out.println(SPACING2);*/
 
         }
         return revenue;
     }
+    
+   
 
 }

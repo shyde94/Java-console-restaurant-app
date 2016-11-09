@@ -452,7 +452,7 @@ public class TableAll {
      * @param staffId staff that did it.
      * @param today date and time order sheet was instantiated.
      */
-    public void initialiseOrderSheetForTable(int tableNumber, int staffId, Date today) {
+    public void initialiseOrderSheetForTable(int tableNumber, String staffId, Date today) {
         if (!(checkOrderSheetInit(tableNumber))) {
             Table temp = getTable(tableNumber);
             temp.initOrderSheet(tableNumber, staffId, today);

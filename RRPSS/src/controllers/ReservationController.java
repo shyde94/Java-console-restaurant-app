@@ -167,6 +167,7 @@ public class ReservationController {
 			e1.printStackTrace();
 		}*/
         Scanner input = new Scanner(System.in);
+        Scanner inputString = new Scanner(System.in);
         String inputDate;
         String inputTime;
         boolean x = true;
@@ -226,14 +227,15 @@ public class ReservationController {
                     }
                 }
                 System.out.println("Enter handphone number: (Enter -1 to return)");
-                String hpNumber = input.next();
-                if (hpNumber.equals("-1")) {
+                String hpNumber = inputString.nextLine();
+                if (hpNumber.equals("-1") || hpNumber.equals("")){
                     break;
                 }
                 System.out.println("Enter name: (Enter -1 to return)");
-                input.nextLine();
-                String name = input.nextLine();
-                if (name.equals("-1")) {
+                
+                input.next();
+                String name = inputString.nextLine();
+                if (name.equals("-1") || name.equals("")) {
                     break;
                 }
                 cont = 0;
@@ -246,6 +248,7 @@ public class ReservationController {
                         cont = 1;
                     } catch (InputMismatchException e) {
                         System.out.println("Please enter a number");
+                        input.nextLine();
                     }
                 } while (cont == 0);
                 if (numpax == -1) {
@@ -333,7 +336,7 @@ public class ReservationController {
                 }
             }
             if (tempList.isEmpty()) {
-                System.out.println("There are no reservations under this name/date, or that the format entered is incorrect.");
+                System.out.println("There are no reservations under this handphone number/date, or that the format entered is incorrect.");
                 return;
             } else {
                 System.out.println("Reservations made under this name: ");

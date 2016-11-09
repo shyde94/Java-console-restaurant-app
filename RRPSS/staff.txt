@@ -1,0 +1,4 @@
+Eeyern Male 1 Boss
+Shide Male 2 Minion
+Grace Female 3 Minion
+Xitong Female 4 Minion

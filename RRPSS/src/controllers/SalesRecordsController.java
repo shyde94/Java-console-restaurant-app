@@ -127,11 +127,11 @@ public class SalesRecordsController {
      * @return revenue made today
      */
     public double getRevenueToday() {
-        System.out.println("Get revenue today");
+        System.out.println("GENERATING SALES RECORD...");
         Date today = new GregorianCalendar().getTime();
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String dateToCheck = sdf.format(today);
-        double revenue = recordsOfSales.CalculateRevenueOnDate(dateToCheck, "dd-MM-yyyy");
+        double revenue = recordsOfSales.GenerateSalesReport(dateToCheck, "dd-MM-yyyy");
         return revenue;
     }
 
@@ -154,14 +154,14 @@ public class SalesRecordsController {
             if (dateToCheck.equals("-1")) {
                 return revenue;
             }
-            revenue = recordsOfSales.CalculateRevenueOnDate(dateToCheck, "dd-MM-yyyy");
+            revenue = recordsOfSales.GenerateSalesReport(dateToCheck, "dd-MM-yyyy");
         } else if (choice == 2) { //get revenue in month
             System.out.println("Enter specific month in mm-yy format: (Enter -1 to go back)");
             dateToCheck = input.next();
             if (dateToCheck.equals("-1")) {
                 return revenue;
             }
-            revenue = recordsOfSales.CalculateRevenueOnDate(dateToCheck, "MM-yy");
+            revenue = recordsOfSales.GenerateSalesReport(dateToCheck, "MM-yy");
         }
         return revenue;
 
@@ -217,6 +217,8 @@ public class SalesRecordsController {
     	
 
     }
+    
+    
 
     /**
      * displayMenuOptions method will display all the sales record options

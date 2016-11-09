@@ -165,7 +165,7 @@ public class Table {
      * @param staffId the staff id
      * @param today the current date today or the system date
      */
-    public void initOrderSheet(int tableNum, int staffId, Date today) {
+    public void initOrderSheet(int tableNum, String staffId, Date today) {
         orderSheet = new OrderSheetPerTable(tableNum, staffId, today);
     }
 

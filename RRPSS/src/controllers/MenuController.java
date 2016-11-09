@@ -128,13 +128,16 @@ public class MenuController {
     }
     
     public void displayMenuOptions() {		//Display main menu options
-        System.out.println("Menu Options (Enter -1 to go back)");
-        System.out.println("1. Create new menu item");
-        System.out.println("2. Create Promotional Package~~");
-        System.out.println("3. Update menu item / Propotional package");
-        System.out.println("4. Remove menu item/ Promotional package");
-        System.out.println("5. Display menu");
-        System.out.println("6. Save menu");
+        System.out.println(SPACING);
+        System.out.println("*                MENU OPTIONS                *");
+        System.out.println("*  Please select option: (Enter -1 to return)*");
+        System.out.println("*  1. Create new menu item                   *");
+        System.out.println("*  2. Create Promotional Package             *");
+        System.out.println("*  3. Update menu item / Propotional package *");
+        System.out.println("*  4. Remove menu item/ Promotional package  *");
+        System.out.println("*  5. Display menu                           *");
+        System.out.println("*  6. Save menu                              *");
+        System.out.println(SPACING);
     }
 
     //Menu Item Functionality

@@ -266,10 +266,9 @@ public class OrderController {
                     System.out.println("Select item to change quantity for: (Enter -1 to go back)");
                     try {
                         choice = input.nextInt();
+                        System.out.println(SPACING2);
                         if(choice==-1)break;
-                        System.out.println(SPACING2);
                         tempMenuItem = orderSheetTemp.getOrders().get(choice - 1);
-                        System.out.println(SPACING2);
                         y = false;
                     } catch (InputMismatchException e) {
                         System.out.println("Please enter a number");
@@ -499,6 +498,7 @@ public class OrderController {
 
     public void displayMenuOptions() {
         System.out.println(SPACING);
+        System.out.println("*                ORDER OPTIONS               *");
         System.out.println("*  Please select option: (Enter -1 to return)*");
         System.out.println("*  1. Add Order                              *"); //Each table must initialise order sheet first before orders can be added in.  
         System.out.println("*  2. Update pre-exisiting order             *");

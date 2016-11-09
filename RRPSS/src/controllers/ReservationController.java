@@ -451,11 +451,14 @@ public class ReservationController {
     }
 
     public void displayMenuOptions() {		//Display main menu options
-        System.out.println("Menu Options (Enter -1 to go back)");
-        System.out.println("1. Create new reservation");
-        System.out.println("2. Check reservation");
-        System.out.println("3. Remove reservation (by Handphone number)");
-        System.out.println("4. Remove reservation (by Date)");
-        System.out.println("5. Show all reservations");
+        System.out.println(SPACING);
+        System.out.println("*            RESERVATION OPTIONS             *");
+        System.out.println("*  Please select option: (Enter -1 to return)*");
+        System.out.println("*  1. Create new reservation                 *");
+        System.out.println("*  2. Check reservation                      *");
+        System.out.println("*  3. Remove reservation (by Phone Number)   *");
+        System.out.println("*  4. Remove reservation (by Date)           *");
+        System.out.println("*  5. Show all reservations                  *");
+        System.out.println(SPACING);
     }
 }

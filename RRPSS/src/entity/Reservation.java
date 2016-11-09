@@ -92,6 +92,7 @@ public class Reservation implements Serializable {
 
     /**
      * setNumberOfPeople method assigns the number of people
+     *
      * @param numberOfPeople the assigned number of people
      */
     public void setNumberOfPeople(int numberOfPeople) {
@@ -100,15 +101,16 @@ public class Reservation implements Serializable {
 
     /**
      * getHpNumber method retrieves the handphone number
-     * @return the handphone number 
+     *
+     * @return the handphone number
      */
     public String getHpNumber() {
         return hpNumber;
     }
 
-    
     /**
      * setHpNumber method assigns the handphone of the customer
+     *
      * @param hpNumber the assigned handphone of the customer
      */
     public void setHpNumber(String hpNumber) {
@@ -117,6 +119,7 @@ public class Reservation implements Serializable {
 
     /**
      * getCustomerName method retrieves the customers name
+     *
      * @return the customer name
      */
     public String getCustomerName() {
@@ -125,6 +128,7 @@ public class Reservation implements Serializable {
 
     /**
      * setCustomerName assigns the customer name
+     *
      * @param customerName the assigned customer name
      */
     public void setCustomerName(String customerName) {
@@ -133,6 +137,7 @@ public class Reservation implements Serializable {
 
     /**
      * setDateReserved method assigns the date of the reservation
+     *
      * @param dateReserved the assigned date of the reservation
      */
     public void setDateReserved(String dateReserved) {
@@ -142,6 +147,7 @@ public class Reservation implements Serializable {
 
     /**
      * getDateReserved method retrieves the date reserved for the reservation
+     *
      * @return the date reserved for the reservation
      */
     public String getDateReserved() {
@@ -150,6 +156,7 @@ public class Reservation implements Serializable {
 
     /**
      * getTimeOfArrival method retrieves the time of arrival of the reservation
+     *
      * @return the time of arrival for the reservation
      */
     public String getTimeOfArrival() {
@@ -158,6 +165,7 @@ public class Reservation implements Serializable {
 
     /**
      * setTimeOfArrival method assigns the time of arrival for the reservation
+     *
      * @param timeOfArrival assigns the time of arrival for the reservation
      */
     public void setTimeOfArrival(String timeOfArrival) {

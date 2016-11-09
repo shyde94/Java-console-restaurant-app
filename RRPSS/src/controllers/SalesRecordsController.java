@@ -187,9 +187,8 @@ public class SalesRecordsController {
     }
 
     public void displayMenuOptions() {
-        System.out.println(SPACING);
-        
-        System.out.println("*    Select option: (Enter -1 to go back)    *");
+        System.out.println("*            SALES RECORDS OPTIONS           *");
+        System.out.println("*  Please select option: (Enter -1 to return)*");
         System.out.println("*    1. Calculate Revenue today              *");
         System.out.println("*    2. Calculate Revenue on specific date   *");
         System.out.println("*    3. Calculate Revenue in specific month  *");

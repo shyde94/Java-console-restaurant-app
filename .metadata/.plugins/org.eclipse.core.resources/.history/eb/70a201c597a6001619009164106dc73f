@@ -93,10 +93,10 @@ public class Restaurant {
                     try {
                         orderC.run();
                     } catch (InputMismatchException e) {
-                        System.out.println("Please choose a valid option.");
+                        System.out.println("Error caught by MenuTestingApp");
                         input.next();
                     } catch (IndexOutOfBoundsException e) {
-                        System.out.println("Please choose a valid option.");
+                        System.out.println("Invalid input. Try again");
                         input.nextLine();
                     }
                     break;
@@ -104,14 +104,14 @@ public class Restaurant {
                     try {
                         mC.run();
                     } catch (InputMismatchException e) {
-                        //System.out.println("Error caught by MenuTestingApp");
+                        System.out.println("Error caught by MenuTestingApp");
                     }
                     break;
                 case (3):
                     try {
                         reserveC.run();
                     } catch (InputMismatchException e) {
-                        System.out.println("Please choose a valid option.");
+                        System.out.println("Invalid option.");
                         input.nextLine();
                     }
                     break;
@@ -122,18 +122,18 @@ public class Restaurant {
                     try {
                         tableC.showAllTableStatuses();;
                     } catch (InputMismatchException e) {
-                        System.out.println("Please choose a valid option.");
+                        System.out.println("Error caught by MenuTestingApp2");
                     }
                     break;
                 case (6):
                     try {
                         sRecordsC.run();
                     } catch (InputMismatchException e) {
-                        System.out.println("Please choose a valid option.");
+                        System.out.println("Error caught by MenuTestingApp2");
                     }
                     break;
                 default:
-                    System.out.println("Please choose a valid option.");
+                    System.out.println("Invalid option.");
 
             }
 

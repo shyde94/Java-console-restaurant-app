@@ -300,10 +300,10 @@ public class OrderController {
                         input.nextLine();
                     }
                     catch (ArrayIndexOutOfBoundsException e) {
-                    	System.out.println("Order does not exist.Please try again.");
+                    	System.out.println("Order does not exist.Please try again1.");
                     	input.nextLine();
                     }catch (IndexOutOfBoundsException e) {
-                    	System.out.println("Order does not exist.Please try again.");
+                    	System.out.println("Order does not exist.Please try again2.");
                     	input.nextLine();
                     }
                 } while (y);

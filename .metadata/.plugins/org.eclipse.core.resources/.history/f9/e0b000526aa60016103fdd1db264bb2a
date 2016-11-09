@@ -399,7 +399,12 @@ public class TableAll {
                     }
                     Reservation todelete = holdingArrayList.get(i);
                     rL.deleteReservation(todelete);
-                    
+                    try {
+						ReservationController.saveReservations();
+					} catch (ClassNotFoundException | IOException e) {
+					}
+                   
+                    //}	
                 }
             }
             reservationsTodayAM = rL.reservationsMadeOnDate(todayString, "AM");//Refresh reservationsTodayAM.

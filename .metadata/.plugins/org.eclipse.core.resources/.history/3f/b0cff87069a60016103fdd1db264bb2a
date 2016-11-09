@@ -1,6 +1,5 @@
 package entity;
 
-import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -399,7 +398,7 @@ public class TableAll {
                     }
                     Reservation todelete = holdingArrayList.get(i);
                     rL.deleteReservation(todelete);
-                    
+                    //}	
                 }
             }
             reservationsTodayAM = rL.reservationsMadeOnDate(todayString, "AM");//Refresh reservationsTodayAM.

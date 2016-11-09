@@ -128,23 +128,23 @@ public class ReservationController {
         //4. Search for tables that have at most pax + 3 seats. 
         //5. If have, input name, hp number. 
         //6. Create reservation 
-        /*allTheReservations.createReservation(1, 2, "97811150", "Foo Shi De", "09-11-2016", "2200", "PM");
+        allTheReservations.createReservation(1, 2, "97811150", "Foo Shi De", "09-11-2016", "1400", "AM");
         allTheReservations.createReservation(1, 2, "97811150", "Apple", "09-11-2016", "1730", "PM");
-        allTheReservations.createReservation(3, 2, "97811150", "Banana", "09-11-2016", "1400", "PM");
+        allTheReservations.createReservation(3, 2, "97811150", "Banana", "09-11-2016", "1400", "AM");
         allTheReservations.createReservation(3, 2, "97811150", "Pineapple", "09-11-2016", "1730", "PM");
         allTheReservations.createReservation(4, 2, "97811150", "habaaba", "09-11-2016", "1830", "PM");
         allTheReservations.createReservation(5, 2, "123123123", "John", "09-11-2016", "1800", "PM");
-        allTheReservations.createReservation(4, 2, "123123123", "John", "09-11-2016", "1400","PM");
-        allTheReservations.createReservation(5, 2, "123123123", "John", "09-11-2016", "1400","PM");
-        allTheReservations.createReservation(9, 2, "123123123", "John", "09-11-2016", "1400","PM");
-        allTheReservations.createReservation(8, 2, "123123123", "John", "09-11-2016", "1400","PM");
+        allTheReservations.createReservation(4, 2, "123123123", "John", "09-11-2016", "1400","AM");
+        allTheReservations.createReservation(5, 2, "123123123", "John", "09-11-2016", "1400","AM");
+        allTheReservations.createReservation(9, 2, "123123123", "John", "09-11-2016", "1400","AM");
+        allTheReservations.createReservation(8, 2, "123123123", "John", "039-11-2016", "1400","AM");
     	allTheReservations.createReservation(10, 2, "123123123", "John", "09-11-2016", "1700","PM");
     	try {
 			saveReservations();
 		} catch (ClassNotFoundException | IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-		}*/
+		}
         Scanner input = new Scanner(System.in);
         String inputDate;
         String inputTime;

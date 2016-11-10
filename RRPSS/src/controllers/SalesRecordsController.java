@@ -166,6 +166,7 @@ public class SalesRecordsController {
             
             System.out.println("############# Sales report for: " + dateToCheck + " ###############");
             revenue = recordsOfSales.GenerateSalesReport(dateToCheck, "MM-yy");
+            System.out.println("Revenue: " + revenue);
         }
         return revenue;
 

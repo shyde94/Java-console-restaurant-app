@@ -108,13 +108,15 @@ public class SalesRecords {
             for (int i = 0; i < tempRecords.size(); i++) {
                 //tempRecords.get(i).printOrderSheetDetails();
             	OrderSheetPerTable tempOrderSheet = tempRecords.get(i);
-            	ArrayList<MenuItem> tempOrders = tempRecords.get(i).getOrders();
+            	ArrayList<MenuItem> tempOrders = tempOrderSheet.getOrders();
             	for(int j=0;j<tempOrders.size();j++){
             		TheSalesReportOrderSheet.addOrder(tempOrders.get(j),tempOrderSheet.getQuantityForEachOrder().get(j) , "-1");
+            		
             	}
             	revenue += tempRecords.get(i).getTotalBill();
-            	TheSalesReportOrderSheet.setTotalBill(revenue);
+            	
             }
+            TheSalesReportOrderSheet.setTotalBill(revenue);
             TheSalesReportOrderSheet.printBill();
             
             /*System.out.println("Time period: " + dateToCheck);

@@ -79,7 +79,7 @@ public class TableController {	//This class is just to settle which tables are b
 				
 			}
 		}catch(ParseException e){
-			System.out.println("OH SHIT.");
+			System.out.println("Error executing expireReservations.");
 		}
 		//TableRecords.showTableStatuses();
 			//System.out.println("Please Select option: (Enter -1 to go back)");

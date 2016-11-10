@@ -194,21 +194,31 @@ public class OrderSheetPerTable implements Serializable {
      * @param staffId StaffId that keyed in order.
      */
     public void addOrder(MenuItem item, int quantity, String staffId) {
-        if (orders.contains(item)) {
-            int existingItem = orders.indexOf(item);
+    	ArrayList<String> nameItems = new ArrayList<String>();
+    	for(int i=0;i<orders.size();i++){
+    		nameItems.add(orders.get(i).getName());
+    		//System.out.println("Items: "+ nameItems.get(i));
+    	}
+        if (nameItems.contains(item.getName())) {
+        	//System.out.println("item: " + item.getName());
+            int existingItem = nameItems.indexOf(item.getName());
             int existingQuantity = quantityFEO.get(existingItem);
             quantityFEO.set(existingItem, existingQuantity + quantity);
             subTotalPrice.set(existingItem, item.getPrice() * (existingQuantity + quantity));
             staffIds.set(existingItem, staffId);
+            
         } else {
             orders.add(item);
             quantityFEO.add(quantity);
             subTotalPrice.add(item.getPrice() * quantity);
             staffIds.add(staffId);
+            
             //System.out.println("Item ordered: " + item.getName() + " Qty: " + quantity);
         }
 
     }
+    
+   
 
  
     /**

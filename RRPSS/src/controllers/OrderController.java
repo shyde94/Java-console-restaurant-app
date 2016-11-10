@@ -193,7 +193,7 @@ public class OrderController {
                     System.out.println(SPACING2);
 
                     if (tableNumber == -1) {
-                        break;
+                        return;
                     }
         
                     tempTable = tIR.getTable(tableNumber);
@@ -279,7 +279,7 @@ public class OrderController {
                 }
             } while (y);
             if (tableNumber == -1) {
-                continue;
+                return;
             }
             //Get table object with corresponding table number
             //Check if orderSheet for table has been initialised;
@@ -373,7 +373,7 @@ public class OrderController {
                 }
             } while (y);
             if (tableNumber == -1) {
-                continue;
+                return;
             }
             //Get table object with corresponding table number
             //Check if orderSheet for table has been initialised;
@@ -453,7 +453,7 @@ public class OrderController {
                 }
             } while (y);
             if (tableNumber == -1) {
-                continue;
+                return;
             }
             //Get table object with corresponding table number
             //Check if orderSheet for table has been initialised;

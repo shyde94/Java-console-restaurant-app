@@ -83,7 +83,7 @@ public class ReservationController {
                 case (2):
                     do {
                         try {
-                            System.out.println("Test");
+                            
                             this.checkReservation();
                             y = false;
                         } catch (InputMismatchException e) {
@@ -149,17 +149,17 @@ public class ReservationController {
         //4. Search for tables that have at most pax + 3 seats. 
         //5. If have, input name, hp number. 
         //6. Create reservation 
-        /*allTheReservations.createReservation(1, 2, "97811150", "Foo Shi De", "09-11-2016", "2200", "PM");
-        allTheReservations.createReservation(1, 2, "97811150", "Apple", "09-11-2016", "1730", "PM");
-        allTheReservations.createReservation(3, 2, "97811150", "Banana", "09-11-2016", "1400", "PM");
-        allTheReservations.createReservation(3, 2, "97811150", "Pineapple", "09-11-2016", "1730", "PM");
-        allTheReservations.createReservation(4, 2, "97811150", "habaaba", "09-11-2016", "1830", "PM");
-        allTheReservations.createReservation(5, 2, "123123123", "John", "09-11-2016", "1800", "PM");
-        allTheReservations.createReservation(4, 2, "123123123", "John", "09-11-2016", "1400","PM");
-        allTheReservations.createReservation(5, 2, "123123123", "John", "09-11-2016", "1400","PM");
-        allTheReservations.createReservation(9, 2, "123123123", "John", "09-11-2016", "1400","PM");
-        allTheReservations.createReservation(8, 2, "123123123", "John", "09-11-2016", "1400","PM");
-    	allTheReservations.createReservation(10, 2, "123123123", "John", "09-11-2016", "1700","PM");
+        //allTheReservations.createReservation(1, 2, "97811150", "Lim", "10-11-2016", "2200", "PM");
+        /*allTheReservations.createReservation(2, 2, "97811150", "Donald", "10-11-2016", "1930", "PM");
+        allTheReservations.createReservation(3, 2, "97811150", "Foo", "10-11-2016", "1930", "PM");
+        allTheReservations.createReservation(22, 6, "97811150", "Jessie", "10-11-2016", "1930", "PM");
+        allTheReservations.createReservation(4, 2, "97811150", "Jenny", "10-11-2016", "1930", "PM");
+        allTheReservations.createReservation(5, 2, "123123123", "John", "10-11-2016", "1930", "PM");
+        allTheReservations.createReservation(21, 6, "123123123", "Andrew", "10-11-2016", "1930","PM");
+        allTheReservations.createReservation(6, 2, "123123123", "Adam", "10-11-2016", "1930","PM");
+        allTheReservations.createReservation(9, 2, "123123123", "Michelle", "10-11-2016", "1930","PM");
+        allTheReservations.createReservation(8, 2, "123123123", "Grace", "10-11-2016", "1930","PM");
+    	allTheReservations.createReservation(10, 2, "123123123", "Diane", "10-11-2016", "1930","PM");
     	try {
 			saveReservations();
 		} catch (ClassNotFoundException | IOException e1) {
@@ -233,7 +233,7 @@ public class ReservationController {
                 }
                 System.out.println("Enter name: (Enter -1 to return)");
                 
-                input.next();
+                input.nextLine();
                 String name = inputString.nextLine();
                 if (name.equals("-1") || name.equals("")) {
                     break;

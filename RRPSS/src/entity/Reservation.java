@@ -178,7 +178,7 @@ public class Reservation implements Serializable {
      */
     public void printReservation() {
         System.out.println( "******* Reservation for: " + customerName+ " *******");
-        System.out.println("date reserved: " + dateReserved);
+        System.out.println("Date Reserved: " + dateReserved);
         System.out.println("Time of arrival: " + timeOfArrival);
         System.out.println("Table: " + tableNumber);
         System.out.println("Number of people: " + numberOfPeople);

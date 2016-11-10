@@ -2,12 +2,13 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="getTotalBill()" key="selection"/>
+		<item value="inputString" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="inputString"/>
 			<item value="getTotalBill()"/>
 			<item value="staffId"/>
 			<item value="allTheTables"/>
@@ -15,7 +16,6 @@
 			<item value="menu."/>
 			<item value="menu"/>
 			<item value="addpPackage"/>
-			<item value="Order does not"/>
 		</list>
 		<list key="replacehistory">
 			<item value="05-11-2016"/>

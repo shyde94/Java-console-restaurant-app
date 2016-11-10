@@ -583,6 +583,7 @@ public class MenuController {
                     }
                 } while (z);
                 if (choice == -1) {
+                	menuItemArray.remove(menuItemArray.size()-1);
                     continue;
                 }
                 if(choice == 2)break;

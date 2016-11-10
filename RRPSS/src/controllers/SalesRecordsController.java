@@ -228,6 +228,7 @@ public class SalesRecordsController {
      * displayMenuOptions method will display all the sales record options
      */
     public void displayMenuOptions() {
+        System.out.println(SPACING);
         System.out.println("*            SALES RECORDS OPTIONS           *");
         System.out.println("*  Please select option: (Enter -1 to return)*");
         System.out.println("*    1. Calculate Revenue today              *");

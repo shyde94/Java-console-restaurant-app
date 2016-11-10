@@ -161,6 +161,7 @@ public class ReservationAll {
      */
     public void showAllReservations() {
         for (int i = 0; i < reservationList.size(); i++) {
+            System.out.println("");
             reservationList.get(i).printReservation();
         }
     }

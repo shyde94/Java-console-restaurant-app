@@ -164,7 +164,7 @@ public class SalesRecordsController {
             }
             
             
-            System.out.println("############# Sales report for: " + dateToCheck + " ###############");
+            System.out.println("######### Sales report for: " + dateToCheck + "##########");
             revenue = recordsOfSales.GenerateSalesReport(dateToCheck, "MM-yy");
         }
         return revenue;

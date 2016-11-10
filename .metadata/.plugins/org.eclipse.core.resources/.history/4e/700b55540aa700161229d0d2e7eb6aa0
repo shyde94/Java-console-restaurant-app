@@ -190,28 +190,21 @@ public class Menu {
      * @param type item type
      */
     public void removeItem(int n, String type) {
-    	if(type.equals("Promotional Package")){
-    		pPackage.remove(n);
-    		System.out.println("Promotional Package has been removed.");
-    	}
-    	else{
-    		ArrayList<MenuItem> deleteType = reOrderItems(type);
-            MenuItem tempMenuItem = deleteType.get(n);
-            menuItem.remove(tempMenuItem);
-            //    menuItem.get(n).notifyPPackage();
-            System.out.println("Item has been removed");
-            for (int i = 0; i < pPackage.size(); i++) {
-                ArrayList<MenuItem> temp = new ArrayList<MenuItem>();
-                temp = pPackage.get(i).getItemList();
-                for (int j = 0; j < temp.size(); j++) {
-                    if (temp.get(j).equals(tempMenuItem)) {
-                        temp.remove(tempMenuItem);
-                    }
+        ArrayList<MenuItem> deleteType = reOrderItems(type);
+        MenuItem tempMenuItem = deleteType.get(n);
+        menuItem.remove(tempMenuItem);
+        //    menuItem.get(n).notifyPPackage();
+        System.out.println("Item has been removed");
+        for (int i = 0; i < pPackage.size(); i++) {
+            ArrayList<MenuItem> temp = new ArrayList<MenuItem>();
+            temp = pPackage.get(i).getItemList();
+            for (int j = 0; j < temp.size(); j++) {
+                if (temp.get(j).equals(tempMenuItem)) {
+                    temp.remove(tempMenuItem);
                 }
-
             }
-    	}
-        
+
+        }
     }
 
     /**

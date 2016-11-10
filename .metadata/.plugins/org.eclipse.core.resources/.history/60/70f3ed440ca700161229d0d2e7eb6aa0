@@ -94,7 +94,7 @@ public class Restaurant {
                         orderC.run();
                     } catch (InputMismatchException e) {
                         System.out.println("Please choose a valid option.");
-                        input.nextLine();
+                        input.next();
                     } catch (IndexOutOfBoundsException e) {
                         System.out.println("Please choose a valid option.");
                         input.nextLine();

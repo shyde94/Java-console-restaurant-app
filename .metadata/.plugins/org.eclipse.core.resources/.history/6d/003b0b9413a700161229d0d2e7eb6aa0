@@ -57,31 +57,31 @@ public class OrderController {
      */
     public void run() throws InputMismatchException {
     	
-        boolean x = true;boolean y = true;
+        boolean x = true;
         Scanner input = new Scanner(System.in);
         Scanner inputString = new Scanner(System.in);
-        String staffId = "";
-        do {
-            y = true;
-            System.out.println("Enter staff ID: (Enter -1 to go back)");
-            try {
-                staffId = inputString.nextLine();
-                if(!(allTheStaff.checkId(staffId))){
-                	staffId="-1";
-                	System.out.println("Invalid staff ID");
-                }
-                System.out.println(SPACING2);
-                y = false;
-            } catch (InputMismatchException e) {
-                System.out.println("Invalid staff ID");
-                input.nextLine();
-            }
-        } while (y);
-        if (staffId.equals("-1")) {
-            return;
-        }
         while (x) {
-            y = true;
+            boolean y = true;
+            String staffId = "";
+            do {
+                y = true;
+                System.out.println("Enter staff ID: (Enter -1 to go back)");
+                try {
+                    staffId = inputString.nextLine();
+                    if(!(allTheStaff.checkId(staffId))){
+                    	staffId="-1";
+                    	System.out.println("Invalid staff ID");
+                    }
+                    System.out.println(SPACING2);
+                    y = false;
+                } catch (InputMismatchException e) {
+                    System.out.println("Invalid staff ID");
+                    input.nextLine();
+                }
+            } while (y);
+            if (staffId.equals("-1")) {
+                return;
+            }
             int choice=0;
             do{
             	try{

@@ -57,31 +57,31 @@ public class OrderController {
      */
     public void run() throws InputMismatchException {
     	
-        boolean x = true;boolean y = true;
+        boolean x = true;
         Scanner input = new Scanner(System.in);
         Scanner inputString = new Scanner(System.in);
-        String staffId = "";
-        do {
-            y = true;
-            System.out.println("Enter staff ID: (Enter -1 to go back)");
-            try {
-                staffId = inputString.nextLine();
-                if(!(allTheStaff.checkId(staffId))){
-                	staffId="-1";
-                	System.out.println("Invalid staff ID");
-                }
-                System.out.println(SPACING2);
-                y = false;
-            } catch (InputMismatchException e) {
-                System.out.println("Invalid staff ID");
-                input.nextLine();
-            }
-        } while (y);
-        if (staffId.equals("-1")) {
-            return;
-        }
         while (x) {
-            y = true;
+            boolean y = true;
+            String staffId = "";
+            do {
+                y = true;
+                System.out.println("Enter staff ID: (Enter -1 to go back)");
+                try {
+                    staffId = inputString.nextLine();
+                    if(!(allTheStaff.checkId(staffId))){
+                    	staffId="-1";
+                    	System.out.println("Invalid staff ID");
+                    }
+                    System.out.println(SPACING2);
+                    y = false;
+                } catch (InputMismatchException e) {
+                    System.out.println("Invalid staff ID");
+                    input.nextLine();
+                }
+            } while (y);
+            if (staffId.equals("-1")) {
+                return;
+            }
             int choice=0;
             do{
             	try{
@@ -148,10 +148,10 @@ public class OrderController {
                     }
                     break;
                 case (5):
-                    this.viewOrder();
+                    this.viewOrder(staffId);
                     break;
                 case (6):
-                    this.showAllOrders();
+                    this.showAllOrders(staffId);
                     break;
                 case (-1):
                     return;
@@ -174,7 +174,7 @@ public class OrderController {
         //5. Add item to that tables ordersheet. 
         Date today = new GregorianCalendar().getTime();
         Scanner input = new Scanner(System.in);
-        //Scanner inputString = new Scanner(System.in);
+        Scanner inputString = new Scanner(System.in);
         boolean x = true;
         boolean y = true;
         System.out.println("Key in order:");
@@ -258,7 +258,7 @@ public class OrderController {
      */
     public void updateOrderSheetPerTable(String staffId) {
         Scanner input = new Scanner(System.in);
-        //Scanner inputString = new Scanner(System.in);
+        Scanner inputString = new Scanner(System.in);
         boolean x = true;
         boolean y = true;
         System.out.println("Edit exisiting order:");
@@ -353,7 +353,7 @@ public class OrderController {
      */
     public void removeOrderFromOrderSheet(String staffId) {
         Scanner input = new Scanner(System.in);
-       // Scanner inputString = new Scanner(System.in);
+        Scanner inputString = new Scanner(System.in);
         boolean x = true;
         boolean y = true;
         System.out.println("Remove order:");
@@ -433,7 +433,7 @@ public class OrderController {
      */
     public void PrintInvoiceAndCheckOut(String staffId) throws FileNotFoundException, IOException {
         Scanner input = new Scanner(System.in);
-        //Scanner inputString = new Scanner(System.in);
+        Scanner inputString = new Scanner(System.in);
         boolean x = true;
         boolean y = true;
         System.out.println("Print invoice and checkout.");

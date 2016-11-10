@@ -221,7 +221,6 @@ public class Menu {
      */
     public void displayMenuAndItems(ArrayList<MenuItem> mItem) {
         for (int j = 0; j < types.size(); j++) {
-        	System.out.println("");
             System.out.println("######" + types.get(j) + "######");
             for (int i = 0; i < mItem.size(); i++) {
                 if (mItem.get(i).getType().equals(types.get(j))) {
@@ -233,10 +232,9 @@ public class Menu {
             }
         }
         //Promotional Packages
-       // System.out.println("******" + "Promotional Packages" + "******");
+        System.out.println("******" + "Promotional Packages" + "******");
         for (int i = 0; i < pPackage.size(); i++) {
-            System.out.println("");
-        	System.out.printf("%-30s", "******" + pPackage.get(i).getName() + "******");
+            System.out.printf("%-30s", "******" + pPackage.get(i).getName() + "******");
             System.out.printf("%20s%n",
                     new DecimalFormat("$###,##0.00").format(pPackage.get(i).getPrice()));
             System.out.println("\"" + pPackage.get(i).getDescription() + "\"");

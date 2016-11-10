@@ -57,31 +57,11 @@ public class OrderController {
      */
     public void run() throws InputMismatchException {
     	
-        boolean x = true;boolean y = true;
+        boolean x = true;
         Scanner input = new Scanner(System.in);
-        Scanner inputString = new Scanner(System.in);
-        String staffId = "";
-        do {
-            y = true;
-            System.out.println("Enter staff ID: (Enter -1 to go back)");
-            try {
-                staffId = inputString.nextLine();
-                if(!(allTheStaff.checkId(staffId))){
-                	staffId="-1";
-                	System.out.println("Invalid staff ID");
-                }
-                System.out.println(SPACING2);
-                y = false;
-            } catch (InputMismatchException e) {
-                System.out.println("Invalid staff ID");
-                input.nextLine();
-            }
-        } while (y);
-        if (staffId.equals("-1")) {
-            return;
-        }
         while (x) {
-            y = true;
+            boolean y = true;
+            
             int choice=0;
             do{
             	try{
@@ -90,7 +70,6 @@ public class OrderController {
                 	y= false;
                 }catch(InputMismatchException e){
                 	System.out.println("Please choose a valid option");
-                	input.nextLine();
                 }
             }while(y);
             
@@ -100,7 +79,7 @@ public class OrderController {
                 case (1):
                     do {
                         try {
-                            this.addOrderToOrderSheet(staffId);
+                            this.addOrderToOrderSheet();
                             y = false;
                         } catch (InputMismatchException e) {
                             System.out.println("Invalid option");
@@ -112,7 +91,7 @@ public class OrderController {
                 case (2):
                     do {
                         try {
-                            this.updateOrderSheetPerTable(staffId);
+                            this.updateOrderSheetPerTable();
                             y = false;
                         } catch (InputMismatchException e) {
                             System.out.println("Invalid option");
@@ -123,7 +102,7 @@ public class OrderController {
                 case (3):
                     do {
                         try {
-                            this.removeOrderFromOrderSheet(staffId);
+                            this.removeOrderFromOrderSheet();
                             y = false;
                         } catch (InputMismatchException e) {
                             System.out.println("Invalid Input. 3");
@@ -134,7 +113,7 @@ public class OrderController {
                     break;
                 case (4):
                     try {
-                        this.PrintInvoiceAndCheckOut(staffId);
+                        this.PrintInvoiceAndCheckOut();
                     } catch (IOException e) {
                         // TODO Auto-generated catch block
                         System.out.println("An error has occured, this checkout could not be saved.");
@@ -166,7 +145,7 @@ public class OrderController {
      * @throws IndexOutOfBoundsException index to the arraylist is out of range
      * @throws ParseException error has been reached unexpectedly whilst parsing
      */
-    public void addOrderToOrderSheet(String staffId) throws IndexOutOfBoundsException, ParseException {
+    public void addOrderToOrderSheet() throws IndexOutOfBoundsException, ParseException {
         //1. Ask for table number
         //2. Check if table has been initialised. If have proceed, if havent, must initialise ordersheet first. Input required: staffId, date, table Num)
         //3. Once init, drop down menu, get input for which item. Change status of table to 'occupied'
@@ -174,15 +153,33 @@ public class OrderController {
         //5. Add item to that tables ordersheet. 
         Date today = new GregorianCalendar().getTime();
         Scanner input = new Scanner(System.in);
-        //Scanner inputString = new Scanner(System.in);
+        Scanner inputString = new Scanner(System.in);
         boolean x = true;
         boolean y = true;
         System.out.println("Key in order:");
         String restaurantShift = ReservationController.checkSlot(today);
         while (x) {
             int tableNumber = 0;
-            
-            
+            String staffId = "";
+            do {
+                y = true;
+                System.out.println("Enter staff ID (Enter -1 to go back)");
+                try {
+                    staffId = inputString.nextLine();
+                    if(!(allTheStaff.checkId(staffId))){
+                    	staffId="-1";
+                    	System.out.println("Invalid staff ID");
+                    }
+                    System.out.println(SPACING2);
+                    y = false;
+                } catch (InputMismatchException e) {
+                    System.out.println("Invalid staff ID");
+                    input.nextLine();
+                }
+            } while (y);
+            if (staffId.equals("-1")) {
+                return;
+            }
             Table tempTable = null;
             y = true;
             do {
@@ -256,16 +253,35 @@ public class OrderController {
     /**
      * updateOrderSheetPerTable will update the order
      */
-    public void updateOrderSheetPerTable(String staffId) {
+    public void updateOrderSheetPerTable() {
         Scanner input = new Scanner(System.in);
-        //Scanner inputString = new Scanner(System.in);
+        Scanner inputString = new Scanner(System.in);
         boolean x = true;
         boolean y = true;
         System.out.println("Edit exisiting order:");
         while (x) {
             int tableNumber = 0;
-            
-        
+            String staffId = "";
+            do {
+                y = true;
+                System.out.println("Enter staff ID (Enter -1 to go back)");
+                try {
+                    staffId = inputString.nextLine();
+                    if(!(allTheStaff.checkId(staffId))){
+                    	staffId="-1";
+                    	System.out.println("Invalid staff ID");
+                    }
+                    System.out.println(SPACING2);
+                    y = false;
+                } catch (InputMismatchException e) {
+                    System.out.println("Invalid staff ID");
+                    input.nextLine();
+                }
+            } while (y);
+
+            if (staffId.equals("-1")) {
+                return;
+            }
             do {
                 y = true;
                 System.out.println("Please enter table number first: (Enter -1 to go back)");
@@ -351,15 +367,35 @@ public class OrderController {
     /**
      * removeOrderFromOrderSheet method will remove the order
      */
-    public void removeOrderFromOrderSheet(String staffId) {
+    public void removeOrderFromOrderSheet() {
         Scanner input = new Scanner(System.in);
-       // Scanner inputString = new Scanner(System.in);
+        Scanner inputString = new Scanner(System.in);
         boolean x = true;
         boolean y = true;
         System.out.println("Remove order:");
         while (x) {
             int tableNumber = 0;
-            
+            String staffId = "";
+            do {
+                y = true;
+                System.out.println("Enter staff ID (Enter -1 to go back)");
+                try {
+                    staffId = inputString.nextLine();
+                    if(!(allTheStaff.checkId(staffId))){
+                    	staffId="-1";
+                    	System.out.println("Invalid staff ID");
+                    }
+                    System.out.println(SPACING2);
+                    y = false;
+                } catch (InputMismatchException e) {
+                    System.out.println("Invalid staff ID");
+                    input.nextLine();
+                }
+            } while (y);
+
+            if (staffId.equals("-1")) {
+                return;
+            }
             do {
                 y = true;
                 System.out.println("Please enter table number first: (Enter -1 to go back)");
@@ -431,15 +467,35 @@ public class OrderController {
      * @throws IOException input or output has been entered or received 
      * incorrectly 
      */
-    public void PrintInvoiceAndCheckOut(String staffId) throws FileNotFoundException, IOException {
+    public void PrintInvoiceAndCheckOut() throws FileNotFoundException, IOException {
         Scanner input = new Scanner(System.in);
-        //Scanner inputString = new Scanner(System.in);
+        Scanner inputString = new Scanner(System.in);
         boolean x = true;
         boolean y = true;
         System.out.println("Print invoice and checkout.");
         while (x) {
             int tableNumber = 0;
-            
+            String staffId = "";
+            do {
+                y = true;
+                System.out.println("Enter staff ID (Enter -1 to go back)");
+                try {
+                    staffId = inputString.nextLine();
+                    if(!(allTheStaff.checkId(staffId))){
+                    	staffId="-1";
+                    	System.out.println("Invalid staff ID");
+                    }
+                    System.out.println(SPACING2);
+                    y = false;
+                } catch (InputMismatchException e) {
+                    System.out.println("Invalid staff ID");
+                    input.nextLine();
+                }
+            } while (y);
+
+            if (staffId.equals("-1")) {
+                return;
+            }
             do {
                 y = true;
                 System.out.println("Please enter table number first: (Enter -1 to go back)");

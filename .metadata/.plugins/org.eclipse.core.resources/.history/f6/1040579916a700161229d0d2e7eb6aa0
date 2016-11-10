@@ -339,10 +339,8 @@ public class TableAll {
 	                }
 				}
 			}
-			else if(Slot.equals("Closed")){
-				System.out.println("");
+			else{
 				System.out.println("Unable to check tables right now because the restaurant is closed");
-				System.out.println("");
 			}
 			/*for (int i = 0; i < totalNumOfTables; i++) {
 	        	if(Slot.equals("AM")){

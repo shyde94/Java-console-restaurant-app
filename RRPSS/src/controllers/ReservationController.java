@@ -142,30 +142,7 @@ public class ReservationController {
      * createReservation method facilitates a reservation
      */
     public void createReservation() {
-        //1. get date and time as input
-        //2. check that not same day or max 1 month
-        //3. check reservations on that day by comparing with tables. 
-        //3. If unreserved tables exist, ask for pax
-        //4. Search for tables that have at most pax + 3 seats. 
-        //5. If have, input name, hp number. 
-        //6. Create reservation 
-        //allTheReservations.createReservation(1, 2, "97811150", "Lim", "10-11-2016", "2200", "PM");
-        /*allTheReservations.createReservation(2, 2, "111111111", "Donald", "11-11-2016", "1115", "AM");
-        allTheReservations.createReservation(3, 2, "222222222", "Foo", "11-11-2016", "1115", "AM");
-        allTheReservations.createReservation(22, 6, "33333333", "Jessie", "11-11-2016", "1115", "AM");
-        allTheReservations.createReservation(4, 2, "44444444", "Jenny", "11-11-2016", "1115", "AM");
-        allTheReservations.createReservation(5, 2, "123123123", "John", "11-11-2016", "1115", "AM");
-        allTheReservations.createReservation(21, 6, "234234234", "Andrew", "11-11-2016", "1115","AM");
-        allTheReservations.createReservation(6, 2, "345345345", "Adam", "11-11-2016", "1115","AM");
-        allTheReservations.createReservation(9, 2, "456456456", "Michelle", "11-11-2016", "1115","AM");
-        allTheReservations.createReservation(8, 2, "567567567", "Grace", "11-11-2016", "1115","AM");
-    	allTheReservations.createReservation(10, 2, "678678678", "Diane", "11-11-2016", "1115","AM");
-    	try {
-			saveReservations();
-		} catch (ClassNotFoundException | IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}*/
+        
         Scanner input = new Scanner(System.in);
         Scanner inputString = new Scanner(System.in);
         String inputDate;

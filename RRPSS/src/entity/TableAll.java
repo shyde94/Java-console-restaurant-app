@@ -344,21 +344,7 @@ public class TableAll {
 				System.out.println("Unable to check tables right now because the restaurant is closed");
 				System.out.println("");
 			}
-			/*for (int i = 0; i < totalNumOfTables; i++) {
-	        	if(Slot.equals("AM")){
-	        		if (!(allTheTables.get(i).isOccupied()) && !( allTheTables.get(i).isReservedAM())) {
-	                    temp = allTheTables.get(i);
-	                    tablesAvailable.add(temp);
-	                }
-	        	}else if(Slot.equals("PM")){
-	        		if (!(allTheTables.get(i).isOccupied()) && !(allTheTables.get(i).isReservedPM())) {
-	                    temp = allTheTables.get(i);
-	                    tablesAvailable.add(temp);
-	                }
-	        	}else{
-	        		System.out.println("Unable to check for available tables at the moment. ");
-	        	}   
-	        }*/
+
 		} catch (ParseException e) {
 			System.out.println("Unable to check available tables at the moment. ");
 		}
@@ -397,8 +383,6 @@ public class TableAll {
             for (int i = 0; i < holdingArrayList.size(); i++) {
                 String timeTemp = holdingArrayList.get(i).getTimeOfArrival();
                 String dateTemp = holdingArrayList.get(i).getDateReserved();
-                //System.out.println("timeTemp:" + timeTemp);
-                //System.out.println("dateTemp:" + dateTemp);
                 Calendar dateObjectTemp = ReservationController.stringToCalender("dd-MM-yyyy HHmm", dateTemp, timeTemp);
                 timeOfArrival.add(dateObjectTemp); //Order of calendar objects in timeOfArrival is the same as reservation objects in reservationsTodayAM
             }

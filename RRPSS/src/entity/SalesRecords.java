@@ -106,7 +106,6 @@ public class SalesRecords {
         OrderSheetPerTable TheSalesReportOrderSheet = new OrderSheetPerTable(-1,"-1",today);
         if (!(tempRecords.isEmpty())) {
             for (int i = 0; i < tempRecords.size(); i++) {
-                //tempRecords.get(i).printOrderSheetDetails();
             	OrderSheetPerTable tempOrderSheet = tempRecords.get(i);
             	ArrayList<MenuItem> tempOrders = tempOrderSheet.getOrders();
             	for(int j=0;j<tempOrders.size();j++){

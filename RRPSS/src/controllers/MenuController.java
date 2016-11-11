@@ -592,17 +592,9 @@ public class MenuController {
             	input.nextLine();
             	continue;
             }
-            //Call method to add Promotional Package into menu 
-           
-                //tempPackage.printPromotionalPackage();
+          
                 menu.addPPackage(name, price, desc,type, menuItemArray); x = false;
-                /*if(menu.getPPackage().isEmpty()){
-                    System.out.println("Debug 1");
-                }
-                else{
-                    System.out.println("Package added into pPackage");
-                }
-                */
+
                 try {
                     saveMenu();
                 } catch (IOException ex) {

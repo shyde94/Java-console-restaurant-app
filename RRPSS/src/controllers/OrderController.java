@@ -165,6 +165,7 @@ public class OrderController {
      * addOrderToOrderSheet method will create a new order
      * @throws IndexOutOfBoundsException index to the arraylist is out of range
      * @throws ParseException error has been reached unexpectedly whilst parsing
+     * @param staffId the staff id
      */
     public void addOrderToOrderSheet(String staffId) throws IndexOutOfBoundsException, ParseException {
         //1. Ask for table number
@@ -255,6 +256,7 @@ public class OrderController {
     //Method to update orderSheet
     /**
      * updateOrderSheetPerTable will update the order
+     * @param staffId the staff id
      */
     public void updateOrderSheetPerTable(String staffId) {
         Scanner input = new Scanner(System.in);
@@ -351,6 +353,7 @@ public class OrderController {
 
     /**
      * removeOrderFromOrderSheet method will remove the order
+     * @param staffId the staff id
      */
     public void removeOrderFromOrderSheet(String staffId) {
         Scanner input = new Scanner(System.in);
@@ -432,6 +435,7 @@ public class OrderController {
      * directory
      * @throws IOException input or output has been entered or received 
      * incorrectly 
+     * @param staffId the staff id
      */
     public void PrintInvoiceAndCheckOut(String staffId) throws FileNotFoundException, IOException {
         Scanner input = new Scanner(System.in);

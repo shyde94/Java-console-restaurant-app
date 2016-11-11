@@ -197,10 +197,8 @@ public class OrderSheetPerTable implements Serializable {
     	ArrayList<String> nameItems = new ArrayList<String>();
     	for(int i=0;i<orders.size();i++){
     		nameItems.add(orders.get(i).getName());
-    		//System.out.println("Items: "+ nameItems.get(i));
     	}
         if (nameItems.contains(item.getName())) {
-        	//System.out.println("item: " + item.getName());
             int existingItem = nameItems.indexOf(item.getName());
             int existingQuantity = quantityFEO.get(existingItem);
             quantityFEO.set(existingItem, existingQuantity + quantity);
@@ -212,8 +210,6 @@ public class OrderSheetPerTable implements Serializable {
             quantityFEO.add(quantity);
             subTotalPrice.add(item.getPrice() * quantity);
             staffIds.add(staffId);
-            
-            //System.out.println("Item ordered: " + item.getName() + " Qty: " + quantity);
         }
 
     }

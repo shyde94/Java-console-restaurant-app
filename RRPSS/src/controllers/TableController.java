@@ -70,7 +70,6 @@ public class TableController {	//This class is just to settle which tables are b
 		System.out.println("Syncing tables with reservations list");
 		TableRecords.syncTables(todayString, this.rL);
 		try{
-			//System.out.println("Testing removal of expired reservations");
 			TableRecords.expireReservations(rL, todayString, 30);
 			try {
 				ReservationController.saveReservations();
@@ -81,8 +80,6 @@ public class TableController {	//This class is just to settle which tables are b
 		}catch(ParseException e){
 			System.out.println("Error executing expireReservations.");
 		}
-		//TableRecords.showTableStatuses();
-			//System.out.println("Please Select option: (Enter -1 to go back)");
 	}
 	
         /**

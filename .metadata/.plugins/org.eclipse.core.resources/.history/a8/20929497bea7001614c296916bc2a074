@@ -182,7 +182,6 @@ public class Reservation implements Serializable {
         System.out.println("Time of arrival: " + timeOfArrival);
         System.out.println("Table: " + tableNumber);
         System.out.println("Number of people: " + numberOfPeople);
-        System.out.println("Handphone number: " + hpNumber);
     }
 
 }

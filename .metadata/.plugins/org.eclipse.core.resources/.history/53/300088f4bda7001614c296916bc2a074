@@ -29,6 +29,16 @@ import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * ReservationController Class facilitates the reservation process
+ * 
+ * @since 9/11/2016
+ *
+ * @author Shide
+ * @author Eeyern
+ * @author Grace
+ * @author Xi Tong
+ */
 public class ReservationController {
 
     public static ReservationAll allTheReservations;
@@ -37,11 +47,19 @@ public class ReservationController {
     private final static String SPACING = "**********************************************";
     private final static String SPACING2 = "##############################################";
 
+    /**
+     * ReservationController constructor assigns the tables 
+     */
     public ReservationController() {
         allTheReservations = new ReservationAll();
         allTheTables = new TableAll(5, 5, 10, 10);
     }
 
+    /**
+     * run Method will run the controller upon start
+     * @throws InputMismatchException write or read error
+     * @throws NoSuchElementException  when there is no element error
+     */
     public void run() throws InputMismatchException, NoSuchElementException {
         boolean x = true;
         Scanner input = new Scanner(System.in);
@@ -65,7 +83,7 @@ public class ReservationController {
                 case (2):
                     do {
                         try {
-                            System.out.println("Test");
+                            
                             this.checkReservation();
                             y = false;
                         } catch (InputMismatchException e) {
@@ -120,6 +138,9 @@ public class ReservationController {
         }
     }
 
+    /**
+     * createReservation method facilitates a reservation
+     */
     public void createReservation() {
         //1. get date and time as input
         //2. check that not same day or max 1 month
@@ -128,18 +149,25 @@ public class ReservationController {
         //4. Search for tables that have at most pax + 3 seats. 
         //5. If have, input name, hp number. 
         //6. Create reservation 
-        allTheReservations.createReservation(1, 2, "97811150", "Foo Shi De", "09-11-2016", "1400", "AM");
-        allTheReservations.createReservation(1, 2, "97811150", "Apple", "09-11-2016", "1730", "PM");
-        allTheReservations.createReservation(3, 2, "97811150", "Banana", "09-11-2016", "1400", "AM");
-        allTheReservations.createReservation(3, 2, "97811150", "Pineapple", "09-11-2016", "1730", "PM");
-        allTheReservations.createReservation(4, 2, "97811150", "habaaba", "09-11-2016", "1830", "PM");
-        allTheReservations.createReservation(5, 2, "123123123", "John", "09-11-2016", "1800", "PM");
-        allTheReservations.createReservation(4, 2, "123123123", "John", "09-11-2016", "1400","AM");
-        allTheReservations.createReservation(5, 2, "123123123", "John", "09-11-2016", "1400","AM");
-        allTheReservations.createReservation(9, 2, "123123123", "John", "09-11-2016", "1400","AM");
-        allTheReservations.createReservation(8, 2, "123123123", "John", "039-11-2016", "1400","AM");
-    	allTheReservations.createReservation(10, 2, "123123123", "John", "09-11-2016", "1400","AM");
+        //allTheReservations.createReservation(1, 2, "97811150", "Lim", "10-11-2016", "2200", "PM");
+        allTheReservations.createReservation(2, 2, "111111111", "Donald", "11-11-2016", "1100", "AM");
+        allTheReservations.createReservation(3, 2, "222222222", "Foo", "11-11-2016", "1100", "AM");
+        allTheReservations.createReservation(22, 6, "33333333", "Jessie", "11-11-2016", "1100", "AM");
+        allTheReservations.createReservation(4, 2, "44444444", "Jenny", "11-11-2016", "1100", "AM");
+        allTheReservations.createReservation(5, 2, "123123123", "John", "11-11-2016", "1100", "AM");
+        allTheReservations.createReservation(21, 6, "234234234", "Andrew", "11-11-2016", "1100","AM");
+        allTheReservations.createReservation(6, 2, "345345345", "Adam", "11-11-2016", "1100","AM");
+        allTheReservations.createReservation(9, 2, "456456456", "Michelle", "11-11-2016", "1100","AM");
+        allTheReservations.createReservation(8, 2, "567567567", "Grace", "11-11-2016", "1100","AM");
+    	allTheReservations.createReservation(10, 2, "678678678", "Diane", "11-11-2016", "1100","AM");
+    	try {
+			saveReservations();
+		} catch (ClassNotFoundException | IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
         Scanner input = new Scanner(System.in);
+        Scanner inputString = new Scanner(System.in);
         String inputDate;
         String inputTime;
         boolean x = true;
@@ -159,7 +187,8 @@ public class ReservationController {
                     return;
                 }
                 Calendar today = new GregorianCalendar();		//Get current date and time
-
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                String todayString = sdf.format(today.getTime());
                 try {
                     slot = checkSlot(inputTime);
                     if (slot.equals("")) {
@@ -170,7 +199,7 @@ public class ReservationController {
                     Calendar dntFromUser = stringToCalender("dd-MM-yyyy HHmm", inputDate, inputTime);	//Convert input date & time to calendar object           
                     Calendar oneMonthFromNow = new GregorianCalendar();
                     oneMonthFromNow.add(Calendar.DAY_OF_MONTH, 30);//Get date one month from now
-                    if (dntFromUser.compareTo(today) <= 0 || dntFromUser.compareTo(oneMonthFromNow) == 1) {
+                    if (dntFromUser.compareTo(today) <= 0 || dntFromUser.compareTo(oneMonthFromNow) == 1 || todayString.equals(inputDate)) {
                         System.out.println("You cannot reserve on this date");
                     } else {
                         System.out.println("Please wait...");
@@ -198,14 +227,15 @@ public class ReservationController {
                     }
                 }
                 System.out.println("Enter handphone number: (Enter -1 to return)");
-                String hpNumber = input.next();
-                if (hpNumber.equals("-1")) {
+                String hpNumber = inputString.nextLine();
+                if (hpNumber.equals("-1") || hpNumber.equals("")){
                     break;
                 }
                 System.out.println("Enter name: (Enter -1 to return)");
+                
                 input.nextLine();
-                String name = input.nextLine();
-                if (name.equals("-1")) {
+                String name = inputString.nextLine();
+                if (name.equals("-1") || name.equals("")) {
                     break;
                 }
                 cont = 0;
@@ -218,6 +248,7 @@ public class ReservationController {
                         cont = 1;
                     } catch (InputMismatchException e) {
                         System.out.println("Please enter a number");
+                        input.nextLine();
                     }
                 } while (cont == 0);
                 if (numpax == -1) {
@@ -248,6 +279,10 @@ public class ReservationController {
         
     }
 
+    /**
+     * checkReservation method will check if there is a reservation on a 
+     * given date
+     */
     public void checkReservation() {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter date to check: ");
@@ -256,6 +291,10 @@ public class ReservationController {
 
     }
 
+    /**
+     * removeReservation method will remove a reservation
+     * @param hpOrdate can be phone number or a date
+     */
     public void removeReservation(int hpOrdate) {
         //1. input name and handphone number
         //2. check reservationList for match
@@ -297,7 +336,7 @@ public class ReservationController {
                 }
             }
             if (tempList.isEmpty()) {
-                System.out.println("There are no reservations under this name/date, or that the format entered is incorrect.");
+                System.out.println("There are no reservations under this handphone number/date, or that the format entered is incorrect.");
                 return;
             } else {
                 System.out.println("Reservations made under this name: ");
@@ -342,6 +381,14 @@ public class ReservationController {
     }
 
     //Converts string given into format to create date object
+    /**
+     * stringToCalendar method will convert the string date to a calendar date
+     * @param format the format pattern
+     * @param inputDate the date
+     * @param inputTime the time
+     * @return the converted date
+     * @throws ParseException parsing in the wrong format
+     */
     public static Calendar stringToCalender(String format, String inputDate, String inputTime) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat();
         sdf.applyPattern(format);
@@ -355,6 +402,13 @@ public class ReservationController {
         return calendar;
     }
 
+    /**
+     * checkSlot method will check if the reservation is in the AM or PM
+     * session of a given date
+     * @param slot the time
+     * @return AM or PM
+     * @throws ParseException parsing in the wrong format
+     */
     public static String checkSlot(String slot) throws ParseException {	//method to check if reservation slot is in AM / PM period
         String timeSlot = "";
         Date slotD = new SimpleDateFormat("HHmm").parse(slot);
@@ -374,6 +428,13 @@ public class ReservationController {
         return timeSlot;
     }
 
+    /**
+     * checkSlot method of the current date and checks whether it is in the 
+     * AM or PM slot
+     * @param now the current date
+     * @return AM or PM
+     * @throws ParseException parsing in the wrong format 
+     */
     public static String checkSlot(Date now) throws ParseException {	//method to check if reservation slot is in AM / PM period
         String timeSlot = "";
         Calendar x = new GregorianCalendar();
@@ -399,7 +460,13 @@ public class ReservationController {
         return timeSlot;
     }
 
-    public void saveReservations() throws FileNotFoundException, IOException, ClassNotFoundException {
+    /**
+     * saveReservations method saves the reservations to a file
+     * @throws FileNotFoundException the file could not be found
+     * @throws IOException writing of the file
+     * @throws ClassNotFoundException the class could not be found
+     */
+    public static void saveReservations() throws FileNotFoundException, IOException, ClassNotFoundException {
         //Testing File IO
         File file = new File("Reservations.txt");
 
@@ -422,6 +489,11 @@ public class ReservationController {
         fo.close();
     }
 
+    /**
+     * loadReservations method loads all the saved reservations from the file
+     * @throws IOException reading of the file
+     * @throws ClassNotFoundException the class not found
+     */
     public void loadReservations() throws IOException, ClassNotFoundException {
         //Import back into collection
         File file = new File("Reservations.txt");
@@ -444,12 +516,18 @@ public class ReservationController {
 
     }
 
+    /**
+     * displayMenuOptions method will display all the reservation options
+     */
     public void displayMenuOptions() {		//Display main menu options
-        System.out.println("Menu Options (Enter -1 to go back)");
-        System.out.println("1. Create new reservation");
-        System.out.println("2. Check reservation");
-        System.out.println("3. Remove reservation (by Handphone number)");
-        System.out.println("4. Remove reservation (by Date)");
-        System.out.println("5. Show all reservations");
+        System.out.println(SPACING);
+        System.out.println("*            RESERVATION OPTIONS             *");
+        System.out.println("*  Please select option: (Enter -1 to return)*");
+        System.out.println("*  1. Create new reservation                 *");
+        System.out.println("*  2. Check reservation                      *");
+        System.out.println("*  3. Remove reservation (by Phone Number)   *");
+        System.out.println("*  4. Remove reservation (by Date)           *");
+        System.out.println("*  5. Show all reservations                  *");
+        System.out.println(SPACING);
     }
 }

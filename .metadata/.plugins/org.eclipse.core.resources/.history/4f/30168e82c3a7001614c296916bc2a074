@@ -334,7 +334,6 @@ public class OrderController {
                 }
                 if (tempMenuItem != null) {
                     orderSheetTemp.changeQuantity(tempMenuItem, quantity, staffId);
-                    orderSheetTemp.printOrder();
                     System.out.println("Order has been updated");
                     x = false;
                 } else {
@@ -413,7 +412,6 @@ public class OrderController {
                 }
                 if (tempMenuItem != null) {
                     orderSheetTemp.removeOrder(tempMenuItem);
-                    orderSheetTemp.printOrder();
                     System.out.println("Order has been removed.");
                     x = false;
                 } else {

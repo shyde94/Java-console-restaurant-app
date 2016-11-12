@@ -117,6 +117,12 @@ public class SalesRecords {
             }
             TheSalesReportOrderSheet.setTotalBill(revenue);
             TheSalesReportOrderSheet.printBill();
+            
+            /*System.out.println("Time period: " + dateToCheck);
+            System.out.printf("###### Sales report for: " + dateToCheck + "   "+ new DecimalFormat("$###,##0.00").format(revenue) + " #######");
+            System.out.println("");
+            System.out.println(SPACING2);*/
+
         }
         return revenue;
     }

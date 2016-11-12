@@ -155,7 +155,6 @@ public class SalesRecordsController {
             if (dateToCheck.equals("-1")) {
                 return revenue;
             }
-            System.out.println("############# Sales report for: " + dateToCheck + " ###############");
             revenue = recordsOfSales.GenerateSalesReport(dateToCheck, "dd-MM-yyyy");
         } else if (choice == 2) { //get revenue in month
             System.out.println("Enter specific month in mm-yy format: (Enter -1 to go back)");

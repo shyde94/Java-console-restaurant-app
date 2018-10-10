@@ -1,9 +1,0 @@
-1477652865878	Rename type 'Reservation'
-1477654635754	Encapsulate field 'tableNumber'
-1477654660061	Encapsulate field 'numberOfPeople'
-1477654681429	Encapsulate field 'hpNumber'
-1477654697634	Encapsulate field 'customerName'
-1477654726585	Encapsulate field 'start'
-1477660238663	Rename compilation unit 'ReservationTable.java'
-1477668230637	Delete element
-1477668239318	Delete element

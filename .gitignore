@@ -2,3 +2,7 @@
 /RRPSS/build/
 /RRPSS/dist/
 /nbproject/private/
+.metadata
+.recommenders
+.settings
+testing.txt
